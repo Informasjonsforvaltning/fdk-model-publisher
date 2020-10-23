@@ -18,7 +18,7 @@ HOST_PORT = int(env.get("HOST_PORT", "8080"))
 
 
 def is_responsive(url: Any) -> Any:
-    """Return true if respons from service is 200."""
+    """Return true if response from service is 200."""
     url = f"{url}/ready"
     try:
         response = requests.get(url)
@@ -52,7 +52,7 @@ def docker_compose_file(pytestconfig: Any) -> Any:
 @pytest.mark.unit
 @pytest.fixture
 def app() -> Generator:
-    """Returns a Flask app for unit testing."""
+    """Return a Flask app for unit testing."""
     app = create_app({"TESTING": True})
 
     yield app
@@ -61,5 +61,5 @@ def app() -> Generator:
 @pytest.mark.unit
 @pytest.fixture
 def client(app: Flask) -> FlaskClient:
-    """Returns a client for unit testing."""
+    """Return a client for unit testing."""
     return app.test_client()

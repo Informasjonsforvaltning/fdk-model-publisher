@@ -1,3 +1,4 @@
+"""Package for exposing modelldcat-ap-no compliant information models from data service descriptions in a Flask API."""
 from typing import Any
 
 from dotenv import load_dotenv

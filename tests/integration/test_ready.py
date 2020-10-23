@@ -1,3 +1,4 @@
+"""Integration test cases for the ready route."""
 from flask import Flask
 import pytest
 
