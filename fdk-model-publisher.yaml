@@ -1,0 +1,13 @@
+openapi: 3.0.2
+info:
+  title: FDK model publisher
+  description: Transforms models included in dataservice-descriptions to modelldcat-ap-no compliant models and expose the collection
+  version: '1.0'
+  contact:
+    name: Digitaliseringsdirektoratet
+    url: 'https://digdir.no'
+  license:
+    name: License of API
+    url: 'http://data.norge.no/nlod/no/2.0'
+tags:
+  - name: fdk-model-publisher
