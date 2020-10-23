@@ -1,3 +1,4 @@
+"""Integration test cases for the ping route."""
 from flask import Flask
 import pytest
 
