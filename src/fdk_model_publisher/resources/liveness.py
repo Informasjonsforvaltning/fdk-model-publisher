@@ -17,3 +17,12 @@ class Ready(Resource):
             return Response("OK")
         else:
             abort(503)
+
+
+class Ping(Resource):
+    """Class representing ping resource."""
+
+    @staticmethod
+    def get() -> Response:
+        """Ping route function."""
+        return Response("OK")

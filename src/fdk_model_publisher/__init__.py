@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_restful import Api
 
-from .resources.ping import Ping
-from .resources.ready import Ready
+from .resources.liveness import Ping, Ready
+from .resources.catalog import Catalog
 
 __version__ = "0.1.0"
 
@@ -30,5 +30,8 @@ def create_app(test_config: Any = None) -> Flask:
     # healthcheck routes
     api.add_resource(Ping, "/ping")
     api.add_resource(Ready, "/ready")
+
+    # rdf catalog
+    api.add_resource(Catalog, "/catalog")
 
     return app
