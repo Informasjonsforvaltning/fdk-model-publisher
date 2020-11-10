@@ -3,6 +3,8 @@ import asyncio
 from time import time
 from typing import Optional, List, Dict, Tuple
 
+
+import yaml
 import aiohttp
 from aiohttp import ClientSession
 from fdk_rdf_parser import fdk_rdf_parser as fdk, parse_data_services
@@ -24,19 +26,20 @@ def create_information_model():
     pass
 
 
-async def fetch(urls: List[str], session: ClientSession):
-    # TODO: url here is a list of urls, do for loop it will still be async
+async def fetch(session: ClientSession, urls: List[str]):
     try:
         # TODO: temp urls[0], should be a for loop
         async with session.get(urls[0]) as response:
             response.raise_for_status()
-            # do not use json() because rawgithubusercontent returns mimetype==
-            success = await response.json(content_type='/')
-            return success
-    except aiohttp.ClientConnectionError as e:
-        print(e)
-        return None
-    except aiohttp.ContentTypeError as e:
+
+            if response.url.raw_path.endswith('.yaml'):
+                # TODO: wrap in executor
+                return yaml.safe_load(await response.read())
+            # content_type='/' will ensure all mimetypes with a slash in them
+            # Bad design from aiohttp
+            return await response.json(content_type='/', encoding='utf-8-sig')
+
+    except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError) as e:
         # could not parse json
         print(e)
         return None
@@ -45,10 +48,10 @@ async def fetch(urls: List[str], session: ClientSession):
         return None
 
 
-async def bound_fetch(semaphore: asyncio.Semaphore, urls: List[str], session: ClientSession):
+async def bound_fetch(semaphore: asyncio.Semaphore, session: ClientSession, urls: List[str]):
     # Getter function with semaphore.
     async with semaphore:
-        return await fetch(urls, session)
+        return await fetch(session, urls)
 
 
 async def run(information_model_sources: List[InformationModelSource]):
@@ -57,7 +60,9 @@ async def run(information_model_sources: List[InformationModelSource]):
     semaphore = asyncio.Semaphore(MAXIMUM_FILE_DESCRIPTORS)  # maximum number of concurrent requests
     async with ClientSession(headers={'accept': 'application/json'}) as session:
         for source in information_model_sources:
-            task = asyncio.ensure_future(bound_fetch(semaphore, source.endpointDescription, session))
+            task = asyncio.ensure_future(
+                bound_fetch(semaphore, session, urls=source.endpointDescription)
+            )
             tasks.append(task)
         responses = asyncio.gather(*tasks)
         return await responses
@@ -74,13 +79,12 @@ def has_endpoint_description(information_model_source: InformationModelSource):
 # TODO: wrap parse_data_services in executor and await
 async def create_rdf_catalog(data_services_rdf: str):
     data_services: Dict[str, fdk.DataService] = parse_data_services(data_services_rdf)
-    populated = list(filter(has_endpoint_description, map(as_information_model_source, data_services.items())))
-
-    # TODO: remove test limit
-    # populated = populated[0:10]
-    ### END ###
+    populated = list(
+        filter(has_endpoint_description,
+               map(as_information_model_source, data_services.items())))
 
     start = time()
     resps = await run(populated)
     print(f'elapsed: {time() - start}')
+    print('done')
     # print(resps)
