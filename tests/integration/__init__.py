@@ -1,7 +1,7 @@
 """Integration test package.
 
 Modules:
-    test_factory
+    test_catalog
     test_ping
     test_ready
 """

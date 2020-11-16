@@ -1,6 +1,6 @@
 from aiohttp import web
 
-from view import Ping, Ready, Catalog
+from api.views import Ping, Ready, Catalog
 
 
 def setup_routes(app: web.Application):
