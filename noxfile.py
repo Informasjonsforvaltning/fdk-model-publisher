@@ -10,30 +10,10 @@ nox.options.sessions = (
     "lint",
     "mypy",
     "safety",
-    "unit_tests",
+    # "unit_tests",
     "integration_tests",
-    "contract_tests",
+    # "contract_tests",
 )
-
-
-@nox.session
-def unit_tests(session: Session) -> None:
-    """Run the unit test suite."""
-    args = session.posargs
-    nox_poetry.install(session, nox_poetry.WHEEL)
-    nox_poetry.install(
-        session,
-        "pytest",
-        "requests-mock",
-        "pytest-mock",
-    )
-    session.run(
-        "pytest",
-        "-m unit",
-        "-rA",
-        *args,
-        env={},
-    )
 
 
 @nox.session
@@ -52,23 +32,6 @@ def integration_tests(session: Session) -> None:
     session.run(
         "pytest",
         "-m integration",
-        "-rA",
-        *args,
-        env={},
-    )
-
-
-@nox.session
-def contract_tests(session: Session) -> None:
-    """Run the contract test suite."""
-    args = session.posargs
-    nox_poetry.install(session, nox_poetry.WHEEL)
-    nox_poetry.install(
-        session, "pytest", "pytest-docker", "requests_mock", "pytest_mock"
-    )
-    session.run(
-        "pytest",
-        "-m contract",
         "-rA",
         *args,
         env={},
