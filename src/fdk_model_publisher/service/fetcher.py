@@ -1,32 +1,29 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
 import logging
-from typing import Optional, List, Dict
+from typing import Any, Dict, List, Optional
 
 import aiohttp
 import yaml
 from aiohttp import ClientSession, hdrs
+from api.models import PartialInformationModel
 from datacatalogtordf import Catalog
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.agent import Agent
+from modelldcatnotordf.informationmodel import InformationModel
 
-from api.models import PartialInformationModel
 from .mapper import map_model_from_dict
 
 MAXIMUM_FILE_DESCRIPTORS = 10
 
 
-def create_information_model():
-    pass
-
-
 async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationModel:
-    models = [PartialInformationModel(endpointDescription=url) for url in urls]
+    models = [PartialInformationModel(endpoint_description=url) for url in urls]
 
     for model in models:
         try:
-            async with session.get(model.endpointDescription) as response:
+            async with session.get(model.endpoint_description) as response:
                 response.raise_for_status()
 
                 if response.url.raw_path.endswith(".yaml"):
@@ -46,7 +43,7 @@ async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationMo
 
 async def fetch_and_map(
     semaphore: asyncio.Semaphore, session: ClientSession, data_service: DataService
-):
+) -> Optional[InformationModel]:
     # fetch function with semaphore.
     async with semaphore:
         raw_model = await fetch(session, data_service.endpointDescription)
@@ -56,7 +53,7 @@ async def fetch_and_map(
         return None
 
 
-async def parallel_fetch_and_map(data_services: List[DataService]):
+async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
     tasks: List[asyncio.Future] = []
 
     # maximum number of concurrent requests
@@ -97,6 +94,6 @@ async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
         agent.identifier = f"http://example.com/catalogs/{i}"
         catalog.models[i].publisher = agent  # TODO: where to get it from ?
 
-    rdf = catalog.to_rdf()
+    # rdf = catalog.to_rdf()
 
     return catalog

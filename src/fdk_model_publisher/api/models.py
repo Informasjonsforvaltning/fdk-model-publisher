@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 
 @dataclass
 class PartialInformationModel:
-    endpointDescription: Optional[str] = None
+    endpoint_description: Optional[str] = None
     schema: Optional[Dict] = None
