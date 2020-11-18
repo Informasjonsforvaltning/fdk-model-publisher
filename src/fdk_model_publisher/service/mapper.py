@@ -1,9 +1,8 @@
 from typing import Dict, Optional
 
+from api.models import PartialInformationModel
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.informationmodel import InformationModel
-
-from api.models import PartialInformationModel
 
 prepend = {
     "nb": "Informasjonsmodell",
@@ -41,7 +40,7 @@ def map_model_from_dict(
     #     print(e)
     #     return None
 
-    model.identifier = raw.endpointDescription
+    model.identifier = raw.endpoint_description
     model.title = prepend_model(data_service.title)
     model.keyword = data_service.keyword
     model.theme = data_service.theme

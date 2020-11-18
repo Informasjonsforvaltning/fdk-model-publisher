@@ -1,11 +1,11 @@
+"""Main entry point."""
 import logging
 
 from aiohttp import web
-
 from api.routes import setup_routes
 
 
-async def create_app():
+async def create_app() -> web.Application:
     app = web.Application()
     setup_routes(app)
     return app

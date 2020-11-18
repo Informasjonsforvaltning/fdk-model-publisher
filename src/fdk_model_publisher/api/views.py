@@ -1,9 +1,7 @@
 import os
 from typing import Any
 
-from aiohttp import web, hdrs, ClientSession
-from service.fetcher import is_ready
-
+from aiohttp import ClientSession, hdrs, web
 
 FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
@@ -28,7 +26,7 @@ class Catalog(web.View):
 class Ready(web.View):
     async def get(self) -> Any:
         """Ready route function."""
-        if self.request.headers.get(hdrs.ACCEPT) == "application/json":
+        if self.request.headers.get(hdrs.ACCEPT) != "application/json":
             return web.Response(text="OK")
         else:
             return web.Response(status=503)
