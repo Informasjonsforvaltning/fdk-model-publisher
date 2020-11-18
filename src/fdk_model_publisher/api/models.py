@@ -3,6 +3,6 @@ from typing import Optional, Dict
 
 
 @dataclass
-class RawModel:
+class PartialInformationModel:
     endpointDescription: Optional[str] = None
     schema: Optional[Dict] = None

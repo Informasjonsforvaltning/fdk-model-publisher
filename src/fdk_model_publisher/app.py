@@ -13,5 +13,4 @@ async def create_app():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    web_app = create_app()
-    web.run_app(web_app)
+    web.run_app(create_app())
