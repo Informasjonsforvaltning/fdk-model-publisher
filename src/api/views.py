@@ -2,6 +2,7 @@ import os
 from typing import Any
 
 from aiohttp import ClientSession, hdrs, web
+from service.fetcher import create_rdf_catalog
 
 FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
@@ -18,9 +19,9 @@ class Catalog(web.View):
             ) as r:
                 r.raise_for_status()
                 data_services = await r.text()
-                return web.json_response(data_services, status=200)
-                # catalog = await create_rdf_catalog(data_services)
-                # return web.json_response(catalog.to_rdf())
+                # return web.json_response(data_services, status=200)
+                catalog = await create_rdf_catalog(data_services)
+                return web.json_response(catalog.to_rdf())
 
 
 class Ready(web.View):

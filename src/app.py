@@ -1,4 +1,4 @@
-"""Main entry point."""
+"""App factory and local dev entry point."""
 import logging
 
 from aiohttp import web

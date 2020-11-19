@@ -10,8 +10,7 @@ from api.models import PartialInformationModel
 from datacatalogtordf import Catalog
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
-from modelldcatnotordf.agent import Agent
-from modelldcatnotordf.informationmodel import InformationModel
+from modelldcatnotordf.informationmodel import Agent, InformationModel
 
 from .mapper import map_model_from_dict
 
