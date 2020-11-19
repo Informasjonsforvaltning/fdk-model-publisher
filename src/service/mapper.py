@@ -3,6 +3,7 @@ from typing import Dict, Optional
 from api.models import PartialInformationModel
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.informationmodel import InformationModel
+from modelldcatnotordf.modelelement import ModelElement
 
 prepend = {
     "nb": "Informasjonsmodell",
@@ -32,10 +33,9 @@ def map_model_from_dict(
 
     model = InformationModel()
 
-    # TODO: should 'elements' exist or?
-    # model.elements = ...
     # try:
-    #     model.model_element = raw.schema['components']['schemas']
+    #     raw_model_elements = raw.schema['components']['schemas']
+    #     print(raw_model_elements)
     # except KeyError as e:
     #     print(e)
     #     return None
