@@ -34,7 +34,7 @@ jobs:
           pip install nox==2020.8.22
           pip install nox-poetry==0.5.0
 
-      - name: Build image and run tests with nox
+      - name: Run tests with nox
         run: nox
 
       - name: Build Docker image with GitHub commit sha and staging tag
