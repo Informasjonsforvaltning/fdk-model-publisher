@@ -2,6 +2,7 @@
 import logging
 
 from aiohttp import web
+
 from fdk_model_publisher.api.routes import setup_routes
 
 

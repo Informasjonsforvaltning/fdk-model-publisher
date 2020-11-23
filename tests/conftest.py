@@ -4,7 +4,9 @@ from os import environ as env
 from typing import Any
 
 import pytest
-from src.fdk_model_publisher.app import create_app
+
+from src.fdk_model_publisher.app import create_app  # type: ignore
+
 from dotenv import load_dotenv
 
 load_dotenv()

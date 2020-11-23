@@ -2,6 +2,7 @@ import os
 from typing import Any
 
 from aiohttp import ClientSession, hdrs, web
+
 from fdk_model_publisher.service.fetcher import create_rdf_catalog
 
 FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(

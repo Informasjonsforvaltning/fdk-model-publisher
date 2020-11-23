@@ -1,5 +1,4 @@
 """Nox sessions."""
-import sys
 import tempfile
 
 import nox
@@ -30,10 +29,9 @@ def integration_tests(session: Session) -> None:
         "requests-mock",
         "pytest-mock",
         "aioresponses",
-        "pytest-aiohttp"
+        "pytest-aiohttp",
     )
 
-    print(sys.path)
     session.run(
         "pytest",
         "-m integration",

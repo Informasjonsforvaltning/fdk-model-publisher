@@ -1,9 +1,11 @@
 from typing import Dict, Optional
 
 from fdk_model_publisher.api.models import PartialInformationModel
+
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.informationmodel import InformationModel
-from modelldcatnotordf.modelelement import ModelElement
+
+# from modelldcatnotordf.modelelement import ModelElement
 
 prepend = {
     "nb": "Informasjonsmodell",
@@ -29,7 +31,7 @@ def map_model_from_dict(
     raw: PartialInformationModel, data_service: DataService
 ) -> Optional[InformationModel]:
     """Map schema object to InformationModel object."""
-    schema = raw.schema
+    # schema = raw.schema
 
     model = InformationModel()
 
