@@ -1,6 +1,7 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
 import logging
+import os
 from typing import Any, Dict, List, Optional
 
 import aiohttp
@@ -16,7 +17,21 @@ from modelldcatnotordf.informationmodel import Agent, InformationModel
 
 from .mapper import map_model_from_dict
 
-MAXIMUM_FILE_DESCRIPTORS = 10
+FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
+    "FDK_DATASERVICE_HARVESTER",
+    "https://dataservices.staging.fellesdatakatalog.digdir.no",
+)
+
+MAXIMUM_FILE_DESCRIPTORS = 50
+
+
+async def fetch_dataservices() -> str:
+    async with ClientSession(headers={hdrs.ACCEPT: "text/turtle"}) as session:
+        async with session.get(
+            url=f"{FDK_DATASERVICE_HARVESTER_BASE_URL}/catalogs"
+        ) as r:
+            r.raise_for_status()
+            return await r.text()
 
 
 async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationModel:

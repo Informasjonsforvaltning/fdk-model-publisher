@@ -1,28 +1,18 @@
-import os
 from typing import Any
 
-from aiohttp import ClientSession, hdrs, web
+from aiohttp import hdrs, web
 
-from fdk_model_publisher.service.fetcher import create_rdf_catalog
-
-FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
-    "FDK_DATASERVICE_HARVESTER",
-    "https://dataservices.staging.fellesdatakatalog.digdir.no",
-)
+from fdk_model_publisher.service.fetcher import create_rdf_catalog, fetch_dataservices
 
 
 class Catalog(web.View):
     @staticmethod
     async def get() -> Any:
-        async with ClientSession(headers={"Accept": "text/turtle"}) as session:
-            async with session.get(
-                url=f"{FDK_DATASERVICE_HARVESTER_BASE_URL}/catalogs"
-            ) as r:
-                r.raise_for_status()
-                data_services = await r.text()
-                # return web.json_response(data_services, status=200)
-                catalog = await create_rdf_catalog(data_services)
-                return web.json_response(catalog.to_rdf())
+        data_services = await fetch_dataservices()
+        catalog = await create_rdf_catalog(data_services)
+        return web.Response(
+            text=str(catalog.to_rdf()), headers={hdrs.CONTENT_TYPE: "text/turtle"}
+        )
 
 
 class Ready(web.View):
@@ -35,8 +25,6 @@ class Ready(web.View):
 
 
 class Ping(web.View):
-    """Class representing ping resource."""
-
     @staticmethod
     async def get() -> Any:
         """Ping route function."""
