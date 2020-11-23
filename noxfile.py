@@ -20,7 +20,7 @@ nox.options.sessions = (
 @nox.session
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
-    args = session.posargs or ["--cov"]
+    args = session.posargs
     nox_poetry.install(session, nox_poetry.WHEEL)
     nox_poetry.install(
         session,
@@ -29,6 +29,8 @@ def integration_tests(session: Session) -> None:
         "pytest-cov",
         "requests-mock",
         "pytest-mock",
+        "aioresponses",
+        "pytest-aiohttp"
     )
 
     print(sys.path)

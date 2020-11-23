@@ -1,6 +1,6 @@
 from aiohttp import web
 
-from api.views import Catalog, Ping, Ready
+from fdk_model_publisher.api.views import Catalog, Ping, Ready
 
 
 def setup_routes(app: web.Application) -> None:

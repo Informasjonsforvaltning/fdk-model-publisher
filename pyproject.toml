@@ -7,9 +7,9 @@ license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/Informasjonsforvaltning/fdk-model-publisher"
 repository = "https://github.com/Informasjonsforvaltning/fdk-model-publisher"
-packages = [
-    { include = "app.py", from = "src"},
-]
+#packages = [
+#    { include = "app.py", from = "src"},
+#]
 classifiers=[
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: Apache Software License",
@@ -23,6 +23,7 @@ modelldcatnotordf = "0.0.3"
 datacatalogtordf = "^1.2.0"
 fdk-rdf-parser = "0.2.1"
 aiohttp = "^3.7.2"
+pyyaml = "^5.3.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"
@@ -55,7 +56,7 @@ source = ["src", "*/site-packages"]
 
 [tool.coverage.run]
 branch = false
-source = ["src"]
+source = ["fdk_model_publisher"]
 omit = ["*gunicorn_config.py"]
 
 [tool.coverage.report]

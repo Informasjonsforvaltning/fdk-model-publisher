@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional
 import aiohttp
 import yaml
 from aiohttp import ClientSession, hdrs
-from api.models import PartialInformationModel
+from ..api.models import PartialInformationModel
 from datacatalogtordf import Catalog
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService

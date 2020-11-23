@@ -1,6 +1,6 @@
 from typing import Dict, Optional
 
-from api.models import PartialInformationModel
+from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.informationmodel import InformationModel
 from modelldcatnotordf.modelelement import ModelElement
