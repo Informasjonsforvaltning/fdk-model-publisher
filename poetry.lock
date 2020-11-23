@@ -908,7 +908,7 @@ python-versions = "*"
 version = "227"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "YAML parser and emitter for Python"
 name = "pyyaml"
 optional = false
@@ -1124,7 +1124,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "03891e3a03065b229dc007d680209160a2a83161b0a5f93611c1238b7c925753"
+content-hash = "e3a0296bb67e66da4b716098993de3f90ac60926f92f3af4d59a1120253f62ed"
 python-versions = "^3.8"
 
 [metadata.files]

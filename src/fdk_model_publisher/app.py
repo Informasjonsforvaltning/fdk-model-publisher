@@ -2,7 +2,7 @@
 import logging
 
 from aiohttp import web
-from api.routes import setup_routes
+from fdk_model_publisher.api.routes import setup_routes
 
 
 async def create_app() -> web.Application:

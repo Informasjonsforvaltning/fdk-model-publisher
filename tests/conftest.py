@@ -4,7 +4,7 @@ from os import environ as env
 from typing import Any
 
 import pytest
-from app import create_app
+from src.fdk_model_publisher.app import create_app
 from dotenv import load_dotenv
 
 load_dotenv()
