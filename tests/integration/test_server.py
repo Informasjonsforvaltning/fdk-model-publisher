@@ -20,12 +20,12 @@ def mock_aio_response() -> Any:
         yield m
 
 
-@pytest.mark.integration
-async def test_catalog(cli: TestClient, mock_aio_response: Any) -> Any:
-    resp = await cli.get("/catalog")
-    assert resp.status == 200
-    text = await resp.text()
-    assert "Hello, world" in text
+# @pytest.mark.integration
+# async def test_catalog(cli: TestClient, mock_aio_response: Any) -> Any:
+#     resp = await cli.get("/catalog")
+#     assert resp.status == 200
+#     text = await resp.text()
+#     assert "Hello, world" in text
 
 
 #  Server Health
