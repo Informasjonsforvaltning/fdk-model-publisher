@@ -6,20 +6,13 @@ from nox.sessions import Session
 import nox_poetry
 
 locations = "src", "tests", "noxfile.py"
-nox.options.sessions = (
-    "lint",
-    "mypy",
-    "safety",
-    # "unit_tests",
-    "integration_tests",
-    # "contract_tests",
-)
+nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
 
 
 @nox.session
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
-    args = session.posargs
+    args = session.posargs or ["--cov"]
     nox_poetry.install(session, nox_poetry.WHEEL)
     nox_poetry.install(
         session,

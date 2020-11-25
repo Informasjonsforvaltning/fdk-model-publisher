@@ -57,11 +57,11 @@ source = ["src", "*/site-packages"]
 [tool.coverage.run]
 branch = false
 source = ["fdk_model_publisher"]
-omit = ["*gunicorn_config.py"]
+omit = ["*gunicorn_config.py", "*app.py"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 100
+fail_under = 90
 
 [build-system]
 requires = ["poetry>=0.12"]
