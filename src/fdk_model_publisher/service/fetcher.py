@@ -2,7 +2,7 @@
 import asyncio
 import logging
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Tuple
 
 import aiohttp
 import yaml
@@ -13,9 +13,8 @@ from fdk_model_publisher.api.models import PartialInformationModel
 
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
-from modelldcatnotordf.informationmodel import Agent, InformationModel
 
-from .mapper import map_model_from_dict
+from .mapper import create_catalog, map_model_from_dict
 
 FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
@@ -25,7 +24,7 @@ FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
 MAXIMUM_FILE_DESCRIPTORS = 50
 
 
-async def fetch_dataservices() -> str:
+async def fetch_dataservice_catalog() -> str:
     async with ClientSession(headers={hdrs.ACCEPT: "text/turtle"}) as session:
         async with session.get(
             url=f"{FDK_DATASERVICE_HARVESTER_BASE_URL}/catalogs"
@@ -35,38 +34,33 @@ async def fetch_dataservices() -> str:
 
 
 async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationModel:
-    models = [PartialInformationModel(endpoint_description=url) for url in urls]
+    # urls[0] because in practice there should only be 1 element
+    model = PartialInformationModel(endpoint_description=urls[0])
+    try:
+        async with session.get(urls[0]) as response:
+            response.raise_for_status()
 
-    for model in models:
-        try:
-            async with session.get(model.endpoint_description) as response:
-                response.raise_for_status()
-
-                if response.url.raw_path.endswith(".yaml"):
-                    model.schema = yaml.safe_load(await response.read())
-                else:
-                    model.schema = await response.json(
-                        content_type=response.headers.get(hdrs.CONTENT_TYPE),
-                        encoding="utf-8-sig",
-                    )
-        except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError) as e:
-            logging.error(e)
-        except Exception as e:
-            logging.error(f"unknown error:{e}")
-    # TODO: temp [0], should only be 1 I think and also remove the upper for loop
-    return models[0]
+            if response.url.raw_path.endswith(".yaml"):
+                model.schema = yaml.safe_load(await response.read())
+            else:
+                model.schema = await response.json(
+                    content_type=response.headers.get(hdrs.CONTENT_TYPE),
+                    encoding="utf-8-sig",
+                )
+    except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError) as e:
+        logging.error(e)
+    except Exception as e:
+        logging.error(f"unknown error:{e}")
+    return model
 
 
-async def fetch_and_map(
+async def fetch_with_sem(
     semaphore: asyncio.Semaphore, session: ClientSession, data_service: DataService
-) -> Optional[InformationModel]:
+) -> Tuple[DataService, PartialInformationModel]:
     # fetch function with semaphore.
     async with semaphore:
-        raw_model = await fetch(session, data_service.endpointDescription)
-        if raw_model.schema and "components" in raw_model.schema:
-            return map_model_from_dict(raw_model, data_service)
-            # return raw_model
-        return None
+        partial_model = await fetch(session, data_service.endpointDescription)
+        return data_service, partial_model
 
 
 async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
@@ -78,11 +72,17 @@ async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
     async with ClientSession(headers={hdrs.ACCEPT: "application/json"}) as session:
         for data_service in data_services:
             task = asyncio.create_task(
-                fetch_and_map(semaphore, session, data_service),
+                fetch_with_sem(semaphore, session, data_service),
             )
             tasks.append(task)
 
-        return await asyncio.gather(*tasks)
+        partial_models = await asyncio.gather(*tasks)
+
+        return [
+            map_model_from_dict(partial_model, data_service)
+            for (data_service, partial_model) in partial_models
+            if partial_model.schema and "components" in partial_model.schema
+        ]
 
 
 async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
@@ -95,21 +95,6 @@ async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
         if data_service.endpointDescription
     ]
 
-    # process all models that are not null into catalog
-    catalog = Catalog()
+    information_models = await parallel_fetch_and_map(info_model_sources)
 
-    catalog.title = {"en": "A dataset catalog"}  # TODO: where to get it from ?
-    catalog.models = [
-        model for model in await parallel_fetch_and_map(info_model_sources) if model
-    ]
-    catalog.identifier = "http://example.com/catalogs/1"  # TODO: where to get it from ?
-
-    for i in range(len(catalog.models)):
-        agent = Agent()
-        agent.name = {"en": "James Bond", "nb": "Djeims Bånd"}
-        agent.identifier = f"http://example.com/catalogs/{i}"
-        catalog.models[i].publisher = agent  # TODO: where to get it from ?
-
-    # rdf = catalog.to_rdf()
-
-    return catalog
+    return create_catalog(information_models)

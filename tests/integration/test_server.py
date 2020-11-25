@@ -3,29 +3,50 @@ import os
 from typing import Any
 
 import pytest
+from rdflib import Graph
 from aiohttp import ClientResponse, hdrs
 from aiohttp.test_utils import TestClient
 from aioresponses import aioresponses
+
+from ..mocks import (
+    data_services_catalog_ttl_mock,
+    skagerrak_sparebank_json_mock,
+    skagerrak_sparebank_ttl_mock,
+)
+
 
 FDK_DATASERVICE_HARVESTER_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
     "https://dataservices.staging.fellesdatakatalog.digdir.no",
 )
 
+MOCK_URL = "https://mockurl.com"
+
 
 @pytest.fixture
 def mock_aio_response() -> Any:
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
-        m.add(url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs", body="Hello, world")
+        m.add(
+            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs",
+            body=data_services_catalog_ttl_mock,
+        )
+        m.add(
+            url=f"{MOCK_URL}/Skagerrak_Sparebank_937891245_Accounts-API.json",
+            body=skagerrak_sparebank_json_mock,
+        )
         yield m
 
 
-# @pytest.mark.integration
-# async def test_catalog(cli: TestClient, mock_aio_response: Any) -> Any:
-#     resp = await cli.get("/catalog")
-#     assert resp.status == 200
-#     text = await resp.text()
-#     assert "Hello, world" in text
+@pytest.mark.integration
+async def test_catalog(cli: TestClient, mock_aio_response: Any) -> Any:
+    resp = await cli.get("/catalog")
+    assert resp.status == 200
+    text = await resp.text()
+
+    expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
+    actual = Graph().parse(data=text, format="turtle")
+
+    assert actual.isomorphic(expected)
 
 
 #  Server Health
