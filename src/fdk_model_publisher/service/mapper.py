@@ -9,8 +9,8 @@ from fdk_model_publisher.api.models import PartialInformationModel
 
 from fdk_rdf_parser.classes import Publisher
 from fdk_rdf_parser.fdk_rdf_parser import DataService
-from modelldcatnotordf.informationmodel import InformationModel
-from modelldcatnotordf.modelelement import ModelElement
+from modelldcatnotordf.modelldcatno import InformationModel
+from modelldcatnotordf.modelldcatno import ModelElement
 
 prepend_map = {
     "nb": "Informasjonsmodell",
@@ -18,8 +18,8 @@ prepend_map = {
     "en": "Information Model",
 }
 
-FDK_MODEL_PUBLISHER_URL = os.getenv(
-    "FDK_MODEL_PUBLISHER_URL", "https://fdk-model-publisher.fellesdatakatalog.no"
+FDK_MODEL_PUBLISHER_URI = os.getenv(
+    "FDK_MODEL_PUBLISHER_URI", "https://fdk-model-publisher.fellesdatakatalog.no"
 )
 
 
@@ -43,7 +43,7 @@ def extract_publisher(publisher: Optional[Publisher]) -> Optional[Agent]:
             organization_number = matched.group(1)
             agent = Agent()
             agent.organization_id = organization_number
-            agent.identifier = f"{FDK_MODEL_PUBLISHER_URL}#{organization_number}"
+            agent.identifier = f"{FDK_MODEL_PUBLISHER_URI}#{organization_number}"
             return agent
     return None
 
@@ -60,7 +60,7 @@ def create_catalog(information_models: List[PartialInformationModel]) -> Catalog
     catalog = Catalog()
 
     catalog.title = {"nb": "FDK informasjonsmodellkatalog"}
-    catalog.identifier = "https://fdk-model-publisher.fellesdatakatalog.no"
+    catalog.identifier = FDK_MODEL_PUBLISHER_URI
     catalog.models = [model for model in information_models if model]
     return catalog
 
