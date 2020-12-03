@@ -21,7 +21,7 @@ FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
     "https://dataservices.staging.fellesdatakatalog.digdir.no",
 )
 
-MAXIMUM_FILE_DESCRIPTORS = 50
+MAXIMUM_FILE_DESCRIPTORS = 10
 
 
 async def fetch_dataservice_catalog() -> str:
