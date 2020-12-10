@@ -14,7 +14,7 @@ from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 
-from .mapper import create_catalog, map_model_from_dict
+from .mapper import Mapper
 
 FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
@@ -79,7 +79,7 @@ async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
         partial_models = await asyncio.gather(*tasks)
 
         return [
-            map_model_from_dict(partial_model, data_service)
+            Mapper().from_partial_model(partial_model, data_service)
             for (data_service, partial_model) in partial_models
             if partial_model.schema and "components" in partial_model.schema
         ]
@@ -97,4 +97,4 @@ async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
 
     information_models = await parallel_fetch_and_map(info_model_sources)
 
-    return create_catalog(information_models)
+    return Mapper.create_catalog(information_models)

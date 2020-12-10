@@ -7,11 +7,11 @@ from fdk_model_publisher.api.routes import setup_routes
 
 
 async def create_app() -> web.Application:
+    logging.basicConfig(level=logging.INFO)
     app = web.Application()
     setup_routes(app)
     return app
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     web.run_app(create_app())

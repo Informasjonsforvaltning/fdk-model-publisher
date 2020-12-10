@@ -14,7 +14,6 @@ class Catalog(web.View):
         data_services = await fetch_dataservice_catalog()
         catalog = await create_rdf_catalog(data_services)
         return web.Response(
-            # TODO: report to_rdf typing bug, says: str, actual: bytes
             text=catalog.to_rdf(encoding="utf-8").decode("utf-8"),
             headers={hdrs.CONTENT_TYPE: "text/turtle"},
         )
