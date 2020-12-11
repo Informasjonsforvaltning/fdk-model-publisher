@@ -3,7 +3,7 @@ import tempfile
 
 import nox
 from nox.sessions import Session
-import nox_poetry
+import nox_poetry.patch  # noqa: F401
 
 locations = "src", "tests", "noxfile.py"
 nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
@@ -13,9 +13,8 @@ nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
     args = session.posargs or ["--cov"]
-    nox_poetry.install(session, nox_poetry.WHEEL)
-    nox_poetry.install(
-        session,
+    session.install(".")
+    session.install(
         "coverage[toml]",
         "pytest",
         "pytest-cov",
@@ -38,7 +37,7 @@ def integration_tests(session: Session) -> None:
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or locations
-    nox_poetry.install(session, "black")
+    session.install("black")
     session.run("black", *args)
 
 
@@ -46,8 +45,7 @@ def black(session: Session) -> None:
 def lint(session: Session) -> None:
     """Lint using flake8."""
     args = session.posargs or locations
-    nox_poetry.install(
-        session,
+    session.install(
         "flake8",
         "flake8-annotations",
         "flake8-bandit",
@@ -73,7 +71,7 @@ def safety(session: Session) -> None:
             f"--output={requirements.name}",
             external=True,
         )
-        nox_poetry.install(session, "safety")
+        session.install("safety")
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
@@ -81,13 +79,13 @@ def safety(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or locations
-    nox_poetry.install(session, "mypy")
+    session.install("mypy")
     session.run("mypy", *args)
 
 
 @nox.session
 def coverage(session: Session) -> None:
     """Upload coverage data."""
-    nox_poetry.install(session, "coverage[toml]", "codecov")
+    session.install("coverage[toml]", "codecov")
     session.run("coverage", "xml", "--fail-under=0")
     session.run("codecov", *session.posargs)
