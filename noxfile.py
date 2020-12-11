@@ -2,8 +2,8 @@
 import tempfile
 
 import nox
+import nox_poetry
 from nox.sessions import Session
-import nox_poetry  # noqa: F401
 
 locations = "src", "tests", "noxfile.py"
 nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
@@ -13,8 +13,9 @@ nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
     args = session.posargs or ["--cov"]
-    session.install(".")
-    session.install(
+    nox_poetry.installroot(session, distribution_format=nox_poetry.WHEEL)
+    nox_poetry.install(
+        session,
         "coverage[toml]",
         "pytest",
         "pytest-cov",
@@ -37,7 +38,7 @@ def integration_tests(session: Session) -> None:
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or locations
-    session.install("black")
+    nox_poetry.install(session, "black")
     session.run("black", *args)
 
 
@@ -45,7 +46,8 @@ def black(session: Session) -> None:
 def lint(session: Session) -> None:
     """Lint using flake8."""
     args = session.posargs or locations
-    session.install(
+    nox_poetry.install(
+        session,
         "flake8",
         "flake8-annotations",
         "flake8-bandit",
@@ -71,7 +73,7 @@ def safety(session: Session) -> None:
             f"--output={requirements.name}",
             external=True,
         )
-        session.install("safety")
+        nox_poetry.install(session, "safety")
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
@@ -79,13 +81,13 @@ def safety(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or locations
-    session.install("mypy")
+    nox_poetry.install(session, "mypy")
     session.run("mypy", *args)
 
 
 @nox.session
 def coverage(session: Session) -> None:
     """Upload coverage data."""
-    session.install("coverage[toml]", "codecov")
+    nox_poetry.install(session, "coverage[toml]", "codecov")
     session.run("coverage", "xml", "--fail-under=0")
     session.run("codecov", *session.posargs)
