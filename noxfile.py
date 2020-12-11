@@ -3,7 +3,7 @@ import tempfile
 
 import nox
 from nox.sessions import Session
-import nox_poetry.patch  # noqa: F401
+import nox_poetry  # noqa: F401
 
 locations = "src", "tests", "noxfile.py"
 nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
