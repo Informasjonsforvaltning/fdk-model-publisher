@@ -1,33 +1,32 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
 import logging
-import os
 from typing import Any, Dict, List, Tuple
 
 import aiohttp
 import yaml
-from aiohttp import ClientSession, hdrs
+from aiocache import Cache
+from aiohttp import ClientSession, hdrs, web
 from datacatalogtordf import Catalog
 
 from fdk_model_publisher.api.models import PartialInformationModel
+from fdk_model_publisher.config import Config
+from fdk_model_publisher.utils import async_wrap
 
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 
 from .mapper import create_catalog, map_model_from_dict
 
-FDK_DATASERVICE_HARVESTER_BASE_URL = os.getenv(
-    "FDK_DATASERVICE_HARVESTER",
-    "https://dataservices.staging.fellesdatakatalog.digdir.no",
-)
-
 MAXIMUM_FILE_DESCRIPTORS = 10
+
+cache = Cache(Cache.MEMORY)
 
 
 async def fetch_dataservice_catalog() -> str:
     async with ClientSession(headers={hdrs.ACCEPT: "text/turtle"}) as session:
         async with session.get(
-            url=f"{FDK_DATASERVICE_HARVESTER_BASE_URL}/catalogs"
+            url=f"{Config.fdk_dataservice_harvester_url()}/catalogs"
         ) as r:
             r.raise_for_status()
             return await r.text()
@@ -98,3 +97,31 @@ async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
     information_models = await parallel_fetch_and_map(info_model_sources)
 
     return create_catalog(information_models)
+
+
+async def rdf_catalog() -> Catalog:
+    data_services = await fetch_dataservice_catalog()
+    catalog = await create_rdf_catalog(data_services)
+    return catalog
+
+
+async def serialize_catalog(invalidate_cache: bool = False) -> str:
+    cached_catalog = "rdf_catalog"
+    if await cache.exists(cached_catalog):
+        if invalidate_cache:
+            await cache.delete(cached_catalog)
+        else:
+            return await cache.get(cached_catalog)
+
+    catalog = await rdf_catalog()
+    serialized_catalog = (await async_wrap(catalog.to_rdf)()).decode()
+    await cache.set(cached_catalog, serialized_catalog)
+    return serialized_catalog
+
+
+async def sync_rdf_catalog(app: web.Application) -> None:
+    app["rdf_sync"] = asyncio.create_task(serialize_catalog())
+
+
+async def sync_rdf_catalog_cleanup(app: web.Application) -> None:
+    app["rdf_sync"].cancel()
