@@ -24,6 +24,8 @@ datacatalogtordf = "^1.2.0"
 fdk-rdf-parser = "0.2.1"
 aiohttp = "^3.7.2"
 pyyaml = "^5.3.1"
+aio-pika = "^6.7.1"
+aiocache = "^0.11.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"
@@ -59,7 +61,7 @@ omit = ["*gunicorn_config.py", "*app.py"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 90
+fail_under = 80
 
 [build-system]
 requires = ["poetry>=0.12"]

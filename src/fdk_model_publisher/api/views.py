@@ -2,20 +2,15 @@ from typing import Any
 
 from aiohttp import hdrs, web
 
-from fdk_model_publisher.service.fetcher import (
-    create_rdf_catalog,
-    fetch_dataservice_catalog,
-)
+from fdk_model_publisher.service.fetcher import serialize_catalog
 
 
 class Catalog(web.View):
     @staticmethod
     async def get() -> Any:
-        data_services = await fetch_dataservice_catalog()
-        catalog = await create_rdf_catalog(data_services)
+        catalog = await serialize_catalog()
         return web.Response(
-            # TODO: report to_rdf typing bug, says: str, actual: bytes
-            text=catalog.to_rdf(encoding="utf-8").decode("utf-8"),
+            text=catalog,
             headers={hdrs.CONTENT_TYPE: "text/turtle"},
         )
 
