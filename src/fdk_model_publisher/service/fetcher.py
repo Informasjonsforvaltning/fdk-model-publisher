@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Tuple
 
 import aiohttp
 import yaml
-from aiocache import Cache
 from aiohttp import ClientSession, hdrs, web
 from datacatalogtordf import Catalog
 
@@ -16,11 +15,15 @@ from fdk_model_publisher.utils import async_wrap
 from fdk_rdf_parser import parse_data_services
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 
+from .cache import (
+    catalog_cache_exists,
+    delete_catalog_cache,
+    get_catalog_cache,
+    set_catalog_cache,
+)
 from .mapper import create_catalog, map_model_from_dict
 
 MAXIMUM_FILE_DESCRIPTORS = 10
-
-cache = Cache(Cache.MEMORY)
 
 
 async def fetch_dataservice_catalog() -> str:
@@ -106,16 +109,15 @@ async def rdf_catalog() -> Catalog:
 
 
 async def serialize_catalog(invalidate_cache: bool = False) -> str:
-    cached_catalog = "rdf_catalog"
-    if await cache.exists(cached_catalog):
+    if await catalog_cache_exists():
         if invalidate_cache:
-            await cache.delete(cached_catalog)
+            await delete_catalog_cache()
         else:
-            return await cache.get(cached_catalog)
+            return await get_catalog_cache()
 
     catalog = await rdf_catalog()
     serialized_catalog = (await async_wrap(catalog.to_rdf)()).decode()
-    await cache.set(cached_catalog, serialized_catalog)
+    await set_catalog_cache(serialized_catalog)
     return serialized_catalog
 
 
