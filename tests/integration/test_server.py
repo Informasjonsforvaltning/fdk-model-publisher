@@ -4,7 +4,7 @@ from typing import Any
 
 import pytest
 from rdflib import Graph
-from aiohttp import ClientResponse, hdrs
+from aiohttp import ClientResponse
 from aiohttp.test_utils import TestClient
 from aioresponses import aioresponses
 
@@ -67,11 +67,3 @@ async def test_ready(cli: TestClient) -> Any:
     assert response.status == 200
     text = await response.text()
     assert "OK" in text
-
-
-@pytest.mark.integration
-async def test_not_ready(cli: TestClient) -> Any:
-    """Should return Service Unavailable."""
-    headers = {hdrs.ACCEPT: "application/json"}
-    response: ClientResponse = await cli.get("/ready", headers=headers)
-    assert response.status == 503
