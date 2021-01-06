@@ -38,7 +38,26 @@ def mock_aio_response() -> Any:
 
 
 @pytest.mark.integration
-async def test_catalog(cli: TestClient, mock_aio_response: Any) -> Any:
+async def test_get_catalog(
+    cli: TestClient, mock_get_skagerrak_from_cache: Any, mock_cache_exists: Any
+) -> Any:
+    resp = await cli.get("/catalog")
+    assert resp.status == 200
+    text = await resp.text()
+
+    expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
+    actual = Graph().parse(data=text, format="turtle")
+
+    assert actual.isomorphic(expected)
+
+
+@pytest.mark.integration
+async def test_set_catalog(
+    cli: TestClient,
+    mock_aio_response: Any,
+    mock_set_cache: Any,
+    mock_cache_does_not_exist: Any,
+) -> Any:
     resp = await cli.get("/catalog")
     assert resp.status == 200
     text = await resp.text()

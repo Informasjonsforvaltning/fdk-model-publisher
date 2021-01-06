@@ -8,6 +8,8 @@ class Config:
     _FDK_DATASERVICE_HARVESTER_URL: Optional[str] = None
     _FDK_MODEL_PUBLISHER_URI: Optional[str] = None
 
+    _CACHE_PASSWORD: Optional[str] = os.getenv("CACHE_PASSWORD", None)
+
     _RABBITMQ: Dict[str, str] = {
         "name": os.getenv("RABBIT_USERNAME", "admin"),
         "pass": os.getenv("RABBIT_PASSWORD", "admin"),
@@ -45,3 +47,22 @@ class Config:
                 "https://fdk-model-publisher.fellesdatakatalog.no",
             )
         return cls._FDK_MODEL_PUBLISHER_URI
+
+    @classmethod
+    def cache_config(cls: Type[T]) -> Dict:
+        config = {
+            "default": {
+                "cache": "aiocache.RedisCache",
+                "endpoint": "fdk-publishers-cache",
+                "port": 6379,
+                "serializer": {"class": "aiocache.serializers.PickleSerializer"},
+                "plugins": [
+                    {"class": "aiocache.plugins.HitMissRatioPlugin"},
+                    {"class": "aiocache.plugins.TimingPlugin"},
+                ],
+            },
+        }
+        if cls._CACHE_PASSWORD:
+            config["default"]["password"] = cls._CACHE_PASSWORD
+
+        return config
