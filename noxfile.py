@@ -13,7 +13,7 @@ nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
     args = session.posargs or ["--cov"]
-    nox_poetry.install(session, nox_poetry.WHEEL)
+    nox_poetry.installroot(session, distribution_format=nox_poetry.WHEEL)
     nox_poetry.install(
         session,
         "coverage[toml]",
