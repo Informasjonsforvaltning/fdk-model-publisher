@@ -1,6 +1,6 @@
 [flake8]
 select = ANN,A50,B,B9,BLK,C,D,E,F,I,S,W,N
-ignore = I100,I202,D100,D101,D102,D103,D104,D107,ANN101,E501,W503
+ignore = ANN101,E501,W503
 max-line-length = 120
 per-file-ignores = __init__.py:F401,tests/*:S101,tests/mocks/*:F401,B950
 application-import-names = fdk_model_publisher, tests

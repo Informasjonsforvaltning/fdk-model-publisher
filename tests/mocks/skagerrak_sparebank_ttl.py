@@ -1,3 +1,4 @@
+"""Example TTL output."""
 skagerrak_sparebank_ttl_mock = """
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .

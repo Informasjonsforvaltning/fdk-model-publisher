@@ -1,3 +1,4 @@
+"""Utils module."""
 import asyncio
 from asyncio import AbstractEventLoop
 from functools import partial, wraps
@@ -5,6 +6,8 @@ from typing import Any, Callable, Coroutine, Dict, Tuple
 
 
 def async_wrap(func: Callable) -> Callable:
+    """Async wrap method."""
+
     @wraps(func)
     async def run(
         *args: Tuple[Any, ...],

@@ -4,17 +4,15 @@ import logging
 from typing import Any, Dict, List, Tuple
 
 import aiohttp
-import yaml
 from aiohttp import ClientSession, hdrs, web
 from datacatalogtordf import Catalog
+from fdk_rdf_parser import parse_data_services
+from fdk_rdf_parser.fdk_rdf_parser import DataService
+import yaml
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.config import Config
 from fdk_model_publisher.utils import async_wrap
-
-from fdk_rdf_parser import parse_data_services
-from fdk_rdf_parser.fdk_rdf_parser import DataService
-
 from .cache import (
     catalog_cache_exists,
     delete_catalog_cache,
@@ -27,6 +25,7 @@ MAXIMUM_FILE_DESCRIPTORS = 10
 
 
 async def fetch_dataservice_catalog() -> str:
+    """Fetch data service catalog."""
     async with ClientSession(headers={hdrs.ACCEPT: "text/turtle"}) as session:
         async with session.get(
             url=f"{Config.fdk_dataservice_harvester_url()}/catalogs"
@@ -36,6 +35,7 @@ async def fetch_dataservice_catalog() -> str:
 
 
 async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationModel:
+    """Fetch information model."""
     # urls[0] because in practice there should only be 1 element
     model = PartialInformationModel(endpoint_description=urls[0])
     try:
@@ -59,6 +59,7 @@ async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationMo
 async def fetch_with_sem(
     semaphore: asyncio.Semaphore, session: ClientSession, data_service: DataService
 ) -> Tuple[DataService, PartialInformationModel]:
+    """Fetch with semaphore."""
     # fetch function with semaphore.
     async with semaphore:
         partial_model = await fetch(session, data_service.endpointDescription)
@@ -66,6 +67,7 @@ async def fetch_with_sem(
 
 
 async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
+    """Perform parallel fetch and map."""
     tasks: List[asyncio.Future] = []
 
     # maximum number of concurrent requests
@@ -88,6 +90,7 @@ async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
 
 
 async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
+    """Create RDF/TTL catalog."""
     data_services: Dict[str, DataService] = parse_data_services(data_services_rdf)
 
     # filter only those that have endpointDescription with at least 1 element in it
@@ -103,12 +106,14 @@ async def create_rdf_catalog(data_services_rdf: str) -> Catalog:
 
 
 async def rdf_catalog() -> Catalog:
+    """Create RDF catalog from data service catalog."""
     data_services = await fetch_dataservice_catalog()
     catalog = await create_rdf_catalog(data_services)
     return catalog
 
 
 async def serialize_catalog(invalidate_cache: bool = False) -> str:
+    """Serialize catalog."""
     if await catalog_cache_exists():
         if invalidate_cache:
             await delete_catalog_cache()
@@ -122,8 +127,10 @@ async def serialize_catalog(invalidate_cache: bool = False) -> str:
 
 
 async def sync_rdf_catalog(app: web.Application) -> None:
+    """Synchronize RDF catalog."""
     app["rdf_sync"] = asyncio.create_task(serialize_catalog())
 
 
 async def sync_rdf_catalog_cleanup(app: web.Application) -> None:
+    """Clean up RDF catalog synchronization."""
     app["rdf_sync"].cancel()

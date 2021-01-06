@@ -8,6 +8,7 @@ from fdk_model_publisher.service import fetcher, rabbit
 
 
 async def create_app() -> web.Application:
+    """App creation and route set-up."""
     app = web.Application()
     app.on_startup.append(rabbit.listen)
     app.on_startup.append(fetcher.sync_rdf_catalog)

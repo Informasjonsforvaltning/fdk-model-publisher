@@ -1,16 +1,17 @@
+"""JSON to TTL mapping."""
+
 import logging
 import re
 from typing import Dict, List, Optional
 
 from datacatalogtordf import Agent, Catalog
-
-from fdk_model_publisher.api.models import PartialInformationModel
-from fdk_model_publisher.config import Config
-
 from fdk_rdf_parser.classes import Publisher
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.modelldcatno import InformationModel
 from modelldcatnotordf.modelldcatno import ModelElement
+
+from fdk_model_publisher.api.models import PartialInformationModel
+from fdk_model_publisher.config import Config
 
 prepend_map = {
     "nb": "Informasjonsmodell",
@@ -22,6 +23,7 @@ prepend_map = {
 def prepend_model(
     multi_language_field: Optional[Dict[str, str]]
 ) -> Optional[Dict[str, str]]:
+    """Prepend title with string."""
     if multi_language_field is None:
         return None
 
@@ -33,6 +35,7 @@ def prepend_model(
 
 
 def extract_publisher(publisher: Optional[Publisher]) -> Optional[Agent]:
+    """Extract publisher."""
     if publisher and publisher.uri:
         matched = re.search(pattern=r"organizations/([0-9]{9})$", string=publisher.uri)
         if matched:
@@ -47,6 +50,7 @@ def extract_publisher(publisher: Optional[Publisher]) -> Optional[Agent]:
 
 
 def create_model_element(uri: Optional[str], title: str) -> ModelElement:
+    """Create model element."""
     model_element = ModelElement()
     model_element.title = {"nb": title}
     model_element.identifier = f"{uri}#{title}"
@@ -54,7 +58,7 @@ def create_model_element(uri: Optional[str], title: str) -> ModelElement:
 
 
 def create_catalog(information_models: List[PartialInformationModel]) -> Catalog:
-    # process all models that are not null into catalog
+    """Process all models that are not null into catalog."""
     catalog = Catalog()
 
     catalog.title = {"nb": "FDK informasjonsmodellkatalog"}
