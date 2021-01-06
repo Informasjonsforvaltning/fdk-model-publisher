@@ -23,10 +23,7 @@ class Catalog(web.View):
 class Ready(web.View):
     async def get(self) -> Any:
         """Ready route function."""
-        if self.request.headers.get(hdrs.ACCEPT) != "application/json":
-            return web.Response(text="OK")
-        else:
-            return web.Response(status=503)
+        return web.Response(text="OK")
 
 
 class Ping(web.View):
