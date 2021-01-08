@@ -1,3 +1,4 @@
+"""Configure fdk-model-publisher."""
 import os
 from typing import Dict, Optional, Type, TypeVar
 
@@ -5,6 +6,8 @@ T = TypeVar("T", bound="Config")
 
 
 class Config:
+    """Configuration class."""
+
     _FDK_DATASERVICE_HARVESTER_URL: Optional[str] = None
     _FDK_MODEL_PUBLISHER_URI: Optional[str] = None
 
@@ -20,6 +23,7 @@ class Config:
 
     @classmethod
     def rabbitmq_connection_string(cls: Type[T]) -> str:
+        """Rabbit M.Q. connection string."""
         host = cls._RABBITMQ["host"]
         port = cls._RABBITMQ["port"]
         name = cls._RABBITMQ["name"]
@@ -28,10 +32,12 @@ class Config:
 
     @classmethod
     def rabbitmq_exchange(cls: Type[T]) -> str:
+        """Rabbit M.Q. exchange."""
         return cls._RABBITMQ["exchange"]
 
     @classmethod
     def fdk_dataservice_harvester_url(cls: Type[T]) -> Optional[str]:
+        """Harvest URL."""
         if cls._FDK_DATASERVICE_HARVESTER_URL is None:
             cls._FDK_DATASERVICE_HARVESTER_URL = os.getenv(
                 "FDK_DATASERVICE_HARVESTER",
@@ -41,6 +47,7 @@ class Config:
 
     @classmethod
     def fdk_model_publisher_uri(cls: Type[T]) -> Optional[str]:
+        """Model publisher URI."""
         if cls._FDK_MODEL_PUBLISHER_URI is None:
             cls._FDK_MODEL_PUBLISHER_URI = os.getenv(
                 "FDK_MODEL_PUBLISHER_URI",
@@ -50,6 +57,7 @@ class Config:
 
     @classmethod
     def cache_config(cls: Type[T]) -> Dict:
+        """Configure cache."""
         config = {
             "default": {
                 "cache": "aiocache.RedisCache",

@@ -1,3 +1,4 @@
+"""Data service catalog mock."""
 data_services_catalog_ttl_mock = """
 @prefix dct:   <http://purl.org/dc/terms/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .

@@ -2,11 +2,11 @@
 import os
 from typing import Any
 
-import pytest
-from rdflib import Graph
 from aiohttp import ClientResponse
 from aiohttp.test_utils import TestClient
 from aioresponses import aioresponses
+import pytest
+from rdflib import Graph
 
 from ..mocks import (
     data_services_catalog_ttl_mock,
@@ -25,6 +25,7 @@ MOCK_URL = "https://mockurl.com"
 
 @pytest.fixture
 def mock_aio_response() -> Any:
+    """Mock aio response."""
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
         m.add(
             url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs",
@@ -41,6 +42,7 @@ def mock_aio_response() -> Any:
 async def test_get_catalog(
     cli: TestClient, mock_get_skagerrak_from_cache: Any, mock_cache_exists: Any
 ) -> Any:
+    """Get catalog test."""
     resp = await cli.get("/catalog")
     assert resp.status == 200
     text = await resp.text()
@@ -58,6 +60,7 @@ async def test_set_catalog(
     mock_set_cache: Any,
     mock_cache_does_not_exist: Any,
 ) -> Any:
+    """Test catalog view."""
     resp = await cli.get("/catalog")
     assert resp.status == 200
     text = await resp.text()

@@ -1,3 +1,4 @@
+"""Example JSON input."""
 skagerrak_sparebank_json_mock = """
 {
   "openapi": "3.0.0",
