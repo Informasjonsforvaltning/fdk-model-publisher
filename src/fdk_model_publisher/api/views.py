@@ -23,7 +23,8 @@ class Catalog(web.View):
 class Ready(web.View):
     """Ready view."""
 
-    async def get(self) -> Any:
+    @staticmethod
+    async def get() -> Any:
         """Ready route function."""
         return web.Response(text="OK")
 
