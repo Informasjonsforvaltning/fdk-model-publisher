@@ -6,7 +6,7 @@ ex_1_ttl = """
 
 <http://www.validuri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - eksempel 1"@nb ;
-    ns1:containsModelelement <http://www.validuri.com#Eiendom> .
+    ns1:containsModelElement <http://www.validuri.com#Eiendom> .
 
 <http://www.validuri.com#Eiendom> a ns1:ObjectType ;
     dct:title "Eiendom"@en ;
