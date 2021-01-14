@@ -18,7 +18,7 @@ skagerrak_sparebank_ttl_mock = """
     dct:description "Open API specification of the Account APIs. (Work in progress.)"@en ;
     dct:publisher <https://fdk-model-publisher.fellesdatakatalog.no#937891245> ;
     dct:title "Information Model - Accounts API Skagerrak Sparebank"@en ;
-    ns1:containsModelelement <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Account>,
+    ns1:containsModelElement <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Account>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetail>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetails>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountNumber>,

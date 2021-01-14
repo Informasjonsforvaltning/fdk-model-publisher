@@ -1,7 +1,7 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
 import logging
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 import aiohttp
 from aiohttp import ClientSession, hdrs, web
@@ -34,8 +34,9 @@ async def fetch_dataservice_catalog() -> str:
             return await r.text()
 
 
-async def fetch(session: ClientSession, urls: List[str]) -> PartialInformationModel:
+async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformationModel:
     """Fetch information model."""
+    urls = list(urls_set)
     # urls[0] because in practice there should only be 1 element
     model = PartialInformationModel(endpoint_description=urls[0])
     try:
