@@ -7,8 +7,8 @@ from rdflib import Graph
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.service.mapper import map_model_from_dict
-from tests.mocks.examples_json import ex_1_json
-from tests.mocks.examples_ttl import ex_1_ttl
+from tests.mocks.examples_json import ex_1_json, ex_2_json, ex_3_json, ex_4_json
+from tests.mocks.examples_ttl import ex_1_ttl, ex_2_ttl, ex_3_ttl, ex_4_ttl
 
 
 def verify_model(
@@ -30,6 +30,12 @@ def verify_model(
 def test_map_models_from_dict() -> None:
     """Assert that models are isomorphic to example."""
     ds = DataService(
-        title={"nb": "eksempel 1"}, endpointDescription=["http://www.validuri.com"]
+        title={"nb": "datatjeneste eksempler"}, endpointDescription=["http://uri.com"]
     )
     assert verify_model(ex_1_json, ex_1_ttl, ds)
+
+    assert verify_model(ex_2_json, ex_2_ttl, ds)
+
+    assert verify_model(ex_3_json, ex_3_ttl, ds)
+
+    assert verify_model(ex_4_json, ex_4_ttl, ds)
