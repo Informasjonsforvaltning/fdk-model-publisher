@@ -1,0 +1,178 @@
+
+
+
+
+#Eiendom
+
+ex:Eiendom a                owl:NamedIndividual , modelldcatno:ObjectType ;
+      modelldcatno:title          "Eiendom" ;
+      modelldcatno:hasProperty    ex:Eiendom#erstatter , ex:Eiendom#erstattetav , ex:Eiendom#id , ex:nummer , ex:Eiendom#type .
+
+ex:Eiendom#erstatter  a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "erstatter" ;
+        modelldcatno:hasSimpleType           ex:string ;
+        xsd:minOccurs "0"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:Eiendom#erstattetav  a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "erstattetav" ;
+        modelldcatno:hasSimpleType           ex:string ;
+        xsd:minOccurs "0"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:Eiendom#id           a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "id" ;
+        modelldcatno:hasSimpleType           ex:string ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:nummer  a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "nummer" ;
+        modelldcatno:hasSimpleType           ex:string ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:Eiendom#type  a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "type" ;
+        modelldcatno:hasSimpleType           ex:string ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:string a             modelldcatno:SimpleType , owl:NamedIndividual ;
+        dct:title       "string" ;
+        modelldcatno:typeDefinitionReference "https://www.w3.org/2019/wot/json-schema#stringschema"^^xsd:anyURI .#Her må man se på hva URI man bør refererere til.
+
+#EiendomResultat (Kun egenskapene code og data beskrives, egenskapene til Eiendom har jeg ikke tatt med)
+
+ex2:EiendomResultat a                owl:NamedIndividual , modelldcatno:ObjectType ;
+      modelldcatno:title          "EiendomResultat" ;
+      modelldcatno:hasProperty    ex:EiendomResultat#code , ex:EiendomResultat#data , ex:EiendomResultat#message .
+
+ex:EiendomResultat#code  a              modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "code" ;
+        modelldcatno:hasSimpleType           ex:int32 ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:EiendomResultat#data a              modelldcatno:Role , owl:NamedIndividual ;
+        dct:title                 "data" ;
+        modelldcatno:hasObjectType           ex:Eiendom ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:EiendomResultat#message a           modelldcatno:Attribute , owl:NamedIndividual ;
+        dct:title                 "data" ;
+        modelldcatno:hasSimpleType          ex:string ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:int32 a                             modelldcatno:SimpleType , owl:NamedIndividual ;
+      dct:title       "int32" ;
+      modelldcatno:typeDefinitionReference "https://www.w3.org/2019/wot/json-schema#integerschema"^^xsd:anyURI . #Må vurdere denne URI'en som referanse til type.
+
+# Kommune
+ex:Kommune a                owl:NamedIndividual , modelldcatno:ObjectType ;
+      modelldcatno:title          "Kommune" ;
+      modelldcatno:hasProperty    ex:fylke , ex:gyldigtil , ex:Kommune#id , ex:navn , ex:Kommune#type .
+
+ex:fylke                    modelldcatno:Attribute , owl:NamedIndividual ;
+      modelldcatno:title          "fylke" ;
+      modelldcatno:hasSimpleType  ex:string ;
+      xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+      xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:gyldigtil              modelldcatno:Attribute , owl:NamedIndividual ;
+      modelldcatno:title          "gyldigtil" ;
+      modelldcatno:hasSimpletype  ex:date ;
+      xsd:minOccurs               "0"^^xsd:nonNegativeInteger ;
+      xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:Kommune#id             modelldcatno:Attribute , owl:NamedIndividual ;
+      modelldcatno:title          "id" ;
+      modelldcatno:hasSimpletype  ex:string ;
+      xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+      xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:navn                 modelldcatno:Attribute , owl:NamedIndividual ;
+      modelldcatno:title          "navn" ;
+      modelldcatno:hasSimpleType  ex:string ;
+      xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+      xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:Kommune#type         modelldcatno:Attribute , owl:NamedIndividual ;
+      modelldcatno:title          "type" ;
+      modelldcatno:hasSimpleType  ex:string ;
+      xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+      xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:date a             modelldcatno:SimpleType , owl:NamedIndividual ;
+      dct:title       "date" ;
+      modelldcatno:typeDefinitionReference "https://www.w3.org/2019/wot/json-schema#stringschema"^^xsd:anyURI .
+
+# Kommuneresultat
+ex:KommuneResultat       owl:NamedIndividual , modelldcatno:ObjectType ;
+      modelldcatno:title          "Kommuneresultat" ;
+      modelldcatno:hasProperty ex:KommuneResultat#code , ex:KommuneResultat#data , ex:KommuneResultat#message .
+
+ex:KommuneResultat#code           modelldcatno:Attribute , owl:NamedIndividual ;
+        modelldcatno:title          "code" ;
+        modelldcatno:hasSimpleType  ex:int32 ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:KommuneResultat#data           modelldcatno:Role , owl:NamedIndividual ;
+        modelldcatno:title          "data" ;
+        modelldcatno:hasObjectType  ex:Data ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:KommuneResultat#message        modelldcatno:Attribute , owl:NamedIndividual ;
+        modelldcatno:title          "message" ;
+        modelldcatno:hasSimpleType  ex:string ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:Data                           modelldcatno:modelldcatno:ObjectType , owl:NamedIndividual ; #Denne må genereres.
+        modelldcatno:title          "Kommuneresultat" ;
+        modelldcatno:hasProperty    ex:Data#erstatter , ex:Data#erstattetav , ex:kommune .
+
+ex:Data#erstatter                 modelldcatno:Role, owl:NamedIndividual ;
+        modelldcatno:title          "erstatter" ;
+        modelldcatno:hasObjectType  ex:Kommune ;
+        xsd:minOccurs               "0"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "*"^^xsd:string .
+
+ex:Data#erstattetav               modelldcatno:Role, owl:NamedIndividual ;
+        modelldcatno:title          "erstattetav" ;
+        modelldcatno:hasObjectType  ex:Kommune ;
+        xsd:minOccurs               "0"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "*"^^xsd:string .
+
+ex:kommune                        modelldcatno:Role, owl:NamedIndividual ;
+        modelldcatno:title          "kommune" ;
+        modelldcatno:hasObjectType  ex:Kommune ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:string .
+
+#Søk
+ex:Søk a                owl:NamedIndividual , modelldcatno:ObjectType ;
+        modelldcatno:title          "Søk" ;
+        modelldcatno:hasProperty    ex:Søk#code , ex:Søk#data , ex:Søk#message .
+
+ex:Søk#code             modelldcatno:Attribute , owl:NamedIndividual ;
+        modelldcatno:title          "code" ;
+        modelldcatno:hasSimpleType  ex:int32 ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
+
+ex:Søk#data a              modelldcatno:Choice , owl:NamedIndividual ;
+        dct:title                 "data" ;
+        modelldcatno:hasSome          ex3:Eiendom , ex3:Kommune ;
+        xsd:minOccurs "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs "1"^^xsd:nonNegativeInteger .
+
+ex:Søk#message              modelldcatno:Attribute , owl:NamedIndividual ;
+        modelldcatno:title          "message" ;
+        modelldcatno:hasSimpleType  ex:string ;
+        xsd:minOccurs               "1"^^xsd:nonNegativeInteger ;
+        xsd:maxOccurs               "1"^^xsd:nonNegativeInteger .
