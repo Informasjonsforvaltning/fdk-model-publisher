@@ -49,7 +49,6 @@ async def test_get_catalog(
 
     expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
     actual = Graph().parse(data=text, format="turtle")
-
     assert actual.isomorphic(expected)
 
 
@@ -67,7 +66,6 @@ async def test_set_catalog(
 
     expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
     actual = Graph().parse(data=text, format="turtle")
-
     assert actual.isomorphic(expected)
 
 
