@@ -8,7 +8,7 @@ T = TypeVar("T", bound="Config")
 class Config:
     """Configuration class."""
 
-    _FDK_DATASERVICE_HARVESTER_URL: Optional[str] = None
+    _FDK_DATA_SERVICE_HARVESTER_URI: Optional[str] = None
     _FDK_MODEL_PUBLISHER_URI: Optional[str] = None
 
     _CACHE_PASSWORD: Optional[str] = os.getenv("CACHE_PASSWORD", None)
@@ -38,12 +38,12 @@ class Config:
     @classmethod
     def fdk_dataservice_harvester_url(cls: Type[T]) -> Optional[str]:
         """Harvest URL."""
-        if cls._FDK_DATASERVICE_HARVESTER_URL is None:
-            cls._FDK_DATASERVICE_HARVESTER_URL = os.getenv(
-                "FDK_DATASERVICE_HARVESTER",
+        if cls._FDK_DATA_SERVICE_HARVESTER_URI is None:
+            cls._FDK_DATA_SERVICE_HARVESTER_URI = os.getenv(
+                "FDK_DATASERVICE_HARVESTER_URI",
                 "https://dataservices.staging.fellesdatakatalog.digdir.no",
             )
-        return cls._FDK_DATASERVICE_HARVESTER_URL
+        return cls._FDK_DATA_SERVICE_HARVESTER_URI
 
     @classmethod
     def fdk_model_publisher_uri(cls: Type[T]) -> Optional[str]:
