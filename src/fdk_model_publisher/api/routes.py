@@ -2,7 +2,7 @@
 
 from aiohttp import web
 
-from fdk_model_publisher.api.views import Catalog, Ping, Ready
+from fdk_model_publisher.api.views import Catalog, Ping, Ready, Mem
 
 
 def setup_routes(app: web.Application) -> None:
@@ -11,6 +11,7 @@ def setup_routes(app: web.Application) -> None:
         [
             web.get("/ready", Ready),
             web.get("/ping", Ping),
+            web.get("/mem", Mem),
             web.view("/catalog", Catalog),
         ]
     )

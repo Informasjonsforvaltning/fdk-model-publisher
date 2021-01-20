@@ -34,7 +34,14 @@ class CustomGunicornLogger(glogging.Logger):
         logger = logging.getLogger("gunicorn.access")
         logger.addFilter(PingFilter())
         logger.addFilter(ReadyFilter())
+        logger.addFilter(MemFilter())
 
+class MemFilter(logging.Filter):
+    """Custom Ping Filter class."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        """Filter function."""
+        return "GET /mem" not in record.getMessage()
 
 class PingFilter(logging.Filter):
     """Custom Ping Filter class."""

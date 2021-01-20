@@ -6,6 +6,9 @@ from aiohttp import web
 from fdk_model_publisher.api.routes import setup_routes
 from fdk_model_publisher.service import fetcher, rabbit
 
+import tracemalloc
+tracemalloc.start()
+
 
 async def create_app() -> web.Application:
     """App creation and route set-up."""
