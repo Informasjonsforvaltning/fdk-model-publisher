@@ -1,12 +1,12 @@
 """App factory and local dev entry point."""
 import logging
+import tracemalloc
 
 from aiohttp import web
 
 from fdk_model_publisher.api.routes import setup_routes
 from fdk_model_publisher.service import fetcher, rabbit
 
-import tracemalloc
 tracemalloc.start()
 
 

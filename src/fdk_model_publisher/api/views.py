@@ -1,12 +1,11 @@
 """Application view module.."""
 
+import tracemalloc
 from typing import Any
 
 from aiohttp import hdrs, web
 
 from fdk_model_publisher.service.fetcher import serialize_catalog
-
-import tracemalloc
 
 
 class Catalog(web.View):
@@ -47,5 +46,8 @@ class Mem(web.View):
     async def get() -> Any:
         """Ping route function."""
         snapshot = tracemalloc.take_snapshot()
-        top_stats = snapshot.statistics('lineno')
-        return web.Response(text="\n".join(top_stats[:10]))
+        top_stats = snapshot.statistics("lineno")
+        top_10 = []
+        for stat in top_stats[:10]:
+            top_10.append(stat.__str__())
+        return web.Response(text="\n".join(top_10))
