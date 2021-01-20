@@ -48,6 +48,6 @@ class Mem(web.View):
         snapshot = tracemalloc.take_snapshot()
         top_stats = snapshot.statistics("lineno")
         top_10 = []
-        for stat in top_stats[:10]:
+        for stat in top_stats:
             top_10.append(stat.__str__())
         return web.Response(text="\n".join(top_10))
