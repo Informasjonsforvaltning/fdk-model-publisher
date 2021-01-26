@@ -15,7 +15,7 @@ LOG_LEVEL = env.get("LOG_LEVEL", "info")
 
 # Gunicorn config
 bind = ":" + HOST_PORT
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = 2
 threads = 2 * multiprocessing.cpu_count()
 loglevel = str(LOG_LEVEL)
 accesslog = "-"

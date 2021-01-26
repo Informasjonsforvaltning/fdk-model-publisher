@@ -1,5 +1,6 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
+import gc
 import logging
 from typing import Any, Dict, List, Set, Tuple
 
@@ -119,11 +120,14 @@ async def serialize_catalog(invalidate_cache: bool = False) -> str:
         if invalidate_cache:
             await delete_catalog_cache()
         else:
+            gc.collect()
             return await get_catalog_cache()
 
     catalog = await rdf_catalog()
     serialized_catalog = (await async_wrap(catalog.to_rdf)()).decode()
+    del catalog
     await set_catalog_cache(serialized_catalog)
+    gc.collect()
     return serialized_catalog
 
 
