@@ -3,15 +3,7 @@
 
 ex_1_json = """
 {
-   "openapi":"3.0.0",
    "components":{
-      "securitySchemes":{
-         "accountsAuth":{
-            "type":"http",
-            "scheme":"bearer",
-            "bearerFormat":"Access token (JWT)"
-         }
-      },
       "schemas":{
          "Eiendom":{
             "properties":{
@@ -45,15 +37,7 @@ ex_1_json = """
 
 ex_2_json = """
 {
-   "openapi":"3.0.0",
    "components":{
-      "securitySchemes":{
-         "accountsAuth":{
-            "type":"http",
-            "scheme":"bearer",
-            "bearerFormat":"Access token (JWT)"
-         }
-      },
       "schemas":{
          "EiendomResultat": {
                 "properties": {
@@ -111,80 +95,38 @@ ex_2_json = """
 
 ex_3_json = """
 {
-   "openapi":"3.0.0",
    "components":{
-      "securitySchemes":{
-         "accountsAuth":{
-            "type":"http",
-            "scheme":"bearer",
-            "bearerFormat":"Access token (JWT)"
-         }
-      },
       "schemas":{
-           "SÃ¸k":{
-              "properties":{
-                 "code":{
-                    "format":"int32",
-                    "type":"integer"
-                 },
-                 "data":{
-                    "items":{
-                       "oneOf":[
-                          {
-                             "$ref":"#/components/schemas/Eiendom"
-                          },
-                          {
-                             "$ref":"#/components/schemas/Kommune"
-                          }
-                       ]
-                    },
-                    "type":"array"
-                 },
-                 "message":{
-                    "type":"string"
-                 }
-              },
-              "required":[
-                 "code",
-                 "data",
-                 "message"
-              ],
-              "type":"object"
-           },
-           "Eiendom":{
+         "SÃ¸k":{
             "properties":{
-               "erstatter":{
-                  "type":"string"
+               "code":{
+                  "format":"int32",
+                  "type":"integer"
                },
-               "erstattetav":{
-                  "type":"string"
+               "data":{
+                  "items":{
+                     "oneOf":[
+                        {
+                           "$ref":"#/components/schemas/Eiendom"
+                        },
+                        {
+                           "$ref":"#/components/schemas/Kommune"
+                        }
+                     ]
+                  },
+                  "type":"array"
                },
-               "id":{
-                  "type":"string"
-               },
-               "nummer":{
-                  "type":"string"
-               },
-               "type":{
+               "message":{
                   "type":"string"
                }
             },
             "required":[
-               "id",
-               "nummer",
-               "type"
+               "code",
+               "data",
+               "message"
             ],
             "type":"object"
-         }
-        }
-   }
-}
-"""
-
-ex_4_json = """
-{
-   "components":{
-      "schemas":{
+         },
          "Eiendom":{
             "properties":{
                "erstatter":{
@@ -236,210 +178,516 @@ ex_4_json = """
                "type"
             ],
             "type":"object"
-         },
-         "EiendomResultat":{
-            "properties":{
-               "code":{
-                  "format":"int32",
-                  "type":"integer"
-               },
-               "data":{
-                  "$ref":"#/components/schemas/Eiendom",
-                  "required":[
-                     "kommune"
-                  ],
-                  "type":"object"
-               },
-               "message":{
-                  "type":"string"
-               }
-            },
+         }
+      }
+   }
+}
+"""
+
+ex_4_json = """
+{
+  "components":{
+     "schemas":{
+        "Eiendom":{
+           "properties":{
+              "erstatter":{
+                 "type":"string"
+              },
+              "erstattetav":{
+                 "type":"string"
+              },
+              "id":{
+                 "type":"string"
+              },
+              "nummer":{
+                 "type":"string"
+              },
+              "type":{
+                 "type":"string"
+              }
+           },
+           "required":[
+              "id",
+              "nummer",
+              "type"
+           ],
+           "type":"object"
+        },
+        "Kommune":{
+           "properties":{
+              "fylke":{
+                 "type":"string"
+              },
+              "gyldigtil":{
+                 "format":"date",
+                 "type":"string"
+              },
+              "id":{
+                 "type":"string"
+              },
+              "navn":{
+                 "type":"string"
+              },
+              "type":{
+                 "type":"string"
+              }
+           },
+           "required":[
+              "fylke",
+              "id",
+              "navn",
+              "type"
+           ],
+           "type":"object"
+        },
+        "EiendomResultat":{
+           "properties":{
+              "code":{
+                 "format":"int32",
+                 "type":"integer"
+              },
+              "data":{
+                 "$ref":"#/components/schemas/Eiendom",
+                 "required":[
+                    "kommune"
+                 ],
+                 "type":"object"
+              },
+              "message":{
+                 "type":"string"
+              }
+           },
+           "required":[
+              "code",
+              "data",
+              "message"
+           ],
+           "type":"object"
+        },
+        "KommuneResultat":{
+           "properties":{
+              "code":{
+                 "format":"int32",
+                 "type":"integer"
+              },
+              "data":{
+                 "properties":{
+                    "erstatter":{
+                       "items":{
+                          "$ref":"#/components/schemas/Kommune"
+                       },
+                       "type":"array"
+                    },
+                    "erstattetav":{
+                       "items":{
+                          "type": "object",
+                          "properties": {
+                               "id":{
+                                   "type":"integer"
+                               }
+                          }
+                       },
+                       "type":"array"
+                    },
+                    "kommune":{
+                       "$ref":"#/components/schemas/Kommune",
+                       "type":"object"
+                    }
+                 },
+                 "required":[
+                    "kommune"
+                 ],
+                 "type":"object"
+              },
+              "message":{
+                 "type":"string"
+              }
+           },
+           "required":[
+              "code",
+              "data",
+              "message"
+           ],
+           "type":"object"
+        },
+        "Søk":{
+           "properties":{
+              "code":{
+                 "format":"int32",
+                 "type":"integer"
+              },
+              "data":{
+                 "items":{
+                    "oneOf":[
+                       {
+                          "$ref":"#/components/schemas/Eiendom"
+                       },
+                       {
+                          "$ref":"#/components/schemas/Kommune"
+                       }
+                    ]
+                 },
+                 "type":"array"
+              },
+              "message":{
+                 "type":"string"
+              }
+           },
+           "required":[
+              "code",
+              "data",
+              "message"
+           ],
+           "type":"object"
+        }
+     }
+  }
+}
+"""
+
+ex_5_json = """
+{
+   "components":{
+      "schemas":{
+         "Account":{
+            "description":"Account: a specification of a clearly defined type of financial events",
             "required":[
-               "code",
-               "data",
-               "message"
+               "accountIdentifier",
+               "accountReference",
+               "type",
+               "status",
+               "currency",
+               "servicer",
+               "primaryOwner"
             ],
-            "type":"object"
-         },
-         "KommuneResultat":{
+            "type":"object",
             "properties":{
-               "code":{
-                  "format":"int32",
-                  "type":"integer"
-               },
-               "data":{
-                  "properties":{
-                     "erstatter":{
-                        "items":{
-                           "$ref":"#/components/schemas/Kommune"
-                        },
-                        "type":"array"
-                     },
-                     "erstattetav":{
-                        "items":{
-                           "type": "object",
-                           "properties": {
-                                "id":{
-                                    "type":"integer"
-                                }
-                           }
-                        },
-                        "type":"array"
-                     },
-                     "kommune":{
-                        "$ref":"#/components/schemas/Kommune",
-                        "type":"object"
+               "status":{
+                  "description":"Status: indicates current account status",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/AccountStatus"
                      }
-                  },
-                  "required":[
-                     "kommune"
-                  ],
-                  "type":"object"
+                  ]
                },
-               "message":{
-                  "type":"string"
+               "servicer":{
+                  "description":"account administrator: financial institution that manages an account on behalf of the account owner, including handling the registration of account transactions, calculating the account balance and providing information about the account",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/FinancialInstitution"
+                     }
+                  ]
+               },
+               "number":{
+                  "description":"Account number",
+                  "allOf":[
+                     {
+                        "properties":{
+                           "type":"number"
+                        }
+                     }
+                  ]
                }
-            },
+            }
+         },
+         "FinancialInstitution":{
+            "description":"financial institution: Business or other institution involved in finance and banking",
             "required":[
-               "code",
-               "data",
-               "message"
+               "name"
             ],
+            "type":"object",
+            "properties":{
+               "name":{
+                  "type":"string",
+                  "minLength":1,
+                  "maxLength":140
+               }
+            }
+         },
+         "AccountStatus":{
+            "enum":[
+               "enabled",
+               "disabled",
+               "deleted"
+            ],
+            "type":"string"
+         }
+      }
+   }
+}
+"""
+
+
+ex_6_json = """
+{
+   "components":{
+      "schemas":{
+         "ObjA":{
+            "description":"Root A",
+            "required":[
+               "status"
+            ],
+            "type":"object",
+            "properties":{
+               "objB":{
+                  "description":"b thing",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/ObjC"
+                     },
+                     {
+                        "$ref":"#/components/schemas/ObjD"
+                     },
+                     {
+                        "$ref":"#/components/schemas/ObjE"
+                     },
+                     {
+                        "description":"test f",
+                        "type":"string"
+                     }
+                  ]
+               }
+            }
+         },
+         "ObjC":{
+            "description":"test c",
             "type":"object"
          },
-         "Søk":{
+         "ObjD":{
+            "description":"test d",
+            "type":"object"
+         },
+         "ObjE":{
+            "description":"test e",
+            "type":"string"
+         }
+      }
+   }
+}
+"""
+
+ex_7_json = """
+{
+   "components":{
+      "schemas":{
+         "Balance":{
+            "description":"Balance: Sum of deposits and loans in the financial account",
+            "required":[
+               "type",
+               "creditLineIncluded",
+               "amount",
+               "currency",
+               "creditDebitIndicator",
+               "registered"
+            ],
+            "type":"object",
             "properties":{
-               "code":{
-                  "format":"int32",
-                  "type":"integer"
+               "creditLineIncluded":{
+                  "description":"Balance included credit limit: Indicates whether the credit limit is included in the balance or not. Should always be false",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/TrueFalseIndicator"
+                     }
+                  ]
                },
-               "data":{
+               "amount":{
+                  "description":"A sum of money spent in a context. This can be a transaction, balance etc.",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/Amount"
+                     }
+                  ]
+               },
+               "creditDebitIndicator":{
+                  "description":"Credit is positive balance, debit is negative balance",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/CreditOrDebit"
+                     }
+                  ]
+               },
+               "registered":{
+                  "description":"registration date: the current date and time of the reported balance",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/ISODateTime"
+                     }
+                  ]
+               },
+               "type":{
+                  "$ref":"#/components/schemas/BalanceType"
+               },
+               "creditLineAmount":{
+                  "$ref":"#/components/schemas/Amount"
+               },
+               "creditLineCurrency":{
+                  "$ref":"#/components/schemas/CurrencyCode"
+               },
+               "currency":{
+                  "$ref":"#/components/schemas/CurrencyCode"
+               }
+            }
+         },
+         "BalanceType":{
+            "description":"Balance type",
+            "enum":[
+               "availableBalance",
+               "bookedBalance"
+            ],
+            "type":"string"
+         }
+      }
+   }
+}
+"""
+
+ex_8_json = """
+{
+   "components":{
+      "schemas":{
+         "Transaction":{
+            "description":"Transaction: any posting on an account",
+            "required":[
+               "transactionIdentifier",
+               "amount",
+               "currency",
+               "creditDebitIndicator",
+               "status",
+               "transactionCode",
+               "bookingDate",
+               "valueDate"
+            ],
+            "type":"object",
+            "properties":{
+               "transactionIdentifier":{
+                  "description":"Transaction Identifier: The identifier for the transaction",
+                  "type":"string",
+                  "minLength":0,
+                  "maxLength":35
+               },
+               "references":{
+                  "type":"array",
                   "items":{
-                     "oneOf":[
+                     "description":"Transaction reference: unique reference associated with the transaction",
+                     "allOf":[
                         {
-                           "$ref":"#/components/schemas/Eiendom"
-                        },
-                        {
-                           "$ref":"#/components/schemas/Kommune"
+                           "$ref":"#/components/schemas/TransactionReference"
                         }
                      ]
                   },
-                  "type":"array"
+                  "minItems":0
                },
-               "message":{
-                  "type":"string"
+               "creditDebitIndicator":{
+                  "description":"Credit is positive balance debited is negative balance",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/CreditOrDebit"
+                     }
+                  ]
+               },
+               "reversalIndicator":{
+                  "description":"Corrected transaction indicator: Indicates whether the transaction is a correction of a previous transaction",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/TrueFalseIndicator"
+                     }
+                  ]
+               },
+               "status":{
+                  "description":"transaction status: indicates the status of the transaction",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/TransactionStatus"
+                     }
+                  ]
+               },
+               "transactionCode":{
+                  "description":"Transaction code: contains a set of indicators to identify the type of transaction",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/BankTransactionCode"
+                     }
+                  ]
+               },
+               "bookingDate":{
+                  "description":"Posting date: The date when the posting of the transaction is conducted by the financial institution",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/ISODateTime"
+                     }
+                  ]
+               },
+               "valueDate":{
+                  "description":"Interest date: date when the transaction posting is interest-bearing",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/ISODateTime"
+                     }
+                  ]
+               },
+               "counterParties":{
+                  "type":"array",
+                  "items":{
+                     "description":"Counterparty: another party, the party to whom a transaction is going or coming from",
+                     "allOf":[
+                        {
+                           "$ref":"#/components/schemas/CounterParty"
+                        }
+                     ]
+                  },
+                  "minItems":0
+               },
+               "additionalInfo":{
+                  "description":"'Additional information on a transaction: textual description of the contents of a transaction'",
+                  "type":"string",
+                  "minLength":1,
+                  "maxLength":500
+               },
+               "currencyExchange":{
+                  "description":"Currency conversion: conversion of an amount from one currency to another",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/CurrencyExchange"
+                     }
+                  ]
+               },
+               "merchant":{
+                  "description":"User location: the physical location of the transaction",
+                  "type":"string",
+                  "minLength":1,
+                  "maxLength":140
+               },
+               "paymentCard":{
+                  "description":"Payment Cards: The common term for various types of cards used for cash withdrawals and for the payment of goods and services at different point of sales",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/PaymentCard"
+                     }
+                  ]
+               },
+               "registered":{
+                  "description":"registration date: date and time when transaction was made",
+                  "allOf":[
+                     {
+                        "$ref":"#/components/schemas/ISODateTime"
+                     }
+                  ]
+               },
+               "amount":{
+                  "$ref":"#/components/schemas/Amount"
+               },
+               "currency":{
+                  "$ref":"#/components/schemas/CurrencyCode"
                }
-            },
-            "required":[
-               "code",
-               "data",
-               "message"
-            ],
-            "type":"object"
+            }
+         },
+         "Amount":{
+            "description":"Amount, always as positive value. CreditDebitIndicator should be used to indicate whether the amount is positive or negative.",
+            "type":"number",
+            "minimum":0,
+            "exclusiveMinimum":false
          }
       }
-   },
-   "info":{
-      "description":"API som gir nye og gamle kommune- og matrikkelnummer for kommuner og eiendommer som var involvert i kommunesammenslåinger i perioden 2017 til 2020. Noen eldre kommunendringer vil også vises i API-et. API-et går mot et uttrekk av matrikkelen som oppdateres daglig - se [metadata på Geonorge](https://kartkatalog.geonorge.no/metadata/756450ba-5c9d-406d-adf5-133732497f0d). Større funksjonalitetsødeleggende endringer i API-et vil bli annonsert minst 3 måneder i forveien på [https://geonorge.no/aktuelt/varsler/Tjenestevarsler/](https://geonorge.no/aktuelt/varsler/Tjenestevarsler/).",
-      "title":"Kommunereform - API",
-      "version":"1.0.0"
-   },
-   "openapi":"3.0.0",
-   "paths":{
-      "/endringer/":{
-         "get":{
-            "description":"Søk etter kommune- eller fylkesnavn (eks: /endringer/?sok=vang+oppland), kommune- eller fylkesnummer (/endringer/?sok=010) eller matrikkelnummer (eks: /endringer/?sok=1622-4/60).",
-            "operationId":"søk",
-            "parameters":[
-               {
-                  "description":"Søkestreng",
-                  "in":"query",
-                  "name":"sok",
-                  "required":false,
-                  "schema":{
-                     "type":"string"
-                  }
-               }
-            ],
-            "responses":{
-               "200":{
-                  "content":{
-                     "application/json":{
-                        "schema":{
-                           "$ref":"#/components/schemas/Søk"
-                        }
-                     }
-                  }
-               }
-            },
-            "summary":"Søk etter kommune eller eiendom."
-         }
-      },
-      "/endringer/{kommunenummer}":{
-         "get":{
-            "description":"Viser en enkelt kommune basert på kommunenummer (eks: /endringer/0105).",
-            "operationId":"kommune",
-            "parameters":[
-               {
-                  "description":"Kommunenummer - fire siffer (eks: 0105).",
-                  "in":"path",
-                  "name":"kommunenummer",
-                  "required":true,
-                  "schema":{
-                     "pattern":"^[0-9]{4}$",
-                     "type":"string"
-                  }
-               }
-            ],
-            "responses":{
-               "200":{
-                  "content":{
-                     "application/json":{
-                        "schema":{
-                           "$ref":"#/components/schemas/KommuneResultat"
-                        }
-                     }
-                  }
-               }
-            },
-            "summary":"Vis kommuneendring."
-         }
-      },
-      "/endringer/{matrikkelnummer}":{
-         "get":{
-            "description":"Viser en enkelt eiendom basert på matrikkelnummer (eks: /endringer/1622-4-60-0-0).",
-            "operationId":"eiendom",
-            "parameters":[
-               {
-                  "description":"Matrikkelnummer - består av kommunenr-gårdsnr/bruksnr/festenr/seksjonsnr. NB: I url-en må skråstrekene '\/' byttes ut med bindestreker '-' (eks: 1622-4\/60\/0\/0 blir 1622-4-60-0-0).",
-                  "in":"path",
-                  "name":"matrikkelnummer",
-                  "required":true,
-                  "schema":{
-                     "pattern":"^[0-9]{4}\\\\-[0-9]+\\\\-[0-9]+\\\\-[0-9]+\\\\-[0-9]+$",
-                     "type":"string"
-                  }
-               }
-            ],
-            "responses":{
-               "200":{
-                  "content":{
-                     "application/json":{
-                        "schema":{
-                           "$ref":"#/components/schemas/EiendomResultat"
-                        }
-                     }
-                  }
-               }
-            },
-            "summary":"Vis eiendomsendring."
-         }
-      }
-   },
-   "servers":[
-      {
-         "url":"https://ws.geonorge.no/kommunereform/v1"
-      }
-   ]
+   }
 }
 """
