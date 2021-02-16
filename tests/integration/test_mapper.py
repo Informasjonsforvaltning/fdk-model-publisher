@@ -29,11 +29,32 @@ from tests.mocks.examples_ttl import (
 )
 
 
+def prepare_model(model: str) -> dict:
+    """Add necessary metadata for model mapping."""
+    json_model: dict = json.loads(model)
+    json_model["paths"] = {}
+    for key in json_model.get("components", {}).get("schemas", {}).keys():
+        json_model["paths"][key] = {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": f"#/components/schemas/{key}"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    return json_model
+
+
 def verify_model(
-    json_model: str, expected_output_ttl: str, data_service: DataService
+    model_str: str, expected_output_ttl: str, data_service: DataService
 ) -> bool:
     """Model test helper function."""
-    schema = json.loads(json_model)
+    schema = prepare_model(model_str)
     uri = list(data_service.endpointDescription)[0]
     info_model = PartialInformationModel(uri, schema)
     model = map_model_from_dict(info_model, data_service)

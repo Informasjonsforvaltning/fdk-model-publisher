@@ -1,0 +1,5 @@
+"""Config package.
+
+Modules:
+    ModelElementMapper
+"""

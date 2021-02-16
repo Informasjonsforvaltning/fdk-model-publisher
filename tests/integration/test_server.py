@@ -66,7 +66,6 @@ async def test_set_catalog(
 
     expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
     actual = Graph().parse(data=text, format="turtle")
-    print(actual.serialize(format="turtle").decode("utf-8"))
     assert actual.isomorphic(expected)
 
 
