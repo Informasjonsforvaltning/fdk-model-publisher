@@ -1,5 +1,4 @@
 """JSON to TTL mapping."""
-import logging
 import re
 from typing import Dict, List, Optional
 
@@ -63,9 +62,6 @@ def map_model_from_dict(
     partial_model: PartialInformationModel, data_service: DataService
 ) -> Optional[InformationModel]:
     """Map schema object to InformationModel object."""
-    logging.info(
-        f"Mapping {data_service.title} model from {partial_model.endpoint_description}"
-    )
     if partial_model.schema is None or partial_model.endpoint_description is None:
         return None
     model = InformationModel()
