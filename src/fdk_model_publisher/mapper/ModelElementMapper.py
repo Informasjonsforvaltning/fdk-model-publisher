@@ -1,7 +1,7 @@
 """Model Element mapper."""
 
 from copy import deepcopy
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Set, Union
 
 from modelldcatnotordf.modelldcatno import (
     Attribute,
@@ -30,6 +30,7 @@ class ModelElementMapper:
 
     __endpoint_description: Dict
     __root_model: Dict
+    __elements: Set
     __uri: str
 
     def __setup(self, endpoint_description: Dict, uri: str) -> None:
@@ -39,6 +40,7 @@ class ModelElementMapper:
         if schema and isinstance(schema, dict):
             self.__root_model = schema
             self.__uri = uri
+            self.__elements = set()
 
     def extract_model_items(
         self, endpoint_description: Dict, uri: str
@@ -78,29 +80,65 @@ class ModelElementMapper:
         properties: Dict,
         path: List[str],
     ) -> Optional[Union[ModelElement, ModelProperty]]:
-        """Create model items (Elements and Properties)."""
+        """Create model items (Elements and Properties) and references."""
         extended_path = deepcopy(path) + [title] if title else []
+        identifier = build_identifier(title, self.__uri, extended_path)
+
+        if identifier and identifier in self.__elements:
+            return self.create_reference(properties, identifier)
+        else:
+            self.__elements.add(identifier)
+            return self.create_element(title, properties, extended_path)
+
+    def create_element(
+        self,
+        title: Optional[str],
+        properties: Dict,
+        path: List[str],
+    ) -> Optional[Union[ModelElement, ModelProperty]]:
+        """Model Element creators."""
         type = extract_type(properties, self.__endpoint_description)
 
-        """Model Element creators."""
         if type == "allOf":
-            return self.handle_schema_combination(title, properties, extended_path)
+            return self.handle_schema_combination(title, properties, path)
         elif type == "codeList":
-            return self.create_code_list(title, properties, extended_path)
+            return self.create_code_list(title, properties, path)
         elif type == "role":
-            return self.create_role_type(title, properties, extended_path)
+            return self.create_role_type(title, properties, path)
         elif type == "object":
-            return self.create_object_type(title, properties, extended_path)
+            return self.create_object_type(title, properties, path)
         elif len(properties.keys()) == 1 and properties.get("type"):
             return self.create_simple_type(properties.get("type"), title)
 
         """Model Property creators."""
         if type == "array":
-            return self.create_array_type(title, properties, extended_path)
+            return self.create_array_type(title, properties, path)
         elif type in ["string", "boolean", "number", "integer"]:
-            return self.create_attribute(title, properties, extended_path)
+            return self.create_attribute(title, properties, path)
 
         return None
+
+    def create_reference(
+        self, properties: dict, identifier: str
+    ) -> Optional[Union[ModelElement, ModelProperty]]:
+        """Create reference to object in graph."""
+        type = extract_type(properties, self.__endpoint_description)
+        if type == "object":
+            reference = ObjectType()
+        elif type == "codeList":
+            reference = CodeList()
+        elif type == "oneOf":
+            reference = Choice()
+        elif type == "items":
+            reference = Role()
+        elif type in ["string", "boolean", "number", "integer"]:
+            reference = Attribute()
+        else:
+            return None
+
+        reference.identifier = identifier
+
+        return reference
 
     def handle_schema_combination(
         self,
@@ -128,7 +166,7 @@ class ModelElementMapper:
         ref_string = schema.get("$ref", None)
         ref_type = extract_type(schema, self.__endpoint_description)
 
-        if ref_type == "object":
+        if ref_type == "role":
             return self.create_composition(title, properties, ref_string, path)
 
         elif ref_type:

@@ -473,15 +473,10 @@ ex_5_ttl = """
     ns1:hasProperty <http://uri.com/Account#servicer>,
         <http://uri.com/Account#status> .
 
-<http://uri.com#FinancialInstitution> a ns1:ObjectType ;
-    dct:description "financial institution: Business or other institution involved in finance and banking"@en ;
-    dct:title "FinancialInstitution"@en ;
-    ns1:hasProperty <http://uri.com/FinancialInstitution#name> .
-
-<http://uri.com/Account#servicer> a ns1:Attribute ;
+<http://uri.com/Account#servicer> a ns1:Composition ;
+    dct:description "account administrator: financial institution that manages an account on behalf of the account owner, including handling the registration of account transactions, calculating the account balance and providing information about the account"@en ;
     dct:title "servicer"@en ;
-    xsd:maxOccurs "1" ;
-    xsd:minOccurs "1" .
+    ns1:contains <http://uri.com#FinancialInstitution> .
 
 <http://uri.com/Account#status> a ns1:Attribute ;
     dct:title "status"@en ;
@@ -498,6 +493,11 @@ ex_5_ttl = """
 
 <http://uri.com#AccountStatus> a ns1:CodeList ;
     dct:title "AccountStatus"@en .
+
+<http://uri.com#FinancialInstitution> a ns1:ObjectType ;
+    dct:description "financial institution: Business or other institution involved in finance and banking"@en ;
+    dct:title "FinancialInstitution"@en ;
+    ns1:hasProperty <http://uri.com/FinancialInstitution#name> .
 
 <http://uri.com#string> a ns1:SimpleType ;
     dct:title "string"@en ;

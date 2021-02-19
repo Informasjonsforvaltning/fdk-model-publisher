@@ -36,6 +36,8 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#status>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#type> .
 
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetail> a ns1:ObjectType .
+
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetails> a ns1:ObjectType ;
     dct:description "Root element for response"@en ;
     dct:title "AccountDetails"@en ;
@@ -65,6 +67,8 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "ElectronicAddress"@en ;
     ns1:hasProperty <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress#type>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress#value> .
+
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#FinancialInstitution> a ns1:ObjectType .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Identifier> a ns1:ObjectType ;
     dct:description "Specific data that assist in identifying the object"@en ;
@@ -133,10 +137,10 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     xsd:minOccurs "1" ;
     ns1:hasObjectType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountRole> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#servicer> a ns1:Attribute ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#servicer> a ns1:Composition ;
+    dct:description "account administrator: financial institution that manages an account on behalf of the account owner, including handling the registration of account transactions, calculating the account balance and providing information about the account"@en ;
     dct:title "servicer"@en ;
-    xsd:maxOccurs "1" ;
-    xsd:minOccurs "1" .
+    ns1:contains <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#FinancialInstitution> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#status> a ns1:Attribute ;
     dct:title "status"@en ;
@@ -152,10 +156,9 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:description "Pagination: dividing the result into pages for large resultsets"@en ;
     dct:title "items"@en .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetails#account> a ns1:Attribute ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetails#account> a ns1:Composition ;
     dct:title "account"@en ;
-    xsd:maxOccurs "1" ;
-    xsd:minOccurs "1" .
+    ns1:contains <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetail> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetails#responseStatus> a ns1:Attribute ;
     dct:title "responseStatus"@en ;
