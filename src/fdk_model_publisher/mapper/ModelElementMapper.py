@@ -81,30 +81,29 @@ class ModelElementMapper:
         path: List[str],
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Create model items (Elements and Properties) and references."""
-        extended_path = deepcopy(path) + [title] if title else []
-        identifier = build_identifier(title, self.__uri, extended_path)
+        type = extract_type(properties, self.__endpoint_description)
+        item_title = (
+            title[0].upper() + title[1:]
+            if title and type in ["codeList", "object"]
+            else title
+        )
+        extended_path = deepcopy(path) + [item_title] if item_title else []
+        identifier = build_identifier(item_title, self.__uri, extended_path)
 
         if identifier and identifier in self.__elements:
             return self.create_reference(properties, identifier)
         else:
             self.__elements.add(identifier)
-            return self.create_element(title, properties, extended_path)
+            return self.create_element(item_title, properties, extended_path, type)
 
     def create_element(
-        self,
-        title: Optional[str],
-        properties: Dict,
-        path: List[str],
+        self, title: Optional[str], properties: Dict, path: List[str], type: str
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Model Element creators."""
-        type = extract_type(properties, self.__endpoint_description)
-
         if type == "allOf":
             return self.handle_schema_combination(title, properties, path)
         elif type == "codeList":
             return self.create_code_list(title, properties, path)
-        elif type == "role":
-            return self.create_role_type(title, properties, path)
         elif type == "object":
             return self.create_object_type(title, properties, path)
         elif len(properties.keys()) == 1 and properties.get("type"):
@@ -113,6 +112,8 @@ class ModelElementMapper:
         """Model Property creators."""
         if type == "array":
             return self.create_array_type(title, properties, path)
+        elif type == "role":
+            return self.create_role_type(title, properties, path)
         elif type in ["string", "boolean", "number", "integer"]:
             return self.create_attribute(title, properties, path)
 
@@ -195,33 +196,15 @@ class ModelElementMapper:
         schema_properties = []
 
         for properties in schemas:
-            type = extract_type(properties, self.__endpoint_description)
-            reference = self.map_item(
-                **extract_ref_item(
-                    properties.get("$ref", ""), self.__endpoint_description
-                )
+            item = self.create_object_property(
+                title=None, properties=properties, path=path
             )
-
-            if type == "object":
-                role_wrapper = Role()
-                role_wrapper.has_object_type = (
-                    reference
-                    if reference
-                    else self.create_object_type(None, properties, extended_path)
-                )
-                schema_properties.append(role_wrapper)
-
-            elif type and reference:
-                schema_properties.append(reference)
-
-            elif len(properties.keys()) > 0:
-                item = self.map_item(None, properties, extended_path)
-                if item:
-                    schema_properties.append(item)
+            if item:
+                schema_properties.append(item)
 
         object_type = ObjectType()
         object_type.identifier = build_identifier(
-            title.capitalize() if title else None, self.__uri, extended_path
+            title[0].upper() + title[1:] if title else None, self.__uri, extended_path
         )
         object_type.has_property = schema_properties
 
@@ -247,10 +230,10 @@ class ModelElementMapper:
         ref_obj.identifier = extract_ref_uri(ref_string, self.__uri)
 
         composition = Composition()
+        composition.identifier = build_identifier(title, self.__uri, path)
         composition.title = {"en": title} if title else {}
         composition.description = {"en": description} if description else {}
         composition.contains = ref_obj
-        composition.identifier = build_identifier(title, self.__uri, path)
 
         return composition
 
@@ -265,6 +248,7 @@ class ModelElementMapper:
         ref = properties.get("$ref", "")
 
         role = Role()
+        role.identifier = build_identifier(title, self.__uri, path)
         role.title = {"en": title} if title else {}
         role.description = {"en": description} if description else {}
         role.max_occurs = "1"
@@ -274,7 +258,6 @@ class ModelElementMapper:
             else "0"
         )
 
-        role.identifier = build_identifier(title, self.__uri, path)
         if ref:
             role.has_object_type = self.map_item(
                 **extract_ref_item(ref, self.__endpoint_description)
@@ -308,11 +291,18 @@ class ModelElementMapper:
                 extract_ref_item(ref_string, self.__endpoint_description),
                 *["properties", "type"],
             )
-            reference = self.map_item(
-                **extract_ref_item(ref_string, self.__endpoint_description)
+            reference = (
+                self.map_item(
+                    **extract_ref_item(ref_string, self.__endpoint_description)
+                )
+                if ref_string
+                else None
             )
-            if reference and extracted_type == "codeList":
-                attribute.has_value_from = reference
+
+            if extracted_type == "codeList":
+                attribute.has_value_from = (
+                    reference if reference else self.map_item(title, properties, path)
+                )
 
             type = "format" if "format" in properties.keys() else "type"
             type_string = properties.get(type)
@@ -391,33 +381,44 @@ class ModelElementMapper:
         title: Optional[str],
         properties: Dict,
         path: List[str],
-    ) -> Role:
+    ) -> Union[Role, Attribute, None]:
         """Create default array type."""
         description = properties.get("description", None)
-        items = properties.get("items", None)
+        items = properties.get("items", {})
+        item_type = extract_type(items, self.__endpoint_description)
 
-        array = Role()
-        array.title = {"en": title} if title else {}
-        array.description = {"en": description} if description else {}
-        array.max_occurs = properties.get("maxItems", "*")
-        array.min_occurs = "1" if title in properties.get("required", "") else "0"
+        array_description = {"en": description} if description else {}
+        max_occurs = properties.get("maxItems", "*")
+        min_occurs = (
+            "1"
+            if title in properties.get("required", "")
+            else str(properties.get("minItems", 0))
+        )
+        identifier = build_identifier(title, self.__uri, path)
 
-        array.identifier = build_identifier(title, self.__uri, path)
-
-        if items:
-            ref_string = items.get("$ref", "")
-            reference = self.map_item(
-                **extract_ref_item(ref_string, self.__endpoint_description)
+        array = None
+        if item_type == "role":
+            array = self.map_item(title, items, path)
+        elif item_type == "object":
+            array = Role()
+            object_title = title if title else title
+            array.has_object_type = self.map_item(
+                object_title, items, path + [title] if title else path
             )
-            if reference:
-                array.has_object_type = reference
-            else:
-                extended_path = path + [title] if title else path
-                array.has_object_type = self.create_object_type(
-                    title="items",
-                    properties=items,
-                    path=extended_path,
-                )
+        elif item_type == "allOf":
+            item_properties = items.get("allOf", [])
+            del items["allOf"]
+            return self.create_default_array(
+                title, {**items, "items": item_properties[0]}, path
+            )
+        else:
+            array = self.create_attribute(title, items, path)
+
+        if array:
+            array.description = array_description
+            array.max_occurs = max_occurs
+            array.min_occurs = min_occurs
+            array.identifier = identifier
 
         return array
 
@@ -447,8 +448,9 @@ class ModelElementMapper:
 
         if properties:
             for key in properties.get("properties", {}):
-                item = self.map_item(
-                    title=key,
+                prop_title = str(key[0]).lower() + str(key[1:])
+                item = self.create_object_property(
+                    title=prop_title,
                     properties={
                         **properties["properties"][key],
                         "required": properties.get("required", []),
@@ -464,6 +466,59 @@ class ModelElementMapper:
         object_type.has_property = property_items
         object_type.identifier = build_identifier(title, self.__uri, path)
         return object_type
+
+    def create_object_property(
+        self, title: Optional[str], properties: dict, path: List[str]
+    ) -> Union[ModelProperty, None]:
+        """Create property for object."""
+        extended_path = deepcopy(path) + [title] if title else path
+        type = extract_type(properties, self.__endpoint_description)
+        property_title = {"en": title} if title else {}
+        description = properties.get("description", "")
+
+        ref_string = properties.get("$ref", None)
+        reference = (
+            extract_ref_item(ref_string, self.__endpoint_description)
+            if ref_string
+            else None
+        )
+
+        if type == "object":
+            object_prop = Composition()
+            object_prop.identifier = build_identifier(title, self.__uri, extended_path)
+            object_prop.title = property_title
+            object_prop.description = {"en": description} if description else {}
+            object_prop.max_occurs = "1"
+            object_prop.min_occurs = (
+                "1"
+                if properties and title and title in properties.get("required", "")
+                else "0"
+            )
+            if reference:
+                object_prop.contains = self.map_item(**reference)
+            else:
+                object_prop.contains = self.map_item(title, properties, extended_path)
+            return object_prop
+        elif type == "codeList":
+            object_prop = Attribute()
+            object_prop.identifier = build_identifier(title, self.__uri, extended_path)
+            object_prop.title = property_title
+            object_prop.description = {"en": description} if description else {}
+            object_prop.max_occurs = "1"
+            object_prop.min_occurs = (
+                "1"
+                if properties and title and (title in properties.get("required", ""))
+                else "0"
+            )
+            if reference:
+                object_prop.has_value_from = self.map_item(**reference)
+            else:
+                object_prop.has_value_from = self.map_item(
+                    title, properties, extended_path
+                )
+            return object_prop
+        else:
+            return self.map_item(title, properties, path)
 
     def create_code_element(
         self,

@@ -686,6 +686,29 @@ ex_8_json = """
             "type":"number",
             "minimum":0,
             "exclusiveMinimum":false
+         },
+         "CounterParty":{
+            "description":"Counterparty: the party to which a transaction goes to or comes from",
+            "type":"object",
+            "properties":{
+               "name":{
+                  "type":"string",
+                  "minLength":1,
+                  "maxLength":140
+               }
+            }
+         },
+         "TransactionReference":{
+            "required":[
+               "value",
+               "type"
+            ],
+            "type":"object",
+            "properties":{
+               "value":{
+                  "type":"string"
+               }
+            }
          }
       }
    }
