@@ -372,11 +372,11 @@ ex_4_ttl = """
     xsd:minOccurs "1" ;
     ns1:hasSimpleType <http://uri.com#int32> .
 
-<http://uri.com/KommuneResultat#data> a ns1:ObjectType ;
+<http://uri.com/KommuneResultat#data> a ns1:Composition ;
     dct:title "data"@en ;
-    ns1:hasProperty <http://uri.com/KommuneResultat/data#erstatter>,
-        <http://uri.com/KommuneResultat/data#erstattetav>,
-        <http://uri.com/KommuneResultat/data#kommune> .
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "1" ;
+    ns1:contains <http://uri.com/KommuneResultat/data#Data> .
 
 <http://uri.com/KommuneResultat#message> a ns1:Attribute ;
     dct:title "message"@en ;
@@ -384,29 +384,34 @@ ex_4_ttl = """
     xsd:minOccurs "1" ;
     ns1:hasSimpleType <http://uri.com#string> .
 
-<http://uri.com/KommuneResultat/data#erstatter> a ns1:Role ;
+<http://uri.com/KommuneResultat/data#Data> a ns1:ObjectType ;
+    dct:title "Data"@en ;
+    ns1:hasProperty <http://uri.com/KommuneResultat/data/Data#erstatter>,
+        <http://uri.com/KommuneResultat/data/Data#erstattetav>,
+        <http://uri.com/KommuneResultat/data/Data#kommune> .
+
+<http://uri.com/KommuneResultat/data/Data#erstatter> a ns1:Role ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
     ns1:hasObjectType <http://uri.com#Kommune> .
 
-<http://uri.com/KommuneResultat/data#erstattetav> a ns1:Role ;
-    dct:title "erstattetav"@en ;
+<http://uri.com/KommuneResultat/data/Data#erstattetav> a ns1:Role ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    ns1:hasObjectType <http://uri.com/KommuneResultat/data/erstattetav#items> .
+    ns1:hasObjectType <http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav#Erstattetav> .
 
-<http://uri.com/KommuneResultat/data#kommune> a ns1:Role ;
+<http://uri.com/KommuneResultat/data/Data#kommune> a ns1:Role ;
     dct:title "kommune"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
     ns1:hasObjectType <http://uri.com#Kommune> .
 
-<http://uri.com/KommuneResultat/data/erstattetav#items> a ns1:ObjectType ;
-    dct:title "items"@en ;
-    ns1:hasProperty <http://uri.com/KommuneResultat/data/erstattetav/erstattetav#id> .
+<http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav#Erstattetav> a ns1:ObjectType ;
+    dct:title "Erstattetav"@en ;
+    ns1:hasProperty <http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav/Erstattetav#id> .
 
-<http://uri.com/KommuneResultat/data/erstattetav/erstattetav#id> a ns1:Attribute ;
+<http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav/Erstattetav#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
@@ -520,20 +525,27 @@ ex_6_ttl = """
     dct:title "ObjA"@en ;
     ns1:hasProperty <http://uri.com/ObjA#objB> .
 
-<http://uri.com#ObjE> a ns1:Attribute ;
-    dct:description "test e"@en ;
-    dct:title "ObjE"@en ;
-    xsd:maxOccurs "1" ;
-    xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
-
 <http://uri.com/ObjA#objB> a ns1:Composition ;
     dct:description "b thing"@en ;
     dct:title "objB"@en ;
-    ns1:contains <http://uri.com/ObjA/objB#Objb> .
+    ns1:contains <http://uri.com/ObjA/objB#ObjB> .
 
-<http://uri.com/ObjA/objB#Objb> a ns1:ObjectType ;
+<http://uri.com/ObjA/objB#ObjB> a ns1:ObjectType ;
     ns1:hasProperty [ a ns1:Attribute,
+                ns1:SimpleType ;
+            dct:title "string"@en ;
+            xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+            xsd:maxOccurs "1" ;
+            xsd:minOccurs "0" ;
+            ns1:hasSimpleType <http://uri.com#string> ],
+        [ a ns1:ObjectType,
+                ns1:Role ;
+            dct:description "test d"@en ;
+            dct:title "ObjD"@en ;
+            xsd:maxOccurs "1" ;
+            xsd:minOccurs "0" ;
+            ns1:hasObjectType <http://uri.com#ObjD> ],
+        [ a ns1:Attribute,
                 ns1:SimpleType ;
             dct:description "test f"@en ;
             dct:title "string"@en ;
@@ -541,26 +553,23 @@ ex_6_ttl = """
             xsd:maxOccurs "1" ;
             xsd:minOccurs "0" ;
             ns1:hasSimpleType <http://uri.com#string> ],
-        <http://uri.com#ObjC>,
-        <http://uri.com#ObjD>,
-        <http://uri.com#ObjE> .
+        [ a ns1:ObjectType,
+                ns1:Role ;
+            dct:description "test c"@en ;
+            dct:title "ObjC"@en ;
+            xsd:maxOccurs "1" ;
+            xsd:minOccurs "0" ;
+            ns1:hasObjectType <http://uri.com#ObjC> ] .
 
-<http://uri.com#ObjC> a ns1:ObjectType ;
-    dct:description "test c"@en ;
-    dct:title "ObjC"@en .
+<http://uri.com#ObjC> a ns1:ObjectType .
 
-<http://uri.com#ObjD> a ns1:ObjectType ;
-    dct:description "test d"@en ;
-    dct:title "ObjD"@en .
-
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+<http://uri.com#ObjD> a ns1:ObjectType .
 """
 
 ex_7_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
@@ -572,12 +581,15 @@ ex_7_ttl = """
     dct:title "Balance"@en ;
     ns1:hasProperty <http://uri.com/Balance#type> .
 
+<http://uri.com/Balance#type> a ns1:Attribute ;
+    dct:title "type"@en ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "1" ;
+    ns1:hasValueFrom <http://uri.com#BalanceType> .
+
 <http://uri.com#BalanceType> a ns1:CodeList ;
     dct:description "Balance type"@en ;
     dct:title "BalanceType"@en .
-
-<http://uri.com/Balance#type> a ns1:CodeList ;
-    dct:title "type"@en .
 """
 
 ex_8_ttl = """
@@ -587,7 +599,9 @@ ex_8_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
-    ns1:containsModelElement <http://uri.com#Transaction> .
+    ns1:containsModelElement <http://uri.com#CounterParty>,
+        <http://uri.com#Transaction>,
+        <http://uri.com#TransactionReference> .
 
 <http://uri.com#Transaction> a ns1:ObjectType ;
     dct:description "Transaction: any posting on an account"@en ;
@@ -603,6 +617,12 @@ ex_8_ttl = """
     dct:title "number"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
 
+<http://uri.com/CounterParty#name> a ns1:Attribute ;
+    dct:title "name"@en ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#string> .
+
 <http://uri.com/Transaction#additionalInfo> a ns1:Attribute ;
     dct:description "'Additional information on a transaction: textual description of the contents of a transaction'"@en ;
     dct:title "additionalInfo"@en ;
@@ -617,10 +637,11 @@ ex_8_ttl = """
     ns1:hasSimpleType <http://uri.com#number> .
 
 <http://uri.com/Transaction#counterParties> a ns1:Role ;
+    dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
     dct:title "counterParties"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    ns1:hasObjectType <http://uri.com/Transaction/counterParties#items> .
+    ns1:hasObjectType <http://uri.com#CounterParty> .
 
 <http://uri.com/Transaction#merchant> a ns1:Attribute ;
     dct:description "User location: the physical location of the transaction"@en ;
@@ -630,10 +651,11 @@ ex_8_ttl = """
     ns1:hasSimpleType <http://uri.com#string> .
 
 <http://uri.com/Transaction#references> a ns1:Role ;
+    dct:description "Transaction reference: unique reference associated with the transaction"@en ;
     dct:title "references"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    ns1:hasObjectType <http://uri.com/Transaction/references#items> .
+    ns1:hasObjectType <http://uri.com#TransactionReference> .
 
 <http://uri.com/Transaction#transactionIdentifier> a ns1:Attribute ;
     dct:description "Transaction Identifier: The identifier for the transaction"@en ;
@@ -642,13 +664,20 @@ ex_8_ttl = """
     xsd:minOccurs "1" ;
     ns1:hasSimpleType <http://uri.com#string> .
 
-<http://uri.com/Transaction/counterParties#items> a ns1:ObjectType ;
-    dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
-    dct:title "items"@en .
+<http://uri.com/TransactionReference#value> a ns1:Attribute ;
+    dct:title "value"@en ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "1" ;
+    ns1:hasSimpleType <http://uri.com#string> .
 
-<http://uri.com/Transaction/references#items> a ns1:ObjectType ;
-    dct:description "Transaction reference: unique reference associated with the transaction"@en ;
-    dct:title "items"@en .
+<http://uri.com#CounterParty> a ns1:ObjectType ;
+    dct:description "Counterparty: the party to which a transaction goes to or comes from"@en ;
+    dct:title "CounterParty"@en ;
+    ns1:hasProperty <http://uri.com/CounterParty#name> .
+
+<http://uri.com#TransactionReference> a ns1:ObjectType ;
+    dct:title "TransactionReference"@en ;
+    ns1:hasProperty <http://uri.com/TransactionReference#value> .
 
 <http://uri.com#string> a ns1:SimpleType ;
     dct:title "string"@en ;
