@@ -8,6 +8,7 @@ ex_1_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom> .
 
 <http://uri.com#Eiendom> a ns1:ObjectType ;
@@ -60,6 +61,7 @@ ex_2_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
         <http://uri.com#EiendomResultat> .
 
@@ -141,6 +143,7 @@ ex_3_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
         <http://uri.com#Kommune>,
         <http://uri.com#SÃ¸k> .
@@ -261,6 +264,7 @@ ex_4_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
         <http://uri.com#EiendomResultat>,
         <http://uri.com#Kommune>,
@@ -468,6 +472,7 @@ ex_5_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Account>,
         <http://uri.com#AccountStatus>,
         <http://uri.com#FinancialInstitution> .
@@ -516,6 +521,7 @@ ex_6_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#ObjA>,
         <http://uri.com#ObjC>,
         <http://uri.com#ObjD> .
@@ -573,6 +579,7 @@ ex_7_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Balance>,
         <http://uri.com#BalanceType> .
 
@@ -599,6 +606,7 @@ ex_8_ttl = """
 
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#CounterParty>,
         <http://uri.com#Transaction>,
         <http://uri.com#TransactionReference> .
