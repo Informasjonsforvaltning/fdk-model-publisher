@@ -6,12 +6,16 @@ from datacatalogtordf import Agent, Catalog
 from fdk_rdf_parser.classes import Publisher
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 from modelldcatnotordf.modelldcatno import InformationModel
+from rdflib import Namespace
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.config import Config
 from fdk_model_publisher.mapper.ModelElementMapper import ModelElementMapper
 
+
 model_element_mapper = ModelElementMapper()
+
+MODELLDCATNO = Namespace("https://data.norge.no/vocabulary/modelldcatno#")
 
 prepend_map = {
     "nb": "Informasjonsmodell",
@@ -82,5 +86,6 @@ def map_model_from_dict(
         if data_service.conformsTo
         else None
     )
+    model.dct_type = "https://data.norge.no/vocabulary/modelldcatno#physicalModel"
 
     return model
