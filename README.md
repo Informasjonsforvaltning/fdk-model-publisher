@@ -15,8 +15,8 @@ Transforms models included in dataservice-descriptions to modelldcat-ap-no compl
 % pyenv install 3.9.0
 % pyenv local 3.9.0
 % pip install poetry==1.1.3
-% pip install nox==2020.8.22
-% pip install nox-poetry==0.5.0
+% pip install nox==2020.12.31
+% pip install nox-poetry==0.8.4
 % poetry install
 ```
 ### Environment variables
