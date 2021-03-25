@@ -23,34 +23,34 @@ ex_1_ttl = """
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#erstattetav> a ns1:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#nummer> a ns1:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
 
@@ -71,45 +71,45 @@ ex_2_ttl = """
         <http://uri.com/EiendomResultat#data>,
         <http://uri.com/EiendomResultat#message> .
 
-<http://uri.com#int32> a ns1:SimpleType ;
-    dct:title "int32"@en ;
+<http://uri.com#Int32> a ns1:SimpleType ;
+    dct:title "Int32"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
 <http://uri.com/Eiendom#erstatter> a ns1:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#erstattetav> a ns1:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#nummer> a ns1:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/EiendomResultat#code> a ns1:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#int32> .
+    ns1:hasSimpleType <http://uri.com#Int32> .
 
 <http://uri.com/EiendomResultat#data> a ns1:Role ;
     dct:title "data"@en ;
@@ -121,7 +121,7 @@ ex_2_ttl = """
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com#Eiendom> a ns1:ObjectType ;
     dct:title "Eiendom"@en ;
@@ -131,8 +131,8 @@ ex_2_ttl = """
         <http://uri.com/Eiendom#nummer>,
         <http://uri.com/Eiendom#type> .
 
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
 
@@ -148,51 +148,51 @@ ex_3_ttl = """
         <http://uri.com#Kommune>,
         <http://uri.com#SÃ¸k> .
 
+<http://uri.com#Int32> a ns1:SimpleType ;
+    dct:title "Int32"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
+
 <http://uri.com#SÃ¸k> a ns1:ObjectType ;
     dct:title "SÃ¸k"@en ;
     ns1:hasProperty <http://uri.com/SÃ¸k#code>,
         <http://uri.com/SÃ¸k#data>,
         <http://uri.com/SÃ¸k#message> .
 
-<http://uri.com#int32> a ns1:SimpleType ;
-    dct:title "int32"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
-
 <http://uri.com/Eiendom#erstatter> a ns1:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#erstattetav> a ns1:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#nummer> a ns1:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#fylke> a ns1:Attribute ;
     dct:title "fylke"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#gyldigtil> a ns1:Attribute ;
     dct:title "gyldigtil"@en ;
@@ -203,25 +203,25 @@ ex_3_ttl = """
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#navn> a ns1:Attribute ;
     dct:title "navn"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/SÃ¸k#code> a ns1:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#int32> .
+    ns1:hasSimpleType <http://uri.com#Int32> .
 
 <http://uri.com/SÃ¸k#data> a ns1:Choice ;
     dct:title "data"@en ;
@@ -234,7 +234,7 @@ ex_3_ttl = """
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com#Eiendom> a ns1:ObjectType ;
     dct:title "Eiendom"@en ;
@@ -252,8 +252,8 @@ ex_3_ttl = """
         <http://uri.com/Kommune#navn>,
         <http://uri.com/Kommune#type> .
 
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
 
@@ -277,6 +277,10 @@ ex_4_ttl = """
         <http://uri.com/EiendomResultat#data>,
         <http://uri.com/EiendomResultat#message> .
 
+<http://uri.com#Integer> a ns1:SimpleType ;
+    dct:title "Integer"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
+
 <http://uri.com#KommuneResultat> a ns1:ObjectType ;
     dct:title "KommuneResultat"@en ;
     ns1:hasProperty <http://uri.com/KommuneResultat#code>,
@@ -289,45 +293,41 @@ ex_4_ttl = """
         <http://uri.com/Søk#data>,
         <http://uri.com/Søk#message> .
 
-<http://uri.com#integer> a ns1:SimpleType ;
-    dct:title "integer"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
-
 <http://uri.com/Eiendom#erstatter> a ns1:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#erstattetav> a ns1:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#nummer> a ns1:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Eiendom#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/EiendomResultat#code> a ns1:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#int32> .
+    ns1:hasSimpleType <http://uri.com#Int32> .
 
 <http://uri.com/EiendomResultat#data> a ns1:Role ;
     dct:title "data"@en ;
@@ -339,13 +339,13 @@ ex_4_ttl = """
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#fylke> a ns1:Attribute ;
     dct:title "fylke"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#gyldigtil> a ns1:Attribute ;
     dct:title "gyldigtil"@en ;
@@ -356,25 +356,25 @@ ex_4_ttl = """
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#navn> a ns1:Attribute ;
     dct:title "navn"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/Kommune#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/KommuneResultat#code> a ns1:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#int32> .
+    ns1:hasSimpleType <http://uri.com#Int32> .
 
 <http://uri.com/KommuneResultat#data> a ns1:Composition ;
     dct:title "data"@en ;
@@ -386,7 +386,7 @@ ex_4_ttl = """
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com/KommuneResultat/data#Data> a ns1:ObjectType ;
     dct:title "Data"@en ;
@@ -419,13 +419,13 @@ ex_4_ttl = """
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com#integer> .
+    ns1:hasSimpleType <http://uri.com#Integer> .
 
 <http://uri.com/Søk#code> a ns1:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#int32> .
+    ns1:hasSimpleType <http://uri.com#Int32> .
 
 <http://uri.com/Søk#data> a ns1:Choice ;
     dct:title "data"@en ;
@@ -438,7 +438,7 @@ ex_4_ttl = """
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com#Eiendom> a ns1:ObjectType ;
     dct:title "Eiendom"@en ;
@@ -448,8 +448,8 @@ ex_4_ttl = """
         <http://uri.com/Eiendom#nummer>,
         <http://uri.com/Eiendom#type> .
 
-<http://uri.com#int32> a ns1:SimpleType ;
-    dct:title "int32"@en ;
+<http://uri.com#Int32> a ns1:SimpleType ;
+    dct:title "Int32"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
 <http://uri.com#Kommune> a ns1:ObjectType ;
@@ -460,8 +460,8 @@ ex_4_ttl = """
         <http://uri.com/Kommune#navn>,
         <http://uri.com/Kommune#type> .
 
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
 
@@ -483,8 +483,8 @@ ex_5_ttl = """
     ns1:hasProperty <http://uri.com/Account#servicer>,
         <http://uri.com/Account#status> .
 
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <http://uri.com/Account#servicer> a ns1:Composition ;
@@ -496,17 +496,17 @@ ex_5_ttl = """
     dct:title "status"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> ;
+    ns1:hasSimpleType <http://uri.com#String> ;
     ns1:hasValueFrom <http://uri.com#AccountStatus> .
 
 <http://uri.com/FinancialInstitution#name> a ns1:Attribute ;
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com/FinancialInstitution/name#string> .
+    ns1:hasSimpleType <http://uri.com/FinancialInstitution/name#String> .
 
-<http://uri.com/FinancialInstitution/name#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com/FinancialInstitution/name#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
@@ -549,7 +549,7 @@ ex_6_ttl = """
             xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
             xsd:maxOccurs "1" ;
             xsd:minOccurs "0" ;
-            ns1:hasSimpleType <http://uri.com#string> ],
+            ns1:hasSimpleType <http://uri.com#String> ],
         [ a ns1:ObjectType,
                 ns1:Role ;
             dct:description "test d"@en ;
@@ -564,7 +564,7 @@ ex_6_ttl = """
             xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
             xsd:maxOccurs "1" ;
             xsd:minOccurs "0" ;
-            ns1:hasSimpleType <http://uri.com#string> ],
+            ns1:hasSimpleType <http://uri.com#String> ],
         [ a ns1:ObjectType,
                 ns1:Role ;
             dct:description "test c"@en ;
@@ -617,6 +617,14 @@ ex_8_ttl = """
         <http://uri.com#Transaction>,
         <http://uri.com#TransactionReference> .
 
+<http://uri.com#Amount> a ns1:SimpleType ;
+    dct:title "Amount"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
+
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
 <http://uri.com#Transaction> a ns1:ObjectType ;
     dct:description "Transaction: any posting on an account"@en ;
     dct:title "Transaction"@en ;
@@ -627,22 +635,14 @@ ex_8_ttl = """
         <http://uri.com/Transaction#references>,
         <http://uri.com/Transaction#transactionIdentifier> .
 
-<http://uri.com#number> a ns1:SimpleType ;
-    dct:title "number"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
-
-<http://uri.com#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
-
 <http://uri.com/CounterParty#name> a ns1:Attribute ;
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/CounterParty/name#string> .
+    ns1:hasSimpleType <http://uri.com/CounterParty/name#String> .
 
-<http://uri.com/CounterParty/name#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com/CounterParty/name#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
@@ -652,13 +652,13 @@ ex_8_ttl = """
     dct:title "additionalInfo"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/additionalInfo#string> .
+    ns1:hasSimpleType <http://uri.com/Transaction/additionalInfo#String> .
 
 <http://uri.com/Transaction#amount> a ns1:Attribute ;
     dct:title "amount"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#number> .
+    ns1:hasSimpleType <http://uri.com#Amount> .
 
 <http://uri.com/Transaction#counterParties> a ns1:Role ;
     dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
@@ -672,7 +672,7 @@ ex_8_ttl = """
     dct:title "merchant"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/merchant#string> .
+    ns1:hasSimpleType <http://uri.com/Transaction/merchant#String> .
 
 <http://uri.com/Transaction#references> a ns1:Role ;
     dct:description "Transaction reference: unique reference associated with the transaction"@en ;
@@ -686,22 +686,22 @@ ex_8_ttl = """
     dct:title "transactionIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/transactionIdentifier#string> .
+    ns1:hasSimpleType <http://uri.com/Transaction/transactionIdentifier#String> .
 
-<http://uri.com/Transaction/additionalInfo#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com/Transaction/additionalInfo#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 500 ;
     xsd:minLength 1 .
 
-<http://uri.com/Transaction/merchant#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com/Transaction/merchant#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
-<http://uri.com/Transaction/transactionIdentifier#string> a ns1:SimpleType ;
-    dct:title "string"@en ;
+<http://uri.com/Transaction/transactionIdentifier#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 35 .
 
@@ -709,7 +709,7 @@ ex_8_ttl = """
     dct:title "value"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com#string> .
+    ns1:hasSimpleType <http://uri.com#String> .
 
 <http://uri.com#CounterParty> a ns1:ObjectType ;
     dct:description "Counterparty: the party to which a transaction goes to or comes from"@en ;

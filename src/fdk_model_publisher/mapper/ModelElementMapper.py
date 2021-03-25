@@ -85,7 +85,7 @@ class ModelElementMapper:
         type = extract_type(properties, self.__endpoint_description)
         item_title = (
             title[0].upper() + title[1:]
-            if title and type in ["codeList", "object"]
+            if title and type in ["codeList", "object", "simpleType"]
             else title
         )
         extended_path = deepcopy(path) + [item_title] if item_title else []
@@ -107,8 +107,13 @@ class ModelElementMapper:
             return self.create_code_list(title, properties, path)
         elif type == "object":
             return self.create_object_type(title, properties, path)
-        elif len(properties.keys()) == 1 and properties.get("type"):
-            return self.create_simple_type(properties.get("type"), title)
+        elif type == "simpleType":
+            return self.create_simple_type(
+                properties.get("type"),
+                title,
+                extract_simple_type_restrictions(properties),
+                path,
+            )
 
         """Model Property creators."""
         if type == "array":
@@ -305,20 +310,23 @@ class ModelElementMapper:
                     reference if reference else self.map_item(title, properties, path)
                 )
 
-            type = "format" if "format" in properties.keys() else "type"
-            type_string = properties.get(type)
-            simple_type_type = type_string if type_string else ref_simple_type
-            simple_type_restrictions = extract_simple_type_restrictions(properties)
-            simple_type = self.create_simple_type(
-                simple_type_type,
-                None,
-                simple_type_restrictions,
-                path + [title]
-                if title and len(simple_type_restrictions.keys()) > 0
-                else None,
-            )
-            if simple_type:
-                attribute.has_simple_type = simple_type
+            if isinstance(reference, SimpleType):
+                attribute.has_simple_type = reference
+            else:
+                type = "format" if "format" in properties.keys() else "type"
+                type_string = properties.get(type)
+                simple_type_type = type_string if type_string else ref_simple_type
+                simple_type_restrictions = extract_simple_type_restrictions(properties)
+                simple_type = self.create_simple_type(
+                    simple_type_type,
+                    None,
+                    simple_type_restrictions,
+                    path + [title]
+                    if title and len(simple_type_restrictions.keys()) > 0
+                    else None,
+                )
+                if simple_type:
+                    attribute.has_simple_type = simple_type
 
         return attribute
 
@@ -342,11 +350,12 @@ class ModelElementMapper:
             )
 
         elif type:
-            simple_type.title = {"en": type}
+            type_title = type[0].upper() + type[1:]
+            simple_type.title = {"en": type_title}
             simple_type.identifier = (
-                build_identifier(type, self.__uri, path)
+                build_identifier(type_title, self.__uri, path)
                 if path
-                else f"{self.__uri}#{type}"
+                else f"{self.__uri}#{type_title}"
             )
 
         if type == "string":
@@ -541,7 +550,7 @@ class ModelElementMapper:
             else:
                 object_prop.contains = self.map_item(title, properties, extended_path)
             return object_prop
-        elif type == "codeList":
+        elif type == "codeList" or type == "simpleType":
             object_prop = Attribute()
             object_prop.identifier = build_identifier(title, self.__uri, extended_path)
             object_prop.title = property_title
@@ -552,13 +561,22 @@ class ModelElementMapper:
                 if properties and title and (title in properties.get("required", ""))
                 else "0"
             )
-            if reference:
-                object_prop.has_value_from = self.map_item(**reference)
+            if type == "codeList":
+                if reference:
+                    object_prop.has_value_from = self.map_item(**reference)
+                else:
+                    object_prop.has_value_from = self.map_item(
+                        title, properties, extended_path
+                    )
             else:
-                object_prop.has_value_from = self.map_item(
-                    title, properties, extended_path
-                )
+                if reference:
+                    object_prop.has_simple_type = self.map_item(**reference)
+                else:
+                    object_prop.has_simple_type = self.map_item(
+                        properties.get("type"), properties, extended_path
+                    )
             return object_prop
+
         else:
             return self.map_item(title, properties, path)
 

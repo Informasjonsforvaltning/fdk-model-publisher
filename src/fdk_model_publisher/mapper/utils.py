@@ -54,7 +54,7 @@ def extract_type(properties: dict, root_dict: dict) -> str:
     elif "enum" in prop_keys:
         return "codeList"
     else:
-        return prop_type
+        return "simpleType" if is_simple_type(properties) else prop_type
 
 
 def extract_simple_type_restrictions(properties: dict) -> dict:
@@ -77,3 +77,11 @@ def extract_simple_type_restrictions(properties: dict) -> dict:
             restrictions[key] = value
 
     return restrictions
+
+
+def is_simple_type(properties: dict) -> bool:
+    """Check if properties map to simple type model element."""
+    restrictions = extract_simple_type_restrictions(properties)
+    return (
+        len(restrictions.keys()) > 0 or len(properties.keys()) == 1
+    ) and properties.get("type", None) is not None
