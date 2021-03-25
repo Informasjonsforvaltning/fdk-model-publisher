@@ -20,6 +20,7 @@ from fdk_model_publisher.mapper.utils import (
     build_identifier,
     extract_ref_item,
     extract_ref_uri,
+    extract_simple_type_restrictions,
     extract_type,
     nested_get,
 )
@@ -306,8 +307,15 @@ class ModelElementMapper:
 
             type = "format" if "format" in properties.keys() else "type"
             type_string = properties.get(type)
+            simple_type_type = type_string if type_string else ref_simple_type
+            simple_type_restrictions = extract_simple_type_restrictions(properties)
             simple_type = self.create_simple_type(
-                type_string if type_string else ref_simple_type
+                simple_type_type,
+                None,
+                simple_type_restrictions,
+                path + [title]
+                if title and len(simple_type_restrictions.keys()) > 0
+                else None,
             )
             if simple_type:
                 attribute.has_simple_type = simple_type
@@ -315,22 +323,44 @@ class ModelElementMapper:
         return attribute
 
     def create_simple_type(
-        self, type: Optional[str], title: Optional[str] = None
+        self,
+        type: Optional[str],
+        title: Optional[str] = None,
+        restrictions: Optional[Dict] = None,
+        path: Optional[List[str]] = None,
     ) -> Optional[SimpleType]:
         """Create simple type."""
+        if restrictions is None:
+            restrictions = {}
         simple_type = SimpleType()
         if title:
             simple_type.title = {"en": title}
-            simple_type.identifier = f"{self.__uri}#{title}"
+            simple_type.identifier = (
+                build_identifier(title, self.__uri, path)
+                if path
+                else f"{self.__uri}#{title}"
+            )
 
         elif type:
             simple_type.title = {"en": type}
-            simple_type.identifier = f"{self.__uri}#{type}"
+            simple_type.identifier = (
+                build_identifier(type, self.__uri, path)
+                if path
+                else f"{self.__uri}#{type}"
+            )
 
         if type == "string":
             simple_type.type_definition_reference = (
                 "https://www.w3.org/2019/wot/json-schema#stringschema"
             )
+
+            if "minLength" in restrictions:
+                simple_type.min_length = restrictions["minLength"]
+            if "maxLength" in restrictions:
+                simple_type.max_length = restrictions["maxLength"]
+            if "pattern" in restrictions:
+                simple_type.pattern = restrictions["pattern"]
+
         elif type == "boolean":
             simple_type.type_definition_reference = (
                 "https://www.w3.org/2019/wot/json-schema#booleanschema"
@@ -339,6 +369,18 @@ class ModelElementMapper:
             simple_type.type_definition_reference = (
                 "https://www.w3.org/2019/wot/json-schema#numberschema"
             )
+
+            if "minimum" in restrictions:
+                simple_type.min_inclusive = restrictions["minimum"]
+            if "maximum" in restrictions:
+                simple_type.min_exclusive = restrictions["maximum"]
+            if "length" in restrictions:
+                simple_type.length = restrictions["length"]
+            if "totalDigits" in restrictions:
+                simple_type.total_digits = restrictions["totalDigits"]
+            if "fractionDigits" in restrictions:
+                simple_type.fraction_digits = restrictions["fractionDigits"]
+
         elif type == "int32" or type == "integer":
             simple_type.type_definition_reference = (
                 "https://www.w3.org/2019/wot/json-schema#integerschema"

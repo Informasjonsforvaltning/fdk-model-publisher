@@ -55,3 +55,25 @@ def extract_type(properties: dict, root_dict: dict) -> str:
         return "codeList"
     else:
         return prop_type
+
+
+def extract_simple_type_restrictions(properties: dict) -> dict:
+    """Extract Simple Type restrictions."""
+    restrictions = {}
+    keys = [
+        "minLength",
+        "maxLength",
+        "pattern",
+        "minimum",
+        "maximum",
+        "length",
+        "totalDigits",
+        "fractionDigits",
+    ]
+
+    for key in keys:
+        value = properties.get(key)
+        if value is not None:
+            restrictions[key] = value
+
+    return restrictions
