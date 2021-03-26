@@ -19,7 +19,6 @@ from modelldcatnotordf.modelldcatno import (
 from fdk_model_publisher.mapper.utils import (
     build_identifier,
     extract_ref_item,
-    extract_ref_uri,
     extract_simple_type_restrictions,
     extract_type,
     nested_get,
@@ -232,14 +231,18 @@ class ModelElementMapper:
         """Create composition type element."""
         description = properties.get("description")
 
-        ref_obj = ObjectType()
-        ref_obj.identifier = extract_ref_uri(ref_string, self.__uri)
+        reference = (
+            self.map_item(**extract_ref_item(ref_string, self.__endpoint_description))
+            if ref_string
+            else None
+        )
 
         composition = Composition()
         composition.identifier = build_identifier(title, self.__uri, path)
         composition.title = {"en": title} if title else {}
         composition.description = {"en": description} if description else {}
-        composition.contains = ref_obj
+        if isinstance(reference, ObjectType):
+            composition.contains = reference
 
         return composition
 
