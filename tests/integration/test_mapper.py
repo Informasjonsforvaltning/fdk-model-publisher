@@ -3,10 +3,12 @@ import json
 
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 import pytest
+from pytest_mock import MockFixture
 from rdflib import Graph
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.service.mapper import map_model_from_dict
+from tests.integration.utils import SkolemUtils
 from tests.mocks.examples_json import (
     ex_1_json,
     ex_2_json,
@@ -76,31 +78,55 @@ def verify_model(
 
 
 @pytest.mark.integration
-def test_map_models_from_dict() -> None:
+def test_map_models_from_dict(mocker: MockFixture) -> None:
     """Assert that models are isomorphic to example."""
+    base_url = "http://uri.com"
     ds = DataService(
-        title={"nb": "datatjeneste eksempler"}, endpointDescription={"http://uri.com"}
+        title={"nb": "datatjeneste eksempler"}, endpointDescription={base_url}
     )
+    skolemutils = SkolemUtils(base_url)
+
+    mocker.patch(
+        "modelldcatnotordf.skolemizer.Skolemizer.add_skolemization",
+        side_effect=skolemutils.get_skolemization,
+    )
+
     assert verify_model(ex_1_json, ex_1_ttl, ds)
     print("\nModel 1 passed.")
+
+    skolemutils.reset_counter()
 
     assert verify_model(ex_2_json, ex_2_ttl, ds)
     print("Model 2 passed.")
 
+    skolemutils.reset_counter()
+
     assert verify_model(ex_3_json, ex_3_ttl, ds)
     print("Model 3 passed.")
+
+    skolemutils.reset_counter()
 
     assert verify_model(ex_4_json, ex_4_ttl, ds)
     print("Model 4 passed.")
 
+    skolemutils.reset_counter()
+
     assert verify_model(ex_5_json, ex_5_ttl, ds)
     print("Model 5 passed.")
+
+    skolemutils.reset_counter()
 
     assert verify_model(ex_6_json, ex_6_ttl, ds)
     print("Model 6 passed.")
 
+    skolemutils.reset_counter()
+
     assert verify_model(ex_7_json, ex_7_ttl, ds)
     print("Model 7 passed.")
 
+    skolemutils.reset_counter()
+
     assert verify_model(ex_8_json, ex_8_ttl, ds)
     print("Model 8 passed.")
+
+    skolemutils.reset_counter()

@@ -537,45 +537,49 @@ ex_6_ttl = """
     dct:title "ObjA"@en ;
     ns1:hasProperty <http://uri.com/ObjA#objB> .
 
+<http://uri.com.well-known/skolem/0> a ns1:Role ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "0" ;
+    ns1:hasObjectType <http://uri.com#ObjC> .
+
+<http://uri.com.well-known/skolem/1> a ns1:Role ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "0" ;
+    ns1:hasObjectType <http://uri.com#ObjD> .
+
+<http://uri.com.well-known/skolem/2> a ns1:Attribute ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#String> .
+
+<http://uri.com.well-known/skolem/3> a ns1:Attribute ;
+    dct:description "test f"@en ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#String> .
+
 <http://uri.com/ObjA#objB> a ns1:Composition ;
     dct:description "b thing"@en ;
     dct:title "objB"@en ;
     ns1:contains <http://uri.com/ObjA/objB#ObjB> .
 
 <http://uri.com/ObjA/objB#ObjB> a ns1:ObjectType ;
-    ns1:hasProperty [ a ns1:Attribute,
-                ns1:SimpleType ;
-            dct:title "string"@en ;
-            xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-            xsd:maxOccurs "1" ;
-            xsd:minOccurs "0" ;
-            ns1:hasSimpleType <http://uri.com#String> ],
-        [ a ns1:ObjectType,
-                ns1:Role ;
-            dct:description "test d"@en ;
-            dct:title "ObjD"@en ;
-            xsd:maxOccurs "1" ;
-            xsd:minOccurs "0" ;
-            ns1:hasObjectType <http://uri.com#ObjD> ],
-        [ a ns1:Attribute,
-                ns1:SimpleType ;
-            dct:description "test f"@en ;
-            dct:title "string"@en ;
-            xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-            xsd:maxOccurs "1" ;
-            xsd:minOccurs "0" ;
-            ns1:hasSimpleType <http://uri.com#String> ],
-        [ a ns1:ObjectType,
-                ns1:Role ;
-            dct:description "test c"@en ;
-            dct:title "ObjC"@en ;
-            xsd:maxOccurs "1" ;
-            xsd:minOccurs "0" ;
-            ns1:hasObjectType <http://uri.com#ObjC> ] .
+    ns1:hasProperty <http://uri.com.well-known/skolem/0>,
+        <http://uri.com.well-known/skolem/1>,
+        <http://uri.com.well-known/skolem/2>,
+        <http://uri.com.well-known/skolem/3> .
 
-<http://uri.com#ObjC> a ns1:ObjectType .
+<http://uri.com#ObjC> a ns1:ObjectType ;
+    dct:description "test c"@en ;
+    dct:title "ObjC"@en .
 
-<http://uri.com#ObjD> a ns1:ObjectType .
+<http://uri.com#ObjD> a ns1:ObjectType ;
+    dct:description "test d"@en ;
+    dct:title "ObjD"@en .
+
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
 
 ex_7_ttl = """
