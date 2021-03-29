@@ -41,8 +41,8 @@ def extract_ref_item(ref_string: str, root_model: dict) -> dict:
 
 def extract_type(properties: dict, root_dict: dict) -> str:
     """Extract type from property dictionary."""
-    prop_type = properties.get("type", "")
     prop_keys = properties.keys()
+    prop_type = extract_type_property(properties)
     if "allOf" in prop_keys:
         return "allOf"
     elif "$ref" in prop_keys:
@@ -54,7 +54,7 @@ def extract_type(properties: dict, root_dict: dict) -> str:
     elif "enum" in prop_keys:
         return "codeList"
     else:
-        return "simpleType" if is_simple_type(properties) else prop_type
+        return prop_type if prop_type else ""
 
 
 def extract_simple_type_restrictions(properties: dict) -> dict:
@@ -82,6 +82,23 @@ def extract_simple_type_restrictions(properties: dict) -> dict:
 def is_simple_type(properties: dict) -> bool:
     """Check if properties map to simple type model element."""
     restrictions = extract_simple_type_restrictions(properties)
+    prop_type = extract_type_property(properties)
     return (
-        len(restrictions.keys()) > 0 or len(properties.keys()) == 1
-    ) and properties.get("type", None) is not None
+        len(restrictions.keys()) > 0
+        or prop_type in {"string", "boolean", "number", "int32", "integer"}
+    ) and prop_type is not None
+
+
+def extract_type_property(properties: dict) -> Optional[str]:
+    """Extract type property and nested type property."""
+    if "type" in properties.keys():
+        return properties.get("type")
+    return nested_get(properties, *["schema", "type"])
+
+
+def first_upper(title: Optional[str]) -> Optional[str]:
+    """Shorthand function for capitalizing first letter in title if title exists."""
+    if title:
+        return title[0].upper() + title[1:]
+    else:
+        return None
