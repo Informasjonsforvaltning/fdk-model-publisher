@@ -148,6 +148,10 @@ ex_3_ttl = """
         <http://uri.com#Kommune>,
         <http://uri.com#SÃ¸k> .
 
+<http://uri.com#Date> a ns1:SimpleType ;
+    dct:title "Date"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
 <http://uri.com#Int32> a ns1:SimpleType ;
     dct:title "Int32"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#integerschema> .
@@ -197,7 +201,8 @@ ex_3_ttl = """
 <http://uri.com/Kommune#gyldigtil> a ns1:Attribute ;
     dct:title "gyldigtil"@en ;
     xsd:maxOccurs "1" ;
-    xsd:minOccurs "0" .
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#Date> .
 
 <http://uri.com/Kommune#id> a ns1:Attribute ;
     dct:title "id"@en ;
@@ -270,6 +275,10 @@ ex_4_ttl = """
         <http://uri.com#Kommune>,
         <http://uri.com#KommuneResultat>,
         <http://uri.com#Søk> .
+
+<http://uri.com#Date> a ns1:SimpleType ;
+    dct:title "Date"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <http://uri.com#EiendomResultat> a ns1:ObjectType ;
     dct:title "EiendomResultat"@en ;
@@ -350,7 +359,8 @@ ex_4_ttl = """
 <http://uri.com/Kommune#gyldigtil> a ns1:Attribute ;
     dct:title "gyldigtil"@en ;
     xsd:maxOccurs "1" ;
-    xsd:minOccurs "0" .
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#Date> .
 
 <http://uri.com/Kommune#id> a ns1:Attribute ;
     dct:title "id"@en ;
@@ -530,7 +540,8 @@ ex_6_ttl = """
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#ObjA>,
         <http://uri.com#ObjC>,
-        <http://uri.com#ObjD> .
+        <http://uri.com#ObjD>,
+        <http://uri.com#String> .
 
 <http://uri.com#ObjA> a ns1:ObjectType ;
     dct:description "Root A"@en ;
@@ -617,13 +628,10 @@ ex_8_ttl = """
 <http://uri.com> a ns1:InformationModel ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
-    ns1:containsModelElement <http://uri.com#CounterParty>,
+    ns1:containsModelElement <http://uri.com#Amount>,
+        <http://uri.com#CounterParty>,
         <http://uri.com#Transaction>,
         <http://uri.com#TransactionReference> .
-
-<http://uri.com#Amount> a ns1:SimpleType ;
-    dct:title "Amount"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
 
 <http://uri.com#String> a ns1:SimpleType ;
     dct:title "String"@en ;
@@ -714,6 +722,10 @@ ex_8_ttl = """
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
     ns1:hasSimpleType <http://uri.com#String> .
+
+<http://uri.com#Amount> a ns1:SimpleType ;
+    dct:title "Amount"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
 
 <http://uri.com#CounterParty> a ns1:ObjectType ;
     dct:description "Counterparty: the party to which a transaction goes to or comes from"@en ;

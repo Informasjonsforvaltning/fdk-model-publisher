@@ -1,7 +1,7 @@
 """Model Element mapper."""
 
 from copy import deepcopy
-from typing import Dict, List, Optional, Set, Union
+from typing import Dict, List, Optional, Union
 
 from modelldcatnotordf.modelldcatno import (
     Attribute,
@@ -21,6 +21,9 @@ from fdk_model_publisher.mapper.utils import (
     extract_ref_item,
     extract_simple_type_restrictions,
     extract_type,
+    extract_type_property,
+    first_upper,
+    is_simple_type,
     nested_get,
 )
 
@@ -30,7 +33,7 @@ class ModelElementMapper:
 
     __endpoint_description: Dict
     __root_model: Dict
-    __elements: Set
+    __elements: Dict
     __uri: str
 
     def __setup(self, endpoint_description: Dict, uri: str) -> None:
@@ -40,7 +43,7 @@ class ModelElementMapper:
         if schema and isinstance(schema, dict):
             self.__root_model = schema
             self.__uri = uri
-            self.__elements = set()
+            self.__elements = {}
 
     def extract_model_items(
         self, endpoint_description: Dict, uri: str
@@ -83,18 +86,19 @@ class ModelElementMapper:
         """Create model items (Elements and Properties) and references."""
         type = extract_type(properties, self.__endpoint_description)
         item_title = (
-            title[0].upper() + title[1:]
-            if title and type in ["codeList", "object", "simpleType"]
+            first_upper(title)
+            if type in ["codeList", "object"] or is_simple_type(properties)
             else title
         )
         extended_path = deepcopy(path) + [item_title] if item_title else []
         identifier = build_identifier(item_title, self.__uri, extended_path)
 
         if identifier and identifier in self.__elements:
-            return self.create_reference(properties, identifier)
+            return self.__elements[identifier]
         else:
-            self.__elements.add(identifier)
-            return self.create_element(item_title, properties, extended_path, type)
+            element = self.create_element(item_title, properties, extended_path, type)
+            self.__elements[identifier] = element
+            return element
 
     def create_element(
         self, title: Optional[str], properties: Dict, path: List[str], type: str
@@ -106,12 +110,13 @@ class ModelElementMapper:
             return self.create_code_list(title, properties, path)
         elif type == "object":
             return self.create_object_type(title, properties, path)
-        elif type == "simpleType":
+        elif is_simple_type(properties):
             return self.create_simple_type(
-                properties.get("type"),
+                extract_type_property(properties),
                 title,
                 extract_simple_type_restrictions(properties),
                 path,
+                properties.get("format"),
             )
 
         """Model Property creators."""
@@ -123,28 +128,6 @@ class ModelElementMapper:
             return self.create_attribute(title, properties, path)
 
         return None
-
-    def create_reference(
-        self, properties: dict, identifier: str
-    ) -> Optional[Union[ModelElement, ModelProperty]]:
-        """Create reference to object in graph."""
-        type = extract_type(properties, self.__endpoint_description)
-        if type == "object":
-            reference = ObjectType()
-        elif type == "codeList":
-            reference = CodeList()
-        elif type == "oneOf":
-            reference = Choice()
-        elif type == "items":
-            reference = Role()
-        elif type in ["string", "boolean", "number", "integer"]:
-            reference = Attribute()
-        else:
-            return None
-
-        reference.identifier = identifier
-
-        return reference
 
     def handle_schema_combination(
         self,
@@ -209,7 +192,7 @@ class ModelElementMapper:
 
         object_type = ObjectType()
         object_type.identifier = build_identifier(
-            title[0].upper() + title[1:] if title else None, self.__uri, extended_path
+            first_upper(title), self.__uri, extended_path
         )
         object_type.has_property = schema_properties
 
@@ -283,6 +266,7 @@ class ModelElementMapper:
         description = properties.get("description", None) if properties else {}
 
         attribute = Attribute()
+        attribute.identifier = build_identifier(title, self.__uri, path)
         attribute.title = {"en": title} if title else {}
         attribute.description = {"en": description} if description else {}
         attribute.max_occurs = "1"
@@ -291,15 +275,9 @@ class ModelElementMapper:
             if properties and title and (title in properties.get("required", ""))
             else "0"
         )
-        attribute.identifier = build_identifier(title, self.__uri, path)
 
         if properties:
             ref_string = properties.get("$ref", "")
-            extracted_type = extract_type(properties, self.__endpoint_description)
-            ref_simple_type = nested_get(
-                extract_ref_item(ref_string, self.__endpoint_description),
-                *["properties", "type"],
-            )
             reference = (
                 self.map_item(
                     **extract_ref_item(ref_string, self.__endpoint_description)
@@ -308,28 +286,29 @@ class ModelElementMapper:
                 else None
             )
 
-            if extracted_type == "codeList":
-                attribute.has_value_from = (
-                    reference if reference else self.map_item(title, properties, path)
-                )
+            extracted_type = extract_type(properties, self.__endpoint_description)
 
             if isinstance(reference, SimpleType):
                 attribute.has_simple_type = reference
-            else:
-                type = "format" if "format" in properties.keys() else "type"
-                type_string = properties.get(type)
-                simple_type_type = type_string if type_string else ref_simple_type
-                simple_type_restrictions = extract_simple_type_restrictions(properties)
-                simple_type = self.create_simple_type(
-                    simple_type_type,
+            elif is_simple_type(properties):
+                attribute.has_simple_type = self.create_simple_type(
+                    extracted_type,
                     None,
-                    simple_type_restrictions,
-                    path + [title]
-                    if title and len(simple_type_restrictions.keys()) > 0
-                    else None,
+                    extract_simple_type_restrictions(properties),
+                    path + [title] if title else path,
+                    properties.get("format"),
                 )
-                if simple_type:
-                    attribute.has_simple_type = simple_type
+            elif extracted_type == "codeList":
+                attribute.has_value_from = (
+                    reference if reference else self.map_item(title, properties, path)
+                )
+                ref_item = extract_ref_item(ref_string, self.__endpoint_description)
+                code_list_type = extract_type_property(
+                    ref_item.get("properties", {}) if ref_item else properties
+                )
+                attribute.has_simple_type = self.create_simple_type(
+                    code_list_type, None, {}, None, None
+                )
 
         return attribute
 
@@ -339,39 +318,15 @@ class ModelElementMapper:
         title: Optional[str] = None,
         restrictions: Optional[Dict] = None,
         path: Optional[List[str]] = None,
+        format: Optional[str] = None,
     ) -> Optional[SimpleType]:
         """Create simple type."""
-        if restrictions is None:
-            restrictions = {}
         simple_type = SimpleType()
-        if title:
-            simple_type.title = {"en": title}
-            simple_type.identifier = (
-                build_identifier(title, self.__uri, path)
-                if path
-                else f"{self.__uri}#{title}"
-            )
-
-        elif type:
-            type_title = type[0].upper() + type[1:]
-            simple_type.title = {"en": type_title}
-            simple_type.identifier = (
-                build_identifier(type_title, self.__uri, path)
-                if path
-                else f"{self.__uri}#{type_title}"
-            )
 
         if type == "string":
             simple_type.type_definition_reference = (
                 "https://www.w3.org/2019/wot/json-schema#stringschema"
             )
-
-            if "minLength" in restrictions:
-                simple_type.min_length = restrictions["minLength"]
-            if "maxLength" in restrictions:
-                simple_type.max_length = restrictions["maxLength"]
-            if "pattern" in restrictions:
-                simple_type.pattern = restrictions["pattern"]
 
         elif type == "boolean":
             simple_type.type_definition_reference = (
@@ -382,6 +337,42 @@ class ModelElementMapper:
                 "https://www.w3.org/2019/wot/json-schema#numberschema"
             )
 
+        elif type == "int32" or type == "integer":
+            simple_type.type_definition_reference = (
+                "https://www.w3.org/2019/wot/json-schema#integerschema"
+            )
+        else:
+            return None
+
+        active_restrictions = restrictions and len(restrictions.keys()) > 0
+        type_path = path if path and active_restrictions else []
+
+        if format:
+            format_title = first_upper(format)
+            simple_type.title = {"en": format_title}
+            simple_type.identifier = build_identifier(
+                format_title, self.__uri, type_path
+            )
+
+        elif title and active_restrictions:
+            simple_title = first_upper(title)
+            simple_type.title = {"en": simple_title}
+            simple_type.identifier = build_identifier(
+                simple_title, self.__uri, type_path
+            )
+
+        elif type:
+            type_title = first_upper(type)
+            simple_type.title = {"en": type_title}
+            simple_type.identifier = build_identifier(type_title, self.__uri, type_path)
+
+        if restrictions:
+            if "minLength" in restrictions:
+                simple_type.min_length = restrictions["minLength"]
+            if "maxLength" in restrictions:
+                simple_type.max_length = restrictions["maxLength"]
+            if "pattern" in restrictions:
+                simple_type.pattern = restrictions["pattern"]
             if "minimum" in restrictions:
                 simple_type.min_inclusive = restrictions["minimum"]
             if "maximum" in restrictions:
@@ -393,12 +384,6 @@ class ModelElementMapper:
             if "fractionDigits" in restrictions:
                 simple_type.fraction_digits = restrictions["fractionDigits"]
 
-        elif type == "int32" or type == "integer":
-            simple_type.type_definition_reference = (
-                "https://www.w3.org/2019/wot/json-schema#integerschema"
-            )
-        else:
-            return None
         return simple_type
 
     def create_choice_type(
@@ -553,7 +538,8 @@ class ModelElementMapper:
             else:
                 object_prop.contains = self.map_item(title, properties, extended_path)
             return object_prop
-        elif type == "codeList" or type == "simpleType":
+
+        elif type == "codeList" or is_simple_type(properties):
             object_prop = Attribute()
             object_prop.identifier = build_identifier(title, self.__uri, extended_path)
             object_prop.title = property_title
@@ -576,7 +562,7 @@ class ModelElementMapper:
                     object_prop.has_simple_type = self.map_item(**reference)
                 else:
                     object_prop.has_simple_type = self.map_item(
-                        properties.get("type"), properties, extended_path
+                        extract_type_property(properties), properties, extended_path
                     )
             return object_prop
 
