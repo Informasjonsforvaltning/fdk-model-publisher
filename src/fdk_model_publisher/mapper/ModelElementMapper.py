@@ -226,6 +226,8 @@ class ModelElementMapper:
         composition.description = {"en": description} if description else {}
         if isinstance(reference, ObjectType):
             composition.contains = reference
+        else:
+            composition.contains = self.map_item(title, properties, path)
 
         return composition
 
@@ -523,20 +525,13 @@ class ModelElementMapper:
         )
 
         if type == "object":
-            object_prop = Composition()
-            object_prop.identifier = build_identifier(title, self.__uri, extended_path)
-            object_prop.title = property_title
-            object_prop.description = {"en": description} if description else {}
+            object_prop = self.create_composition(title, properties, ref_string, extended_path)
             object_prop.max_occurs = "1"
             object_prop.min_occurs = (
                 "1"
                 if properties and title and title in properties.get("required", "")
                 else "0"
             )
-            if reference:
-                object_prop.contains = self.map_item(**reference)
-            else:
-                object_prop.contains = self.map_item(title, properties, extended_path)
             return object_prop
 
         elif type == "codeList" or is_simple_type(properties):

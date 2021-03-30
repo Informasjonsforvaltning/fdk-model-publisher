@@ -1,5 +1,5 @@
 """Integration test utils."""
-
+import json
 
 def get_skolem(base_url: str, count: int) -> str:
     """Get skolem according to base URL."""
@@ -27,3 +27,24 @@ class SkolemUtils:
     def reset_counter(self) -> None:
         """Reset skolemization counter."""
         self.skolemization_counter = 0
+
+
+def prepare_model(model: str) -> dict:
+    """Add necessary metadata for model mapping."""
+    json_model: dict = json.loads(model)
+    json_model["paths"] = {}
+    for key in json_model.get("components", {}).get("schemas", {}).keys():
+        json_model["paths"][key] = {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": f"#/components/schemas/{key}"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    return json_model

@@ -8,7 +8,8 @@ from rdflib import Graph
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.service.mapper import map_model_from_dict
-from tests.integration.utils import SkolemUtils
+from tests.integration.utils import SkolemUtils, prepare_model
+from tests.mocks.circular_dependencies_json import circular_dependencies_test_json
 from tests.mocks.examples_json import (
     ex_1_json,
     ex_2_json,
@@ -19,6 +20,7 @@ from tests.mocks.examples_json import (
     ex_7_json,
     ex_8_json,
 )
+from tests.mocks.circular_dependencies_ttl import circular_dependencies_test_ttl
 from tests.mocks.examples_ttl import (
     ex_1_ttl,
     ex_2_ttl,
@@ -30,33 +32,11 @@ from tests.mocks.examples_ttl import (
     ex_8_ttl,
 )
 
-
-def prepare_model(model: str) -> dict:
-    """Add necessary metadata for model mapping."""
-    json_model: dict = json.loads(model)
-    json_model["paths"] = {}
-    for key in json_model.get("components", {}).get("schemas", {}).keys():
-        json_model["paths"][key] = {
-            "get": {
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {"$ref": f"#/components/schemas/{key}"}
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    return json_model
-
-
 def verify_model(
-    model_str: str, expected_output_ttl: str, data_service: DataService
+    model_str: str, expected_output_ttl: str, data_service: DataService, complete_json: bool = False
 ) -> bool:
     """Model test helper function."""
-    schema = prepare_model(model_str)
+    schema = json.loads(model_str) if complete_json else prepare_model(model_str)
     uri = list(data_service.endpointDescription)[0]
     info_model = PartialInformationModel(uri, schema)
     model = map_model_from_dict(info_model, data_service)
