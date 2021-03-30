@@ -29,7 +29,7 @@ async def fetch_dataservice_catalog() -> str:
     """Fetch data service catalog."""
     async with ClientSession(headers={hdrs.ACCEPT: "text/turtle"}) as session:
         async with session.get(
-            url=f"{Config.fdk_dataservice_harvester_url()}/catalogs"
+            url=f"{Config.fdk_dataservice_harvester_url()}/catalogs?catalogrecords=true"
         ) as r:
             r.raise_for_status()
             return await r.text()

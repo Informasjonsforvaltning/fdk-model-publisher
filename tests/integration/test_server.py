@@ -28,7 +28,7 @@ def mock_aio_response() -> Any:
     """Mock aio response."""
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
         m.add(
-            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs",
+            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs?catalogrecords=true",
             body=data_services_catalog_ttl_mock,
         )
         m.add(
