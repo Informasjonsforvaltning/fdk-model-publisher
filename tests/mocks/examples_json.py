@@ -473,58 +473,12 @@ ex_7_json = """
          "Balance":{
             "description":"Balance: Sum of deposits and loans in the financial account",
             "required":[
-               "type",
-               "creditLineIncluded",
-               "amount",
-               "currency",
-               "creditDebitIndicator",
-               "registered"
+               "type"
             ],
             "type":"object",
             "properties":{
-               "creditLineIncluded":{
-                  "description":"Balance included credit limit: Indicates whether the credit limit is included in the balance or not. Should always be false",
-                  "allOf":[
-                     {
-                        "$ref":"#/components/schemas/TrueFalseIndicator"
-                     }
-                  ]
-               },
-               "amount":{
-                  "description":"A sum of money spent in a context. This can be a transaction, balance etc.",
-                  "allOf":[
-                     {
-                        "$ref":"#/components/schemas/Amount"
-                     }
-                  ]
-               },
-               "creditDebitIndicator":{
-                  "description":"Credit is positive balance, debit is negative balance",
-                  "allOf":[
-                     {
-                        "$ref":"#/components/schemas/CreditOrDebit"
-                     }
-                  ]
-               },
-               "registered":{
-                  "description":"registration date: the current date and time of the reported balance",
-                  "allOf":[
-                     {
-                        "$ref":"#/components/schemas/ISODateTime"
-                     }
-                  ]
-               },
                "type":{
                   "$ref":"#/components/schemas/BalanceType"
-               },
-               "creditLineAmount":{
-                  "$ref":"#/components/schemas/Amount"
-               },
-               "creditLineCurrency":{
-                  "$ref":"#/components/schemas/CurrencyCode"
-               },
-               "currency":{
-                  "$ref":"#/components/schemas/CurrencyCode"
                }
             }
          },
