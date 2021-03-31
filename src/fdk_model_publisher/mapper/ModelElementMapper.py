@@ -119,7 +119,7 @@ class ModelElementMapper:
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Model Element creators."""
         if element_type == "allOf":
-            return self.handle_schema_combination(title, properties, path)
+            return self.handle_schema_combination(title, properties, path, is_property)
         elif element_type == "codeList":
             return self.create_code_list(title, properties, path)
         elif element_type == "object":
@@ -144,13 +144,14 @@ class ModelElementMapper:
         title: Optional[str],
         properties: Dict,
         path: List[str],
+        is_property: bool,
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Handle creation of items in allOf list."""
         schemas: List[Dict] = properties.get("allOf", [])
         description = properties.get("description", None)
 
         if len(schemas) > 1:
-            return self.multi_schema_combination(title, description, schemas, path)
+            return self.multi_schema_combination(title, description, schemas, path, is_property)
 
         elif len(schemas) == 1:
             schema_props = {
@@ -191,31 +192,37 @@ class ModelElementMapper:
         description: Optional[str],
         schemas: List[Dict],
         path: List[str],
-    ) -> Composition:
+        is_property: bool,
+    ) -> Union[Composition, ObjectType]:
         """Create multi composition type element."""
-        extended_path = path + [title] if title else path
-        schema_properties = []
+        extended_path = deepcopy(path) + [title] if title else path
+
+        object_type = ObjectType()
+        object_type.identifier = self.create_model_identifier(
+            first_upper(title), extended_path if is_property else path
+        )
+        object_type.has_property = []
 
         for properties in schemas:
             item = self.map_item(
                 title=None, properties=properties, path=path, is_property=True
             )
             if item:
-                schema_properties.append(item)
+                object_type.has_property.append(item)
 
-        object_type = ObjectType()
-        object_type.identifier = self.create_model_identifier(
-            first_upper(title), extended_path
-        )
-        object_type.has_property = schema_properties
+        if is_property:
 
-        composition = Composition()
-        composition.identifier = self.create_model_identifier(title, path)
-        composition.title = {"en": title} if title else {}
-        composition.description = {"en": description} if description else {}
-        composition.contains = object_type
+            composition = Composition()
+            composition.identifier = self.create_model_identifier(title, path)
+            composition.title = {"en": title} if title else {}
+            composition.description = {"en": description} if description else {}
+            composition.contains = object_type
+            return composition
 
-        return composition
+        else:
+            object_type.title = {"en": title} if title else {}
+            object_type.description = {"en": description} if description else {}
+            return object_type
 
     def create_composition(
         self,
