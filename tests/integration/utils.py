@@ -1,6 +1,7 @@
 """Integration test utils."""
 import json
 
+
 def get_skolem(base_url: str, count: int) -> str:
     """Get skolem according to base URL."""
     return base_url + ".well-known/skolem/" + str(count)
