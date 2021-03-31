@@ -500,6 +500,8 @@ ex_5_ttl = """
 <http://uri.com/Account#servicer> a ns1:Composition ;
     dct:description "account administrator: financial institution that manages an account on behalf of the account owner, including handling the registration of account transactions, calculating the account balance and providing information about the account"@en ;
     dct:title "servicer"@en ;
+    xsd:maxOccurs "1" ;
+    xsd:minOccurs "1" ;
     ns1:contains <http://uri.com#FinancialInstitution> .
 
 <http://uri.com/Account#status> a ns1:Attribute ;
@@ -513,10 +515,10 @@ ex_5_ttl = """
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com/FinancialInstitution/name#String> .
+    ns1:hasSimpleType <http://uri.com/FinancialInstitution/name#Name> .
 
-<http://uri.com/FinancialInstitution/name#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<http://uri.com/FinancialInstitution/name#Name> a ns1:SimpleType ;
+    dct:title "Name"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
@@ -609,10 +611,15 @@ ex_7_ttl = """
     dct:title "Balance"@en ;
     ns1:hasProperty <http://uri.com/Balance#type> .
 
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
 <http://uri.com/Balance#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
+    ns1:hasSimpleType <http://uri.com#String> ;
     ns1:hasValueFrom <http://uri.com#BalanceType> .
 
 <http://uri.com#BalanceType> a ns1:CodeList ;
@@ -651,10 +658,10 @@ ex_8_ttl = """
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/CounterParty/name#String> .
+    ns1:hasSimpleType <http://uri.com/CounterParty/name#Name> .
 
-<http://uri.com/CounterParty/name#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<http://uri.com/CounterParty/name#Name> a ns1:SimpleType ;
+    dct:title "Name"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
@@ -664,7 +671,7 @@ ex_8_ttl = """
     dct:title "additionalInfo"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/additionalInfo#String> .
+    ns1:hasSimpleType <http://uri.com/Transaction/additionalInfo#AdditionalInfo> .
 
 <http://uri.com/Transaction#amount> a ns1:Attribute ;
     dct:title "amount"@en ;
@@ -684,7 +691,7 @@ ex_8_ttl = """
     dct:title "merchant"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/merchant#String> .
+    ns1:hasSimpleType <http://uri.com/Transaction/merchant#Merchant> .
 
 <http://uri.com/Transaction#references> a ns1:Role ;
     dct:description "Transaction reference: unique reference associated with the transaction"@en ;
@@ -698,22 +705,22 @@ ex_8_ttl = """
     dct:title "transactionIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <http://uri.com/Transaction/transactionIdentifier#String> .
+    ns1:hasSimpleType <http://uri.com/Transaction/transactionIdentifier#TransactionIdentifier> .
 
-<http://uri.com/Transaction/additionalInfo#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<http://uri.com/Transaction/additionalInfo#AdditionalInfo> a ns1:SimpleType ;
+    dct:title "AdditionalInfo"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 500 ;
     xsd:minLength 1 .
 
-<http://uri.com/Transaction/merchant#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<http://uri.com/Transaction/merchant#Merchant> a ns1:SimpleType ;
+    dct:title "Merchant"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
-<http://uri.com/Transaction/transactionIdentifier#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<http://uri.com/Transaction/transactionIdentifier#TransactionIdentifier> a ns1:SimpleType ;
+    dct:title "TransactionIdentifier"@en ;
     xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 35 .
 

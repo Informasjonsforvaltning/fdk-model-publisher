@@ -39,7 +39,7 @@ def extract_ref_item(ref_string: str, root_model: dict) -> dict:
     return {"title": None, "properties": {}, "path": []}
 
 
-def extract_type(properties: dict, root_dict: dict) -> str:
+def extract_type(properties: dict, root_dict: dict, is_property: bool = False) -> str:
     """Extract type from property dictionary."""
     prop_keys = properties.keys()
     prop_type = extract_type_property(properties)
@@ -47,12 +47,14 @@ def extract_type(properties: dict, root_dict: dict) -> str:
         return "allOf"
     elif "$ref" in prop_keys:
         ref_item = extract_ref_item(properties.get("$ref", ""), root_dict)
-        ref_type = extract_type(ref_item.get("properties", {}), root_dict)
-        if ref_type == "object":
+        ref_type = extract_type(ref_item.get("properties", {}), root_dict, is_property)
+        if ref_type == "object" or ref_type == "composition":
             return "role"
         return ref_type
     elif "enum" in prop_keys:
-        return "codeList"
+        return prop_type if prop_type and is_property else "codeList"
+    elif prop_type == "object" and is_property:
+        return "composition"
     else:
         return prop_type if prop_type else ""
 
@@ -79,14 +81,16 @@ def extract_simple_type_restrictions(properties: dict) -> dict:
     return restrictions
 
 
-def is_simple_type(properties: dict) -> bool:
+def is_simple_type(properties: dict, is_property: bool = False) -> bool:
     """Check if properties map to simple type model element."""
-    restrictions = extract_simple_type_restrictions(properties)
-    prop_type = extract_type_property(properties)
-    return (
-        len(restrictions.keys()) > 0
-        or prop_type in {"string", "boolean", "number", "int32", "integer"}
-    ) and prop_type is not None
+    is_primitive_type = extract_type_property(properties) in {
+        "string",
+        "boolean",
+        "number",
+        "int32",
+        "integer",
+    }
+    return is_primitive_type and not is_property
 
 
 def extract_type_property(properties: dict) -> Optional[str]:
