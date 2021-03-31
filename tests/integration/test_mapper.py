@@ -8,8 +8,9 @@ from rdflib import Graph
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.service.mapper import map_model_from_dict
-from tests.integration.utils import SkolemUtils, prepare_model
+from tests.integration.utils import prepare_model, SkolemUtils
 from tests.mocks.circular_dependencies_json import circular_dependencies_test_json
+from tests.mocks.circular_dependencies_ttl import circular_dependencies_test_ttl
 from tests.mocks.examples_json import (
     ex_1_json,
     ex_2_json,
@@ -20,7 +21,6 @@ from tests.mocks.examples_json import (
     ex_7_json,
     ex_8_json,
 )
-from tests.mocks.circular_dependencies_ttl import circular_dependencies_test_ttl
 from tests.mocks.examples_ttl import (
     ex_1_ttl,
     ex_2_ttl,
@@ -32,8 +32,12 @@ from tests.mocks.examples_ttl import (
     ex_8_ttl,
 )
 
+
 def verify_model(
-    model_str: str, expected_output_ttl: str, data_service: DataService, complete_json: bool = False
+    model_str: str,
+    expected_output_ttl: str,
+    data_service: DataService,
+    complete_json: bool = False,
 ) -> bool:
     """Model test helper function."""
     schema = json.loads(model_str) if complete_json else prepare_model(model_str)
@@ -108,5 +112,12 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
 
     assert verify_model(ex_8_json, ex_8_ttl, ds)
     print("Model 8 passed.")
+
+    skolemutils.reset_counter()
+
+    assert verify_model(
+        circular_dependencies_test_json, circular_dependencies_test_ttl, ds
+    )
+    print("Handles circular dependencies.")
 
     skolemutils.reset_counter()
