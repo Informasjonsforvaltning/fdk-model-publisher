@@ -48,7 +48,7 @@ def extract_type(properties: dict, root_dict: dict, is_property: bool = False) -
     elif "$ref" in prop_keys:
         ref_item = extract_ref_item(properties.get("$ref", ""), root_dict)
         ref_type = extract_type(ref_item.get("properties", {}), root_dict, is_property)
-        if ref_type == "object" or ref_type == "composition":
+        if ref_type == "object" and is_property or ref_type == "composition":
             return "role"
         return ref_type
     elif "enum" in prop_keys:
