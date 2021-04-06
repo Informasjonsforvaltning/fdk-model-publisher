@@ -668,3 +668,34 @@ ex_8_json = """
    }
 }
 """
+
+ex_9_json = """
+{
+   "components":{
+      "schemas":{
+         "Balance":{
+            "description":"Balance: Sum of deposits and loans in the financial account",
+            "required":[
+               "validCurrencies"
+            ],
+            "type":"object",
+            "properties":{
+               "validCurrencies":{
+                  "type":"array",
+                  "items":{
+                     "type":"array",
+                     "items":{
+                        "$ref":"#/components/schemas/Currency"
+                     }
+                  }
+               }
+            }
+         },
+         "Currency":{
+            "description":"Currency type",
+            "type":"string"
+         }
+      }
+   }
+}
+"""
