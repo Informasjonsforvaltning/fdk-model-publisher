@@ -329,15 +329,14 @@ class ModelElementMapper:
                     )
                 else:
                     attribute.has_simple_type = self.map_item(**reference)
+            elif attribute_type == "codeList":
+                simple_type = extract_type_property(properties)
+                attribute.has_value_from = self.map_item(title, properties, path)
+                attribute.has_simple_type = self.map_item(
+                    None, {"type": simple_type}, path
+                )
             else:
-                if attribute_type == "codeList":
-                    simple_type = extract_type_property(properties)
-                    attribute.has_value_from = self.map_item(title, properties, path)
-                    attribute.has_simple_type = self.map_item(
-                        None, {"type": simple_type}, path
-                    )
-                else:
-                    attribute.has_simple_type = self.map_item(title, properties, path)
+                attribute.has_simple_type = self.map_item(title, properties, path)
 
         return attribute
 
@@ -452,10 +451,15 @@ class ModelElementMapper:
         """Create default array type."""
         items = properties.get("items", {})
         item_type = extract_type(items, self.__endpoint_description)
-        ref_item_string = items.get("$ref")
+        ref_string = items.get("$ref")
+        reference = (
+            extract_ref_item(ref_string, self.__endpoint_description)
+            if ref_string
+            else None
+        )
         description = items.get("description", None)
 
-        array = Role() if item_type in {"object", "allOf"} else Attribute()
+        array = Role() if item_type in {"object", "allOf", "array"} else Attribute()
         array.title = {"en": title} if title else {}
         array.identifier = self.create_model_identifier(title, path)
         array.description = {"en": description} if description else {}
@@ -466,19 +470,21 @@ class ModelElementMapper:
             else str(properties.get("minItems", 0))
         )
 
-        if isinstance(array, Role) and ref_item_string:
-            reference = self.map_item(
-                **extract_ref_item(ref_item_string, self.__endpoint_description)
+        if isinstance(array, Role) and reference:
+            array.has_object_type = self.map_item(**reference)
+
+        elif isinstance(array, Role) and item_type == "array":
+            sub_array_title = title + "Array" if title else title
+            array.has_object_type = self.create_object_type(
+                first_upper(sub_array_title),
+                {"properties": {"items": items}},
+                path,
             )
-            array.has_object_type = reference
         elif isinstance(array, Role):
             array.has_object_type = self.map_item(title, items, path)
-        elif ref_item_string:
-            reference = self.map_item(
-                **extract_ref_item(ref_item_string, self.__endpoint_description)
-            )
-            array.has_simple_type = reference
-        else:
+        elif reference and is_simple_type(reference.get("properties", {})):
+            array.has_simple_type = self.map_item(**reference)
+        elif is_simple_type(items):
             array.has_simple_type = self.map_item(title, items, path)
 
         return array

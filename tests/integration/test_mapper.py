@@ -20,6 +20,7 @@ from tests.mocks.examples_json import (
     ex_6_json,
     ex_7_json,
     ex_8_json,
+    ex_9_json,
 )
 from tests.mocks.examples_ttl import (
     ex_1_ttl,
@@ -30,6 +31,7 @@ from tests.mocks.examples_ttl import (
     ex_6_ttl,
     ex_7_ttl,
     ex_8_ttl,
+    ex_9_ttl,
 )
 
 
@@ -112,6 +114,11 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
 
     assert verify_model(ex_8_json, ex_8_ttl, ds)
     print("Model 8 passed.")
+
+    skolemutils.reset_counter()
+
+    assert verify_model(ex_9_json, ex_9_ttl, ds)
+    print("Model 9 passed.")
 
     skolemutils.reset_counter()
 

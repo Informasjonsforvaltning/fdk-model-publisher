@@ -744,3 +744,38 @@ ex_8_ttl = """
     dct:title "TransactionReference"@en ;
     ns1:hasProperty <http://uri.com/TransactionReference#value> .
 """
+
+ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uri.com> a ns1:InformationModel ;
+    dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
+    dct:type ns1:physicalModel ;
+    ns1:containsModelElement <http://uri.com#Balance>,
+        <http://uri.com#String> .
+
+<http://uri.com#Balance> a ns1:ObjectType ;
+    dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
+    dct:title "Balance"@en ;
+    ns1:hasProperty <http://uri.com/Balance#validCurrencies> .
+
+<http://uri.com/Balance#ValidCurrenciesArray> a ns1:ObjectType ;
+    dct:title "ValidCurrenciesArray"@en ;
+    ns1:hasProperty <http://uri.com/Balance/validCurrencies#items> .
+
+<http://uri.com/Balance#validCurrencies> a ns1:Role ;
+    dct:title "validCurrencies"@en ;
+    xsd:maxOccurs "*" ;
+    xsd:minOccurs "1" ;
+    ns1:hasObjectType <http://uri.com/Balance#ValidCurrenciesArray> .
+
+<http://uri.com/Balance/validCurrencies#items> a ns1:Attribute ;
+    dct:title "items"@en ;
+    xsd:maxOccurs "*" ;
+    xsd:minOccurs "0" ;
+    ns1:hasSimpleType <http://uri.com#String> .
+
+<http://uri.com#String> a ns1:SimpleType ;
+    dct:title "String"@en ;
+    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ."""
