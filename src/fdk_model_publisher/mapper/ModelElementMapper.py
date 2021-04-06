@@ -151,26 +151,39 @@ class ModelElementMapper:
         description = properties.get("description", None)
 
         if len(schemas) > 1:
-            return self.multi_schema_combination(title, description, schemas, path, is_property)
+            return self.multi_schema_combination(
+                title, description, schemas, path, is_property
+            )
 
         elif len(schemas) == 1:
             schema_props = {
                 key: properties[key] for key in properties if key != "allOf"
             }
-            return self.single_schema_combination(title, schema_props, path, schemas[0], is_property)
+            return self.single_schema_combination(
+                title, schema_props, path, schemas[0], is_property
+            )
         else:
             return None
 
     def single_schema_combination(
-        self, title: Optional[str], properties: Dict, path: List[str], schema: dict, is_property: bool
+        self,
+        title: Optional[str],
+        properties: Dict,
+        path: List[str],
+        schema: dict,
+        is_property: bool,
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Handle creation of single item in allOf list."""
         description = properties.get("description", None)
         ref_string = schema.get("$ref", None)
-        schema_type = extract_type(schema, self.__endpoint_description, is_property=is_property)
+        schema_type = extract_type(
+            schema, self.__endpoint_description, is_property=is_property
+        )
 
         if ref_string and not is_property:
-            return self.map_item(**extract_ref_item(ref_string, self.__endpoint_description))
+            return self.map_item(
+                **extract_ref_item(ref_string, self.__endpoint_description)
+            )
 
         elif ref_string and schema_type == "role":
             return self.create_composition(title, {**properties, **schema}, path)
@@ -454,12 +467,16 @@ class ModelElementMapper:
         )
 
         if isinstance(array, Role) and ref_item_string:
-            reference = self.map_item(**extract_ref_item(ref_item_string, self.__endpoint_description))
+            reference = self.map_item(
+                **extract_ref_item(ref_item_string, self.__endpoint_description)
+            )
             array.has_object_type = reference
         elif isinstance(array, Role):
             array.has_object_type = self.map_item(title, items, path)
         elif ref_item_string:
-            reference = self.map_item(**extract_ref_item(ref_item_string, self.__endpoint_description))
+            reference = self.map_item(
+                **extract_ref_item(ref_item_string, self.__endpoint_description)
+            )
             array.has_simple_type = reference
         else:
             array.has_simple_type = self.map_item(title, items, path)
