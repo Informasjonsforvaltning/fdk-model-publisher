@@ -411,9 +411,10 @@ ex_4_ttl = """
     ns1:hasObjectType <http://uri.com#Kommune> .
 
 <http://uri.com/KommuneResultat/data/Data#erstattetav> a ns1:Role ;
+    dct:title "erstattetav"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    ns1:hasObjectType <http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav#Erstattetav> .
+    ns1:hasObjectType <http://uri.com/KommuneResultat/data/Data/erstattetav#Erstattetav> .
 
 <http://uri.com/KommuneResultat/data/Data#kommune> a ns1:Role ;
     dct:title "kommune"@en ;
@@ -421,11 +422,11 @@ ex_4_ttl = """
     xsd:minOccurs "0" ;
     ns1:hasObjectType <http://uri.com#Kommune> .
 
-<http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav#Erstattetav> a ns1:ObjectType ;
+<http://uri.com/KommuneResultat/data/Data/erstattetav#Erstattetav> a ns1:ObjectType ;
     dct:title "Erstattetav"@en ;
-    ns1:hasProperty <http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav/Erstattetav#id> .
+    ns1:hasProperty <http://uri.com/KommuneResultat/data/Data/erstattetav/Erstattetav#id> .
 
-<http://uri.com/KommuneResultat/data/Data/erstattetav/erstattetav/Erstattetav#id> a ns1:Attribute ;
+<http://uri.com/KommuneResultat/data/Data/erstattetav/Erstattetav#id> a ns1:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;

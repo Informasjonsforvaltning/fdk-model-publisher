@@ -157,22 +157,25 @@ class ModelElementMapper:
             schema_props = {
                 key: properties[key] for key in properties if key != "allOf"
             }
-            return self.single_schema_combination(title, schema_props, path, schemas[0])
+            return self.single_schema_combination(title, schema_props, path, schemas[0], is_property)
         else:
             return None
 
     def single_schema_combination(
-        self, title: Optional[str], properties: Dict, path: List[str], schema: dict
+        self, title: Optional[str], properties: Dict, path: List[str], schema: dict, is_property: bool
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Handle creation of single item in allOf list."""
         description = properties.get("description", None)
         ref_string = schema.get("$ref", None)
-        ref_type = extract_type(schema, self.__endpoint_description)
+        schema_type = extract_type(schema, self.__endpoint_description, is_property=is_property)
 
-        if ref_type == "role" and ref_string:
+        if ref_string and not is_property:
+            return self.map_item(**extract_ref_item(ref_string, self.__endpoint_description))
+
+        elif ref_string and schema_type == "role":
             return self.create_composition(title, {**properties, **schema}, path)
 
-        elif ref_type:
+        elif ref_string and schema_type:
             return self.create_attribute(
                 title,
                 {"required": [title], "$ref": ref_string},
@@ -244,11 +247,11 @@ class ModelElementMapper:
             else "0"
         )
         ref_string = properties.get("$ref")
-        if extract_type(properties, self.__endpoint_description) == "object":
-            composition.contains = self.map_item(title, properties, path)
-        elif ref_string:
+        if ref_string:
             reference = extract_ref_item(ref_string, self.__endpoint_description)
             composition.contains = self.map_item(**reference)
+        elif extract_type(properties, self.__endpoint_description) == "object":
+            composition.contains = self.map_item(title, properties, path)
 
         return composition
 
@@ -273,7 +276,7 @@ class ModelElementMapper:
             else "0"
         )
 
-        if ref:
+        if ref and extract_type(properties, self.__endpoint_description) == "object":
             role.has_object_type = self.map_item(
                 **extract_ref_item(ref, self.__endpoint_description)
             )
@@ -434,41 +437,32 @@ class ModelElementMapper:
         path: List[str],
     ) -> Union[Role, Attribute, None]:
         """Create default array type."""
-        description = properties.get("description", None)
         items = properties.get("items", {})
         item_type = extract_type(items, self.__endpoint_description)
+        ref_item_string = items.get("$ref")
+        description = items.get("description", None)
 
-        identifier = self.create_model_identifier(title, path)
-        array_description = {"en": description} if description else {}
-        max_occurs = properties.get("maxItems", "*")
-        min_occurs = (
+        array = Role() if item_type in {"object", "allOf"} else Attribute()
+        array.title = {"en": title} if title else {}
+        array.identifier = self.create_model_identifier(title, path)
+        array.description = {"en": description} if description else {}
+        array.max_occurs = properties.get("maxItems", "*")
+        array.min_occurs = (
             "1"
             if title in properties.get("required", "")
             else str(properties.get("minItems", 0))
         )
 
-        if item_type == "role":
-            array = self.map_item(title, items, path)
-        elif item_type == "object":
-            array = Role()
-            object_title = title if title else title
-            array.has_object_type = self.map_item(
-                object_title, items, deepcopy(path) + [title] if title else path
-            )
-        elif item_type == "allOf":
-            item_properties = items.get("allOf", [])
-            del items["allOf"]
-            return self.create_default_array(
-                title, {**items, "items": item_properties[0]}, path
-            )
+        if isinstance(array, Role) and ref_item_string:
+            reference = self.map_item(**extract_ref_item(ref_item_string, self.__endpoint_description))
+            array.has_object_type = reference
+        elif isinstance(array, Role):
+            array.has_object_type = self.map_item(title, items, path)
+        elif ref_item_string:
+            reference = self.map_item(**extract_ref_item(ref_item_string, self.__endpoint_description))
+            array.has_simple_type = reference
         else:
-            array = self.create_attribute(title, items, path)
-
-        if array:
-            array.description = array_description
-            array.max_occurs = max_occurs
-            array.min_occurs = min_occurs
-            array.identifier = identifier
+            array.has_simple_type = self.map_item(title, items, path)
 
         return array
 
