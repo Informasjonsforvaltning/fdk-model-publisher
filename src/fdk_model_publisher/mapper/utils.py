@@ -55,8 +55,12 @@ def extract_type(properties: dict, root_dict: dict, is_property: bool = False) -
         return prop_type if prop_type and is_property else "codeList"
     elif prop_type == "object" and is_property:
         return "composition"
+    elif prop_type:
+        return prop_type
+    elif "properties" in prop_keys and not is_property:
+        return "object"
     else:
-        return prop_type if prop_type else ""
+        return ""
 
 
 def extract_simple_type_restrictions(properties: dict) -> dict:
@@ -106,3 +110,12 @@ def first_upper(title: Optional[str]) -> Optional[str]:
         return title[0].upper() + title[1:]
     else:
         return None
+
+
+def should_map(title: Optional[str], properties: dict, is_property: bool) -> bool:
+    """Shorthand function for determining whether an item should be mapped."""
+    return (
+        (title is not None and title != "")
+        or is_simple_type(properties, is_property)
+        or len([key for key in properties.keys() if key != "type"]) > 0
+    )

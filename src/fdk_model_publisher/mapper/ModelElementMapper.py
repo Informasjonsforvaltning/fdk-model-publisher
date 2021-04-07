@@ -25,6 +25,7 @@ from fdk_model_publisher.mapper.utils import (
     first_upper,
     is_simple_type,
     nested_get,
+    should_map,
 )
 
 
@@ -55,7 +56,7 @@ class ModelElementMapper:
         if self.__uri and self.__root_model and self.__endpoint_description:
             paths = self.__endpoint_description.get("paths", {})
             for path in paths:
-                reference = nested_get(
+                schema = nested_get(
                     paths,
                     *[
                         path,
@@ -65,15 +66,20 @@ class ModelElementMapper:
                         "content",
                         "application/json",
                         "schema",
-                        "$ref",
                     ],
                 )
-                if reference and isinstance(reference, str):
-                    model_elements.append(
-                        self.map_item(
-                            **extract_ref_item(reference, self.__endpoint_description)
+                if schema and isinstance(schema, dict):
+                    ref_string = schema.get("$ref", "")
+                    if ref_string and isinstance(ref_string, str):
+                        model_elements.append(
+                            self.map_item(
+                                **extract_ref_item(
+                                    ref_string, self.__endpoint_description
+                                )
+                            )
                         )
-                    )
+                    elif extract_type(schema, self.__endpoint_description) != "":
+                        model_elements.append(self.map_item(None, schema, []))
 
         return list(
             filter(
@@ -104,10 +110,13 @@ class ModelElementMapper:
 
         if path_string and path_string in self.__elements:
             return URI(self.__elements[path_string])
-        else:
-            return self.create_element(
+        elif should_map(title, properties, is_property):
+            element = self.create_element(
                 item_title, properties, extended_path, element_type, is_property
             )
+            return element
+        else:
+            return None
 
     def create_element(
         self,
@@ -198,7 +207,11 @@ class ModelElementMapper:
         else:
             return self.map_item(
                 title,
-                {"description": description, "required": [title], **schema},
+                {
+                    "description": description,
+                    "required": [title],
+                    **schema.get("properties", {}),
+                },
                 path,
             )
 
@@ -466,7 +479,7 @@ class ModelElementMapper:
         array.max_occurs = properties.get("maxItems", "*")
         array.min_occurs = (
             "1"
-            if title in properties.get("required", "")
+            if title and title in properties.get("required", "")
             else str(properties.get("minItems", 0))
         )
 
