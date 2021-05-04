@@ -5,7 +5,7 @@ from typing import Dict, List, Optional
 from datacatalogtordf import Agent, Catalog
 from fdk_rdf_parser.classes import Publisher
 from fdk_rdf_parser.fdk_rdf_parser import DataService
-from modelldcatnotordf.modelldcatno import InformationModel
+from modelldcatnotordf.modelldcatno import FoafDocument, InformationModel
 from rdflib import Namespace
 
 from fdk_model_publisher.api.models import PartialInformationModel
@@ -72,6 +72,18 @@ def map_model_from_dict(
     model.modelelements = model_element_mapper.extract_model_items(
         partial_model.schema, partial_model.endpoint_description
     )
+
+    if partial_model.format == "JSON":
+        foaf_document = FoafDocument()
+        foaf_document.format = (
+            "http://publications.europa.eu/resource/authority/file-type/JSON"
+        )
+
+        foaf_document.title = partial_model.title
+        if partial_model.link:
+            foaf_document.rdfs_see_also = partial_model.link
+        model.has_format.append(foaf_document)
+
     model.identifier = partial_model.endpoint_description
     model.title = prepend_model(data_service.title)
     model.keyword = data_service.keyword

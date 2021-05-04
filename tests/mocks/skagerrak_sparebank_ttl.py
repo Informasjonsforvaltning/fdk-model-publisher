@@ -4,6 +4,9 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
 
 <https://fdk-model-publisher.fellesdatakatalog.no> a dcat:Catalog ;
     dct:title "FDK informasjonsmodellkatalog"@nb ;
@@ -13,6 +16,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:identifier "937891245" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> a ns1:InformationModel ;
+    dct:hasFormat <http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> ;
     dct:conformsTo <https://data.norge.no/specification/kontoopplysninger> ;
     dct:description "Open API specification of the Account APIs. (Work in progress.)"@en ;
     dct:publisher <https://fdk-model-publisher.fellesdatakatalog.no#937891245> ;
@@ -23,6 +27,10 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Cards>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Roles>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Transactions> .
+
+<http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType ;
+    rdfs:seeAlso <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Account> a ns1:ObjectType ;
     dct:description "Account: a specification of a clearly defined type of financial events"@en ;
@@ -251,7 +259,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account/name#Name> a ns1:SimpleType ;
     dct:title "Name"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 70 ;
     xsd:minLength 1 .
 
@@ -326,7 +334,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail/name#Name> a ns1:SimpleType ;
     dct:title "Name"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 70 ;
     xsd:minLength 1 .
 
@@ -388,7 +396,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole/name#Name> a ns1:SimpleType ;
     dct:title "Name"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
@@ -491,7 +499,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode/freeText#FreeText> a ns1:SimpleType ;
     dct:title "FreeText"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 500 ;
     xsd:minLength 1 .
 
@@ -542,7 +550,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty/name#Name> a ns1:SimpleType ;
     dct:title "Name"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
@@ -591,7 +599,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress/value#Value> a ns1:SimpleType ;
     dct:title "Value"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 2048 ;
     xsd:minLength 1 .
 
@@ -609,7 +617,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution/name#Name> a ns1:SimpleType ;
     dct:title "Name"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
@@ -646,13 +654,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/href#Href> a ns1:SimpleType ;
     dct:title "Href"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 500 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/rel#Rel> a ns1:SimpleType ;
     dct:title "Rel"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 50 ;
     xsd:minLength 1 .
 
@@ -703,13 +711,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/cardIssuerName#CardIssuerName> a ns1:SimpleType ;
     dct:title "CardIssuerName"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/holderName#HolderName> a ns1:SimpleType ;
     dct:title "HolderName"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
@@ -759,31 +767,31 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/addressLines#AddressLines> a ns1:SimpleType ;
     dct:title "AddressLines"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 70 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/buildingNumber#BuildingNumber> a ns1:SimpleType ;
     dct:title "BuildingNumber"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 16 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/postCode#PostCode> a ns1:SimpleType ;
     dct:title "PostCode"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 16 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/streetName#StreetName> a ns1:SimpleType ;
     dct:title "StreetName"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 70 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/townName#TownName> a ns1:SimpleType ;
     dct:title "TownName"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 35 ;
     xsd:minLength 1 .
 
@@ -908,19 +916,19 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/additionalInfo#AdditionalInfo> a ns1:SimpleType ;
     dct:title "AdditionalInfo"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 500 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/merchant#Merchant> a ns1:SimpleType ;
     dct:title "Merchant"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 140 ;
     xsd:minLength 1 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/transactionIdentifier#TransactionIdentifier> a ns1:SimpleType ;
     dct:title "TransactionIdentifier"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:maxLength 35 .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/TransactionReference#type> a ns1:Attribute ;
@@ -966,11 +974,11 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Boolean> a ns1:SimpleType ;
     dct:title "Boolean"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#booleanschema> .
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#booleanschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CountryCode> a ns1:SimpleType ;
     dct:title "CountryCode"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:pattern "[A-Z]{2,2}" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CreditOrDebit> a ns1:CodeList ;
@@ -984,7 +992,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ISOYearMonth> a ns1:SimpleType ;
     dct:title "ISOYearMonth"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:pattern "^[0-9]+-([0][1-9]|1[0-2])$" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#PaymentCard> a ns1:ObjectType ;
@@ -1027,11 +1035,11 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> a ns1:SimpleType ;
     dct:title "Date"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> a ns1:SimpleType ;
     dct:title "Date-time"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Identifier> a ns1:ObjectType ;
     dct:description "Specific data that assist in identifying the object"@en ;
@@ -1042,17 +1050,17 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Amount> a ns1:SimpleType ;
     dct:title "Amount"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#numberschema> .
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#numberschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> a ns1:CodeList ;
     dct:title "ResponseStatus"@en .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CurrencyCode> a ns1:SimpleType ;
     dct:title "CurrencyCode"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
     xsd:pattern "[A-Z]{3,3}" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> a ns1:SimpleType ;
     dct:title "String"@en ;
-    xsd:anyURI <https://www.w3.org/2019/wot/json-schema#stringschema> .
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """

@@ -51,6 +51,14 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                     content_type=response.headers.get(hdrs.CONTENT_TYPE),
                     encoding="utf-8-sig",
                 )
+                model.format = "JSON"
+                model.link = urls[0]
+
+                if model.schema:
+                    openapi = model.schema.get("info")
+                    if openapi:
+                        model.title = await openapi.get("title")
+
     except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError) as e:
         logging.error(e)
     except Exception as e:
