@@ -4,6 +4,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <https://fdk-model-publisher.fellesdatakatalog.no> a dcat:Catalog ;
     dct:title "FDK informasjonsmodellkatalog"@nb ;
@@ -13,6 +14,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:identifier "937891245" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> a ns1:InformationModel ;
+    dct:hasFormat <http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> ;
     dct:conformsTo <https://data.norge.no/specification/kontoopplysninger> ;
     dct:description "Open API specification of the Account APIs. (Work in progress.)"@en ;
     dct:publisher <https://fdk-model-publisher.fellesdatakatalog.no#937891245> ;
@@ -23,6 +25,9 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Cards>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Roles>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Transactions> .
+
+<http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Account> a ns1:ObjectType ;
     dct:description "Account: a specification of a clearly defined type of financial events"@en ;

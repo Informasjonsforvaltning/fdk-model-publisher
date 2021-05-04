@@ -5,8 +5,10 @@ circular_dependencies_test_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Catalog>,
@@ -26,6 +28,10 @@ circular_dependencies_test_ttl = """
         <http://uri.com#SkosConcept>,
         <http://uri.com#String>,
         <http://uri.com#Subject> .
+        
+        
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Boolean> a ns1:SimpleType ;
     dct:title "Boolean"@en ;

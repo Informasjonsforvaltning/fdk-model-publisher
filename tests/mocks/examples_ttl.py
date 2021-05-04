@@ -5,11 +5,17 @@ ex_1_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Eiendom> a ns1:ObjectType ;
     dct:title "Eiendom"@en ;
@@ -58,12 +64,17 @@ ex_2_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
         <http://uri.com#EiendomResultat> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#EiendomResultat> a ns1:ObjectType ;
     dct:title "EiendomResultat"@en ;
@@ -140,13 +151,18 @@ ex_3_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
         <http://uri.com#Kommune>,
         <http://uri.com#SÃ¸k> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Date> a ns1:SimpleType ;
     dct:title "Date"@en ;
@@ -266,8 +282,10 @@ ex_4_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Eiendom>,
@@ -275,6 +293,9 @@ ex_4_ttl = """
         <http://uri.com#Kommune>,
         <http://uri.com#KommuneResultat>,
         <http://uri.com#Søk> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Date> a ns1:SimpleType ;
     dct:title "Date"@en ;
@@ -480,13 +501,18 @@ ex_5_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Account>,
         <http://uri.com#AccountStatus>,
         <http://uri.com#FinancialInstitution> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Account> a ns1:ObjectType ;
     dct:description "Account: a specification of a clearly defined type of financial events"@en ;
@@ -537,14 +563,19 @@ ex_6_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/4> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#ObjA>,
         <http://uri.com#ObjC>,
         <http://uri.com#ObjD>,
         <http://uri.com#String> .
+
+<http://uri.com.well-known/skolem/4> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#ObjA> a ns1:ObjectType ;
     dct:description "Root A"@en ;
@@ -600,12 +631,17 @@ ex_7_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Balance>,
         <http://uri.com#BalanceType> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Balance> a ns1:ObjectType ;
     dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
@@ -632,14 +668,19 @@ ex_8_ttl = """
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Amount>,
         <http://uri.com#CounterParty>,
         <http://uri.com#Transaction>,
         <http://uri.com#TransactionReference> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#String> a ns1:SimpleType ;
     dct:title "String"@en ;
@@ -748,12 +789,17 @@ ex_8_ttl = """
 ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://uri.com> a ns1:InformationModel ;
+    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type ns1:physicalModel ;
     ns1:containsModelElement <http://uri.com#Balance>,
         <http://uri.com#String> .
+
+<http://uri.com.well-known/skolem/0> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com#Balance> a ns1:ObjectType ;
     dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
