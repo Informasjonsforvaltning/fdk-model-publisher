@@ -5,15 +5,18 @@ from typing import Any
 from aiohttp import ClientResponse
 from aiohttp.test_utils import TestClient
 from aioresponses import aioresponses
+from fdk_rdf_parser.reference_data.utils import base_url
 import pytest
+from pytest_mock import MockFixture
 from rdflib import Graph
+from rdflib.compare import isomorphic
 
+from .utils import SkolemUtils
 from ..mocks import (
     data_services_catalog_ttl_mock,
     skagerrak_sparebank_json_mock,
     skagerrak_sparebank_ttl_mock,
 )
-
 
 FDK_DATASERVICE_HARVESTER_URL = os.getenv(
     "FDK_DATASERVICE_HARVESTER",
@@ -58,16 +61,32 @@ async def test_set_catalog(
     mock_aio_response: Any,
     mock_set_cache: Any,
     mock_cache_does_not_exist: Any,
+    mocker: MockFixture,
 ) -> Any:
     """Test catalog view."""
+    skolemutils = SkolemUtils(base_url)
+
+    mocker.patch(
+        "modelldcatnotordf.skolemizer.Skolemizer.add_skolemization",
+        side_effect=skolemutils.get_skolemization,
+    )
+
     resp = await cli.get("/catalog")
     assert resp.status == 200
     text = await resp.text()
 
     expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
     actual = Graph().parse(data=text, format="turtle")
-    print(actual.serialize(format="turtle").decode("utf-8"))
-    assert actual.isomorphic(expected)
+
+    _isomorphic = isomorphic(expected, actual)
+
+    if not _isomorphic:
+        print("\nEXPECTED OUTPUT:")
+        print(expected.serialize(format="turtle").decode("utf-8"))
+        print("\nACTUAL OUTPUT:")
+        print(actual.serialize(format="turtle").decode("utf-8"))
+
+    assert _isomorphic
 
 
 #  Server Health
