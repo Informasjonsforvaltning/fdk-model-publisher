@@ -10,3 +10,4 @@ class PartialInformationModel:
 
     endpoint_description: Optional[str] = None
     schema: Optional[Dict] = None
+    format: Optional[str] = None
