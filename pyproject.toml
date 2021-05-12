@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fdk-model-publisher"
-version = "0.1.0"
+version = "0.1.1"
 description = "Transforms models included in dataservice-descriptions to modelldcat-ap-no compliant models and expose the collection"
 authors = ["Nils Ove Tendenes <nils.ove@tendenes.com>"]
 license = "Apache-2.0"
