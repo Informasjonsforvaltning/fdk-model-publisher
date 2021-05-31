@@ -416,7 +416,7 @@ class ModelElementMapper:
             if "minimum" in restrictions:
                 simple_type.min_inclusive = restrictions["minimum"]
             if "maximum" in restrictions:
-                simple_type.min_exclusive = restrictions["maximum"]
+                simple_type.max_inclusive = restrictions["maximum"]
             if "length" in restrictions:
                 simple_type.length = restrictions["length"]
             if "totalDigits" in restrictions:
