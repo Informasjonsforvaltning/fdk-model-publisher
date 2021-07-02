@@ -12,6 +12,7 @@ services:
       - RABBIT_HOST=rabbitmq
       - FDK_DATASERVICE_HARVESTER=https://dataservices.staging.fellesdatakatalog.digdir.no
       - FDK_MODEL_PUBLISHER_URI=https://fdk-model-publisher.fellesdatakatalog.no
+      - FDK_PUBLISHERS_BASE_URI=https://publishers.staging.fellesdatakatalog.digdir.no
     depends_on:
       - fdk-publishers-cache
       - rabbitmq

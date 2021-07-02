@@ -74,7 +74,7 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
     skolemutils = SkolemUtils(base_url)
 
     mocker.patch(
-        "modelldcatnotordf.skolemizer.Skolemizer.add_skolemization",
+        "skolemizer.Skolemizer.add_skolemization",
         side_effect=skolemutils.get_skolemization,
     )
 

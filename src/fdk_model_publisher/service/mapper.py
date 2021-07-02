@@ -1,4 +1,5 @@
 """JSON to TTL mapping."""
+from hashlib import sha1
 import re
 from typing import Dict, List, Optional
 
@@ -11,7 +12,6 @@ from rdflib import Namespace
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.config import Config
 from fdk_model_publisher.mapper.ModelElementMapper import ModelElementMapper
-
 
 model_element_mapper = ModelElementMapper()
 
@@ -62,6 +62,15 @@ def extract_publisher(publisher: Optional[Publisher]) -> Optional[Agent]:
     return None
 
 
+def generate_identifier(endpoint_description: str) -> str:
+    """Generate ID for model."""
+    return (
+        Config.fdk_publishers_base_uri()
+        + "/fdk-model-publisher/catalog/"
+        + sha1(bytes(endpoint_description, encoding="utf-8")).hexdigest() # noqa
+    )
+
+
 def map_model_from_dict(
     partial_model: PartialInformationModel, data_service: DataService
 ) -> Optional[InformationModel]:
@@ -69,22 +78,21 @@ def map_model_from_dict(
     if partial_model.schema is None or partial_model.endpoint_description is None:
         return None
     model = InformationModel()
+    model_identifier = generate_identifier(partial_model.endpoint_description)
     model.modelelements = model_element_mapper.extract_model_items(
-        partial_model.schema, partial_model.endpoint_description
+        partial_model.schema, model_identifier
     )
 
     if partial_model.format == "JSON":
-        foaf_document = FoafDocument()
+        foaf_document = FoafDocument(partial_model.endpoint_description)
         foaf_document.format = (
             "http://publications.europa.eu/resource/authority/file-type/JSON"
         )
-
         foaf_document.title = partial_model.title
-        if partial_model.link:
-            foaf_document.rdfs_see_also = partial_model.link
+
         model.has_format.append(foaf_document)
 
-    model.identifier = partial_model.endpoint_description
+    model.identifier = model_identifier
     model.title = prepend_model(data_service.title)
     model.keyword = data_service.keyword
     model.theme = data_service.theme

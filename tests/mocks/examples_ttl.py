@@ -7,54 +7,54 @@ ex_1_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Eiendom> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> .
 
-<http://uri.com#Eiendom> a modelldcatno:ObjectType ;
-    dct:title "Eiendom"@en ;
-    modelldcatno:hasProperty <http://uri.com/Eiendom#erstatter>,
-        <http://uri.com/Eiendom#erstattetav>,
-        <http://uri.com/Eiendom#id>,
-        <http://uri.com/Eiendom#nummer>,
-        <http://uri.com/Eiendom#type> .
-
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
+<http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
-<http://uri.com/Eiendom#erstatter> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> a modelldcatno:ObjectType ;
+    dct:title "Eiendom"@en ;
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter> a modelldcatno:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#erstattetav> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav> a modelldcatno:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#nummer> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer> a modelldcatno:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
@@ -65,83 +65,83 @@ ex_2_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Eiendom>,
-        <http://uri.com#EiendomResultat> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#EiendomResultat> .
 
-<http://uri.com#EiendomResultat> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#EiendomResultat> a modelldcatno:ObjectType ;
     dct:title "EiendomResultat"@en ;
-    modelldcatno:hasProperty <http://uri.com/EiendomResultat#code>,
-        <http://uri.com/EiendomResultat#data>,
-        <http://uri.com/EiendomResultat#message> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#code>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#data>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#message> .
 
-<http://uri.com#int32> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> a modelldcatno:SimpleType ;
     dct:title "int32"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/Eiendom#erstatter> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter> a modelldcatno:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#erstattetav> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav> a modelldcatno:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#nummer> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer> a modelldcatno:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/EiendomResultat#code> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#int32> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
-<http://uri.com/EiendomResultat#data> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#data> a modelldcatno:Role ;
     dct:title "data"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasObjectType <http://uri.com#Eiendom> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> .
 
-<http://uri.com/EiendomResultat#message> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#message> a modelldcatno:Attribute ;
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#Eiendom> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> a modelldcatno:ObjectType ;
     dct:title "Eiendom"@en ;
-    modelldcatno:hasProperty <http://uri.com/Eiendom#erstatter>,
-        <http://uri.com/Eiendom#erstattetav>,
-        <http://uri.com/Eiendom#id>,
-        <http://uri.com/Eiendom#nummer>,
-        <http://uri.com/Eiendom#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
@@ -152,127 +152,127 @@ ex_3_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Eiendom>,
-        <http://uri.com#Kommune>,
-        <http://uri.com#SÃ¸k> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SÃ¸k> .
 
-<http://uri.com#SÃ¸k> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SÃ¸k> a modelldcatno:ObjectType ;
     dct:title "SÃ¸k"@en ;
-    modelldcatno:hasProperty <http://uri.com/SÃ¸k#code>,
-        <http://uri.com/SÃ¸k#data>,
-        <http://uri.com/SÃ¸k#message> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#code>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#data>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#message> .
 
-<http://uri.com#date> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date> a modelldcatno:SimpleType ;
     dct:title "date"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com#int32> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> a modelldcatno:SimpleType ;
     dct:title "int32"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/Eiendom#erstatter> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter> a modelldcatno:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#erstattetav> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav> a modelldcatno:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#nummer> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer> a modelldcatno:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#fylke> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#fylke> a modelldcatno:Attribute ;
     dct:title "fylke"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#gyldigtil> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#gyldigtil> a modelldcatno:Attribute ;
     dct:title "gyldigtil"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#date> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date> .
 
-<http://uri.com/Kommune#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#navn> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#navn> a modelldcatno:Attribute ;
     dct:title "navn"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/SÃ¸k#code> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#int32> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
-<http://uri.com/SÃ¸k#data> a modelldcatno:Choice ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#data> a modelldcatno:Choice ;
     dct:title "data"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSome <http://uri.com#Eiendom>,
-        <http://uri.com#Kommune> .
+    modelldcatno:hasSome <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> .
 
-<http://uri.com/SÃ¸k#message> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SÃ¸k#message> a modelldcatno:Attribute ;
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#Eiendom> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> a modelldcatno:ObjectType ;
     dct:title "Eiendom"@en ;
-    modelldcatno:hasProperty <http://uri.com/Eiendom#erstatter>,
-        <http://uri.com/Eiendom#erstattetav>,
-        <http://uri.com/Eiendom#id>,
-        <http://uri.com/Eiendom#nummer>,
-        <http://uri.com/Eiendom#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> .
 
-<http://uri.com#Kommune> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> a modelldcatno:ObjectType ;
     dct:title "Kommune"@en ;
-    modelldcatno:hasProperty <http://uri.com/Kommune#fylke>,
-        <http://uri.com/Kommune#gyldigtil>,
-        <http://uri.com/Kommune#id>,
-        <http://uri.com/Kommune#navn>,
-        <http://uri.com/Kommune#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#fylke>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#gyldigtil>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#navn>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#type> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
@@ -283,215 +283,215 @@ ex_4_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Eiendom>,
-        <http://uri.com#EiendomResultat>,
-        <http://uri.com#Kommune>,
-        <http://uri.com#KommuneResultat>,
-        <http://uri.com#Søk> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#EiendomResultat>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#KommuneResultat>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Søk> .
 
-<http://uri.com#EiendomResultat> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#EiendomResultat> a modelldcatno:ObjectType ;
     dct:title "EiendomResultat"@en ;
-    modelldcatno:hasProperty <http://uri.com/EiendomResultat#code>,
-        <http://uri.com/EiendomResultat#data>,
-        <http://uri.com/EiendomResultat#message> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#code>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#data>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#message> .
 
-<http://uri.com#KommuneResultat> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#KommuneResultat> a modelldcatno:ObjectType ;
     dct:title "KommuneResultat"@en ;
-    modelldcatno:hasProperty <http://uri.com/KommuneResultat#code>,
-        <http://uri.com/KommuneResultat#data>,
-        <http://uri.com/KommuneResultat#message> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#code>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#data>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#message> .
 
-<http://uri.com#Søk> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Søk> a modelldcatno:ObjectType ;
     dct:title "Søk"@en ;
-    modelldcatno:hasProperty <http://uri.com/Søk#code>,
-        <http://uri.com/Søk#data>,
-        <http://uri.com/Søk#message> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#code>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#data>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#message> .
 
-<http://uri.com#date> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date> a modelldcatno:SimpleType ;
     dct:title "date"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com#integer> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#integer> a modelldcatno:SimpleType ;
     dct:title "integer"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/Eiendom#erstatter> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter> a modelldcatno:Attribute ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#erstattetav> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav> a modelldcatno:Attribute ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#nummer> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer> a modelldcatno:Attribute ;
     dct:title "nummer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Eiendom#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/EiendomResultat#code> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#int32> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
-<http://uri.com/EiendomResultat#data> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#data> a modelldcatno:Role ;
     dct:title "data"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasObjectType <http://uri.com#Eiendom> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> .
 
-<http://uri.com/EiendomResultat#message> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/EiendomResultat#message> a modelldcatno:Attribute ;
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#fylke> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#fylke> a modelldcatno:Attribute ;
     dct:title "fylke"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#gyldigtil> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#gyldigtil> a modelldcatno:Attribute ;
     dct:title "gyldigtil"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#date> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date> .
 
-<http://uri.com/Kommune#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#navn> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#navn> a modelldcatno:Attribute ;
     dct:title "navn"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/Kommune#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/KommuneResultat#code> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#int32> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
-<http://uri.com/KommuneResultat#data> a modelldcatno:Composition ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#data> a modelldcatno:Composition ;
     dct:title "data"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:contains <http://uri.com/KommuneResultat/data#data> .
+    modelldcatno:contains <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data#data> .
 
-<http://uri.com/KommuneResultat#message> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat#message> a modelldcatno:Attribute ;
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com/KommuneResultat/data#data> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data#data> a modelldcatno:ObjectType ;
     dct:title "data"@en ;
-    modelldcatno:hasProperty <http://uri.com/KommuneResultat/data/data#erstatter>,
-        <http://uri.com/KommuneResultat/data/data#erstattetav>,
-        <http://uri.com/KommuneResultat/data/data#kommune> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#erstatter>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#erstattetav>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#kommune> .
 
-<http://uri.com/KommuneResultat/data/data#erstatter> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#erstatter> a modelldcatno:Role ;
     dct:title "erstatter"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#Kommune> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> .
 
-<http://uri.com/KommuneResultat/data/data#erstattetav> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#erstattetav> a modelldcatno:Role ;
     dct:title "erstattetav"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com/KommuneResultat/data/data/erstattetav#erstattetav> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data/erstattetav#erstattetav> .
 
-<http://uri.com/KommuneResultat/data/data#kommune> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data#kommune> a modelldcatno:Role ;
     dct:title "kommune"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#Kommune> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> .
 
-<http://uri.com/KommuneResultat/data/data/erstattetav#erstattetav> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data/erstattetav#erstattetav> a modelldcatno:ObjectType ;
     dct:title "erstattetav"@en ;
-    modelldcatno:hasProperty <http://uri.com/KommuneResultat/data/data/erstattetav/erstattetav#id> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data/erstattetav/erstattetav#id> .
 
-<http://uri.com/KommuneResultat/data/data/erstattetav/erstattetav#id> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/KommuneResultat/data/data/erstattetav/erstattetav#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#integer> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#integer> .
 
-<http://uri.com/Søk#code> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#int32> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
-<http://uri.com/Søk#data> a modelldcatno:Choice ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#data> a modelldcatno:Choice ;
     dct:title "data"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSome <http://uri.com#Eiendom>,
-        <http://uri.com#Kommune> .
+    modelldcatno:hasSome <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> .
 
-<http://uri.com/Søk#message> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Søk#message> a modelldcatno:Attribute ;
     dct:title "message"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#Eiendom> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Eiendom> a modelldcatno:ObjectType ;
     dct:title "Eiendom"@en ;
-    modelldcatno:hasProperty <http://uri.com/Eiendom#erstatter>,
-        <http://uri.com/Eiendom#erstattetav>,
-        <http://uri.com/Eiendom#id>,
-        <http://uri.com/Eiendom#nummer>,
-        <http://uri.com/Eiendom#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstatter>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#erstattetav>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#nummer>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Eiendom#type> .
 
-<http://uri.com#int32> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> a modelldcatno:SimpleType ;
     dct:title "int32"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#integerschema> .
 
-<http://uri.com#Kommune> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Kommune> a modelldcatno:ObjectType ;
     dct:title "Kommune"@en ;
-    modelldcatno:hasProperty <http://uri.com/Kommune#fylke>,
-        <http://uri.com/Kommune#gyldigtil>,
-        <http://uri.com/Kommune#id>,
-        <http://uri.com/Kommune#navn>,
-        <http://uri.com/Kommune#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#fylke>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#gyldigtil>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#id>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#navn>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Kommune#type> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
@@ -502,60 +502,60 @@ ex_5_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Account>,
-        <http://uri.com#AccountStatus>,
-        <http://uri.com#FinancialInstitution> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Account>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#AccountStatus>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#FinancialInstitution> .
 
-<http://uri.com#Account> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Account> a modelldcatno:ObjectType ;
     dct:description "Account: a specification of a clearly defined type of financial events"@en ;
     dct:title "Account"@en ;
-    modelldcatno:hasProperty <http://uri.com/Account#servicer>,
-        <http://uri.com/Account#status> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Account#servicer>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Account#status> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/Account#servicer> a modelldcatno:Composition ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Account#servicer> a modelldcatno:Composition ;
     dct:description "account administrator: financial institution that manages an account on behalf of the account owner, including handling the registration of account transactions, calculating the account balance and providing information about the account"@en ;
     dct:title "servicer"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:contains <http://uri.com#FinancialInstitution> .
+    modelldcatno:contains <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#FinancialInstitution> .
 
-<http://uri.com/Account#status> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Account#status> a modelldcatno:Attribute ;
     dct:title "status"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> ;
-    modelldcatno:hasValueFrom <http://uri.com#AccountStatus> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> ;
+    modelldcatno:hasValueFrom <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#AccountStatus> .
 
-<http://uri.com/FinancialInstitution#name> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/FinancialInstitution#name> a modelldcatno:Attribute ;
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com/FinancialInstitution/name#name> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/FinancialInstitution/name#name> .
 
-<http://uri.com/FinancialInstitution/name#name> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/FinancialInstitution/name#name> a modelldcatno:SimpleType ;
     dct:title "name"@en ;
     xsd:maxLength 140 ;
     xsd:minLength 1 ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com#AccountStatus> a modelldcatno:CodeList ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#AccountStatus> a modelldcatno:CodeList ;
     dct:title "AccountStatus"@en .
 
-<http://uri.com#FinancialInstitution> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#FinancialInstitution> a modelldcatno:ObjectType ;
     dct:description "financial institution: Business or other institution involved in finance and banking"@en ;
     dct:title "FinancialInstitution"@en ;
-    modelldcatno:hasProperty <http://uri.com/FinancialInstitution#name> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/FinancialInstitution#name> .
 """
 
 ex_6_ttl = """
@@ -564,64 +564,64 @@ ex_6_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/4> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#ObjA>,
-        <http://uri.com#ObjC>,
-        <http://uri.com#ObjD>,
-        <http://uri.com#string> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjA>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjC>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjD>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#ObjA> a modelldcatno:ObjectType ;
-    dct:description "Root A"@en ;
-    dct:title "ObjA"@en ;
-    modelldcatno:hasProperty <http://uri.com/ObjA#objB> .
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
 <http://uri.com.well-known/skolem/0> a modelldcatno:Role ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#ObjC> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjC> .
 
 <http://uri.com.well-known/skolem/1> a modelldcatno:Role ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#ObjD> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjD> .
 
 <http://uri.com.well-known/skolem/2> a modelldcatno:Attribute ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <http://uri.com.well-known/skolem/3> a modelldcatno:Attribute ;
     dct:description "test f"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com.well-known/skolem/4> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjA> a modelldcatno:ObjectType ;
+    dct:description "Root A"@en ;
+    dct:title "ObjA"@en ;
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ObjA#objB> .
 
-<http://uri.com/ObjA#objB> a modelldcatno:Composition ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ObjA#objB> a modelldcatno:Composition ;
     dct:description "b thing"@en ;
     dct:title "objB"@en ;
-    modelldcatno:contains <http://uri.com/ObjA/objB#objB> .
+    modelldcatno:contains <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ObjA/objB#objB> .
 
-<http://uri.com/ObjA/objB#objB> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ObjA/objB#objB> a modelldcatno:ObjectType ;
     modelldcatno:hasProperty <http://uri.com.well-known/skolem/0>,
         <http://uri.com.well-known/skolem/1>,
         <http://uri.com.well-known/skolem/2>,
         <http://uri.com.well-known/skolem/3> .
 
-<http://uri.com#ObjC> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjC> a modelldcatno:ObjectType ;
     dct:description "test c"@en ;
     dct:title "ObjC"@en .
 
-<http://uri.com#ObjD> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ObjD> a modelldcatno:ObjectType ;
     dct:description "test d"@en ;
     dct:title "ObjD"@en .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
@@ -632,33 +632,33 @@ ex_7_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Balance>,
-        <http://uri.com#BalanceType> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Balance>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#BalanceType> .
 
-<http://uri.com#Balance> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Balance> a modelldcatno:ObjectType ;
     dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
     dct:title "Balance"@en ;
-    modelldcatno:hasProperty <http://uri.com/Balance#type> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#type> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/Balance#type> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> ;
-    modelldcatno:hasValueFrom <http://uri.com#BalanceType> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> ;
+    modelldcatno:hasValueFrom <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#BalanceType> .
 
-<http://uri.com#BalanceType> a modelldcatno:CodeList ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#BalanceType> a modelldcatno:CodeList ;
     dct:description "Balance type"@en ;
     dct:title "BalanceType"@en .
 """
@@ -669,120 +669,120 @@ ex_8_ttl = """
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Amount>,
-        <http://uri.com#CounterParty>,
-        <http://uri.com#Transaction>,
-        <http://uri.com#TransactionReference> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Amount>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#CounterParty>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Transaction>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#TransactionReference> .
 
-<http://uri.com#Transaction> a modelldcatno:ObjectType ;
+<http://uri.com> a foaf:Document ;
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Transaction> a modelldcatno:ObjectType ;
     dct:description "Transaction: any posting on an account"@en ;
     dct:title "Transaction"@en ;
-    modelldcatno:hasProperty <http://uri.com/Transaction#additionalInfo>,
-        <http://uri.com/Transaction#amount>,
-        <http://uri.com/Transaction#counterParties>,
-        <http://uri.com/Transaction#merchant>,
-        <http://uri.com/Transaction#references>,
-        <http://uri.com/Transaction#transactionIdentifier> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#additionalInfo>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#amount>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#counterParties>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#merchant>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#references>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#transactionIdentifier> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
-
-<http://uri.com/CounterParty#name> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/CounterParty#name> a modelldcatno:Attribute ;
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com/CounterParty/name#name> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/CounterParty/name#name> .
 
-<http://uri.com/CounterParty/name#name> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/CounterParty/name#name> a modelldcatno:SimpleType ;
     dct:title "name"@en ;
     xsd:maxLength 140 ;
     xsd:minLength 1 ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com/Transaction#additionalInfo> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#additionalInfo> a modelldcatno:Attribute ;
     dct:description "'Additional information on a transaction: textual description of the contents of a transaction'"@en ;
     dct:title "additionalInfo"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com/Transaction/additionalInfo#additionalInfo> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/additionalInfo#additionalInfo> .
 
-<http://uri.com/Transaction#amount> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#amount> a modelldcatno:Attribute ;
     dct:title "amount"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#Amount> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Amount> .
 
-<http://uri.com/Transaction#counterParties> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#counterParties> a modelldcatno:Role ;
     dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
     dct:title "counterParties"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#CounterParty> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#CounterParty> .
 
-<http://uri.com/Transaction#merchant> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#merchant> a modelldcatno:Attribute ;
     dct:description "User location: the physical location of the transaction"@en ;
     dct:title "merchant"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com/Transaction/merchant#merchant> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/merchant#merchant> .
 
-<http://uri.com/Transaction#references> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#references> a modelldcatno:Role ;
     dct:description "Transaction reference: unique reference associated with the transaction"@en ;
     dct:title "references"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasObjectType <http://uri.com#TransactionReference> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#TransactionReference> .
 
-<http://uri.com/Transaction#transactionIdentifier> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction#transactionIdentifier> a modelldcatno:Attribute ;
     dct:description "Transaction Identifier: The identifier for the transaction"@en ;
     dct:title "transactionIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com/Transaction/transactionIdentifier#transactionIdentifier> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/transactionIdentifier#transactionIdentifier> .
 
-<http://uri.com/Transaction/additionalInfo#additionalInfo> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/additionalInfo#additionalInfo> a modelldcatno:SimpleType ;
     dct:title "additionalInfo"@en ;
     xsd:maxLength 500 ;
     xsd:minLength 1 ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com/Transaction/merchant#merchant> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/merchant#merchant> a modelldcatno:SimpleType ;
     dct:title "merchant"@en ;
     xsd:maxLength 140 ;
     xsd:minLength 1 ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com/Transaction/transactionIdentifier#transactionIdentifier> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Transaction/transactionIdentifier#transactionIdentifier> a modelldcatno:SimpleType ;
     dct:title "transactionIdentifier"@en ;
     xsd:maxLength 35 ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<http://uri.com/TransactionReference#value> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/TransactionReference#value> a modelldcatno:Attribute ;
     dct:title "value"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#Amount> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Amount> a modelldcatno:SimpleType ;
     dct:title "Amount"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#numberschema> .
 
-<http://uri.com#CounterParty> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#CounterParty> a modelldcatno:ObjectType ;
     dct:description "Counterparty: the party to which a transaction goes to or comes from"@en ;
     dct:title "CounterParty"@en ;
-    modelldcatno:hasProperty <http://uri.com/CounterParty#name> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/CounterParty#name> .
 
-<http://uri.com#TransactionReference> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#TransactionReference> a modelldcatno:ObjectType ;
     dct:title "TransactionReference"@en ;
-    modelldcatno:hasProperty <http://uri.com/TransactionReference#value> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/TransactionReference#value> .
 """
 
 ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
@@ -790,37 +790,37 @@ ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://uri.com> a modelldcatno:InformationModel ;
-    dct:hasFormat <http://uri.com.well-known/skolem/0> ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5> a modelldcatno:InformationModel ;
+    dct:hasFormat <http://uri.com> ;
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
-    modelldcatno:containsModelElement <http://uri.com#Balance>,
-        <http://uri.com#string> .
+    modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Balance>,
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#Balance> a modelldcatno:ObjectType ;
-    dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
-    dct:title "Balance"@en ;
-    modelldcatno:hasProperty <http://uri.com/Balance#validCurrencies> .
-
-<http://uri.com.well-known/skolem/0> a foaf:Document ;
+<http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
 
-<http://uri.com/Balance#validCurrencies> a modelldcatno:Role ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Balance> a modelldcatno:ObjectType ;
+    dct:description "Balance: Sum of deposits and loans in the financial account"@en ;
+    dct:title "Balance"@en ;
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#validCurrencies> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#validCurrencies> a modelldcatno:Role ;
     dct:title "validCurrencies"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "1" ;
-    modelldcatno:hasObjectType <http://uri.com/Balance#validCurrenciesArray> .
+    modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#validCurrenciesArray> .
 
-<http://uri.com/Balance#validCurrenciesArray> a modelldcatno:ObjectType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance#validCurrenciesArray> a modelldcatno:ObjectType ;
     dct:title "validCurrenciesArray"@en ;
-    modelldcatno:hasProperty <http://uri.com/Balance/validCurrencies#items> .
+    modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance/validCurrencies#items> .
 
-<http://uri.com/Balance/validCurrencies#items> a modelldcatno:Attribute ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Balance/validCurrencies#items> a modelldcatno:Attribute ;
     dct:title "items"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <http://uri.com#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
-<http://uri.com#string> a modelldcatno:SimpleType ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ."""
