@@ -8,8 +8,9 @@ T = TypeVar("T", bound="Config")
 class Config:
     """Configuration class."""
 
-    _FDK_DATA_SERVICE_HARVESTER_URI: Optional[str] = None
-    _FDK_MODEL_PUBLISHER_URI: Optional[str] = None
+    _FDK_DATA_SERVICE_HARVESTER_URI: str = ""
+    _FDK_MODEL_PUBLISHER_URI: str = ""
+    _FDK_PUBLISHERS_BASE_URI: str = ""
 
     _CACHE_PASSWORD: Optional[str] = os.getenv("CACHE_PASSWORD", None)
 
@@ -36,9 +37,9 @@ class Config:
         return cls._RABBITMQ["exchange"]
 
     @classmethod
-    def fdk_dataservice_harvester_url(cls: Type[T]) -> Optional[str]:
+    def fdk_dataservice_harvester_url(cls: Type[T]) -> str:
         """Harvest URL."""
-        if cls._FDK_DATA_SERVICE_HARVESTER_URI is None:
+        if cls._FDK_DATA_SERVICE_HARVESTER_URI == "":
             cls._FDK_DATA_SERVICE_HARVESTER_URI = os.getenv(
                 "FDK_DATASERVICE_HARVESTER_URI",
                 "https://dataservices.staging.fellesdatakatalog.digdir.no",
@@ -46,9 +47,19 @@ class Config:
         return cls._FDK_DATA_SERVICE_HARVESTER_URI
 
     @classmethod
-    def fdk_model_publisher_uri(cls: Type[T]) -> Optional[str]:
+    def fdk_publishers_base_uri(cls: Type[T]) -> str:
         """Model publisher URI."""
-        if cls._FDK_MODEL_PUBLISHER_URI is None:
+        if cls._FDK_PUBLISHERS_BASE_URI == "":
+            cls._FDK_PUBLISHERS_BASE_URI = os.getenv(
+                "FDK_PUBLISHERS_BASE_URI",
+                "https://publishers.staging.fellesdatakatalog.digdir.no",
+            )
+        return cls._FDK_PUBLISHERS_BASE_URI
+
+    @classmethod
+    def fdk_model_publisher_uri(cls: Type[T]) -> str:
+        """Model publisher URI."""
+        if cls._FDK_MODEL_PUBLISHER_URI == "":
             cls._FDK_MODEL_PUBLISHER_URI = os.getenv(
                 "FDK_MODEL_PUBLISHER_URI",
                 "https://fdk-model-publisher.fellesdatakatalog.no",
