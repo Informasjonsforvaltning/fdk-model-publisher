@@ -2,6 +2,7 @@
 import asyncio
 import gc
 import logging
+import traceback
 from typing import Any, Dict, List, Set, Tuple
 
 import aiohttp
@@ -59,10 +60,10 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                     if openapi:
                         model.title = await openapi.get("title")
 
-    except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError) as e:
-        logging.error(e)
-    except Exception as e:
-        logging.error(f"unknown error:{e}")
+    except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError):
+        logging.error(traceback.format_exc())
+    except Exception:
+        logging.error(traceback.format_exc())
     return model
 
 

@@ -34,6 +34,7 @@ class StackdriverJsonFormatter(jsonlogger.JsonFormatter, object):
     def process_log_record(self, log_record):  # noqa
         log_record["severity"] = log_record["levelname"]
         del log_record["levelname"]
+        log_record["serviceContext"] = {"service": "fdk-model-publisher"}
         return super(StackdriverJsonFormatter, self).process_log_record(log_record)
 
 
