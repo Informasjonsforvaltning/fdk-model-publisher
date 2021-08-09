@@ -3,34 +3,19 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix ns1: <https://data.norge.no/vocabulary/modelldcatno#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://fdk-model-publisher.fellesdatakatalog.no> a dcat:Catalog ;
     dct:title "FDK informasjonsmodellkatalog"@nb ;
     ns1:model <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> .
 
-<https://fdk-model-publisher.fellesdatakatalog.no#937891245> a foaf:Agent ;
-    dct:identifier "937891245" .
-
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> a ns1:InformationModel ;
-    dct:hasFormat <http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> ;
-    dct:conformsTo <https://data.norge.no/specification/kontoopplysninger> ;
-    dct:description "Open API specification of the Account APIs. (Work in progress.)"@en ;
-    dct:publisher <https://fdk-model-publisher.fellesdatakatalog.no#937891245> ;
-    dct:title "Information Model - Accounts API Skagerrak Sparebank"@en ;
-    dct:type ns1:physicalModel ;
-    ns1:containsModelElement <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetails>,
-        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Accounts>,
-        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Cards>,
-        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Roles>,
-        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Transactions> .
-
 <http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType ;
     rdfs:seeAlso <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> .
+
+<https://fdk-model-publisher.fellesdatakatalog.no#937891245> a foaf:Agent ;
+    dct:identifier "937891245" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Account> a ns1:ObjectType ;
     dct:description "Account: a specification of a clearly defined type of financial events"@en ;
@@ -203,13 +188,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#accountReference> a ns1:Attribute ;
     dct:title "accountReference"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#currency> a ns1:Attribute ;
     dct:title "currency"@en ;
@@ -228,7 +213,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account/name#Name> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account/name#name> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#primaryOwner> a ns1:Role ;
     dct:title "primaryOwner"@en ;
@@ -247,33 +232,33 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "status"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account/name#Name> a ns1:SimpleType ;
-    dct:title "Name"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Account/name#name> a ns1:SimpleType ;
+    dct:title "name"@en ;
     xsd:maxLength 70 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#accountIdentifier> a ns1:Attribute ;
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#accountReference> a ns1:Attribute ;
     dct:title "accountReference"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#balances> a ns1:Role ;
     dct:title "balances"@en ;
@@ -291,13 +276,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "endDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#name> a ns1:Attribute ;
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail/name#Name> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail/name#name> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#primaryOwner> a ns1:Role ;
     dct:title "primaryOwner"@en ;
@@ -316,27 +301,27 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "startDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#status> a ns1:Attribute ;
     dct:title "status"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail/name#Name> a ns1:SimpleType ;
-    dct:title "Name"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetail/name#name> a ns1:SimpleType ;
+    dct:title "name"@en ;
     xsd:maxLength 70 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountDetails#account> a ns1:Composition ;
     dct:title "account"@en ;
@@ -348,7 +333,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "responseStatus"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole#electronicAddresses> a ns1:Role ;
@@ -361,7 +346,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "endDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole#identifier> a ns1:Role ;
     dct:title "identifier"@en ;
@@ -373,13 +358,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole/name#Name> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole/name#name> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole#permission> a ns1:Attribute ;
     dct:title "permission"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountPermissionType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole#postalAddress> a ns1:Role ;
@@ -392,13 +377,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "startDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole/name#Name> a ns1:SimpleType ;
-    dct:title "Name"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/AccountRole/name#name> a ns1:SimpleType ;
+    dct:title "name"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Accounts#accounts> a ns1:Role ;
     dct:title "accounts"@en ;
@@ -417,7 +402,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "responseStatus"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Balance#amount> a ns1:Attribute ;
@@ -430,7 +415,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "creditDebitIndicator"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CreditOrDebit> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Balance#creditLineAmount> a ns1:Attribute ;
@@ -449,7 +434,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "creditLineIncluded"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Boolean> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#boolean> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Balance#currency> a ns1:Attribute ;
     dct:title "currency"@en ;
@@ -461,47 +446,47 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "registered"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date-time> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Balance#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#BalanceType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode#domain> a ns1:Attribute ;
     dct:title "domain"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#DomainType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode#family> a ns1:Attribute ;
     dct:title "family"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#FamilyType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode#freeText> a ns1:Attribute ;
     dct:title "freeText"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode/freeText#FreeText> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode/freeText#freeText> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode#subFamily> a ns1:Attribute ;
     dct:title "subFamily"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#SubFamilyType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode/freeText#FreeText> a ns1:SimpleType ;
-    dct:title "FreeText"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/BankTransactionCode/freeText#freeText> a ns1:SimpleType ;
+    dct:title "freeText"@en ;
     xsd:maxLength 500 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Cards#paymentCards> a ns1:Role ;
     dct:description "Debit Cards: is the common term for various types of cards used for cash withdrawals and for payment of goods and services at different point of sales"@en ;
@@ -514,14 +499,14 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "responseStatus"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty#accountIdentifier> a ns1:Attribute ;
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty#identifier> a ns1:Role ;
     dct:title "identifier"@en ;
@@ -533,7 +518,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty/name#Name> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty/name#name> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty#postalAddress> a ns1:Role ;
     dct:title "postalAddress"@en ;
@@ -545,14 +530,14 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CounterPartyType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty/name#Name> a ns1:SimpleType ;
-    dct:title "Name"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CounterParty/name#name> a ns1:SimpleType ;
+    dct:title "name"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/CurrencyExchange#exchangeRate> a ns1:Attribute ;
     dct:title "exchangeRate"@en ;
@@ -588,20 +573,20 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ElectronicAddressType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress#value> a ns1:Attribute ;
     dct:title "value"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress/value#Value> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress/value#value> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress/value#Value> a ns1:SimpleType ;
-    dct:title "Value"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/ElectronicAddress/value#value> a ns1:SimpleType ;
+    dct:title "value"@en ;
     xsd:maxLength 2048 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution#identifier> a ns1:Role ;
     dct:title "identifier"@en ;
@@ -613,13 +598,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "name"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution/name#Name> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution/name#name> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution/name#Name> a ns1:SimpleType ;
-    dct:title "Name"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/FinancialInstitution/name#name> a ns1:SimpleType ;
+    dct:title "name"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Identifier#countryOfResidence> a ns1:Attribute ;
     dct:title "countryOfResidence"@en ;
@@ -631,44 +616,44 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#IdentifierType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Identifier#value> a ns1:Attribute ;
     dct:title "value"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link#href> a ns1:Attribute ;
     dct:title "href"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/href#Href> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/href#href> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link#rel> a ns1:Attribute ;
     dct:title "rel"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/rel#Rel> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/rel#rel> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/href#Href> a ns1:SimpleType ;
-    dct:title "Href"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/href#href> a ns1:SimpleType ;
+    dct:title "href"@en ;
     xsd:maxLength 500 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/rel#Rel> a ns1:SimpleType ;
-    dct:title "Rel"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link/rel#rel> a ns1:SimpleType ;
+    dct:title "rel"@en ;
     xsd:maxLength 50 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard#cardIdentifier> a ns1:Attribute ;
     dct:title "cardIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard#cardIssuerIdentifier> a ns1:Role ;
     dct:title "cardIssuerIdentifier"@en ;
@@ -681,7 +666,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "cardIssuerName"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/cardIssuerName#CardIssuerName> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/cardIssuerName#cardIssuerName> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard#expiryDate> a ns1:Attribute ;
     dct:title "expiryDate"@en ;
@@ -694,7 +679,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "holderName"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/holderName#HolderName> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/holderName#holderName> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard#startDate> a ns1:Attribute ;
     dct:title "startDate"@en ;
@@ -706,32 +691,32 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CardType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/cardIssuerName#CardIssuerName> a ns1:SimpleType ;
-    dct:title "CardIssuerName"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/cardIssuerName#cardIssuerName> a ns1:SimpleType ;
+    dct:title "cardIssuerName"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/holderName#HolderName> a ns1:SimpleType ;
-    dct:title "HolderName"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PaymentCard/holderName#holderName> a ns1:SimpleType ;
+    dct:title "holderName"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#addressLines> a ns1:Attribute ;
     dct:title "addressLines"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/addressLines#AddressLines> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/addressLines#addressLines> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#buildingNumber> a ns1:Attribute ;
     dct:title "buildingNumber"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/buildingNumber#BuildingNumber> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/buildingNumber#buildingNumber> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#country> a ns1:Attribute ;
     dct:title "country"@en ;
@@ -744,62 +729,62 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "postCode"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/postCode#PostCode> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/postCode#postCode> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#streetName> a ns1:Attribute ;
     dct:title "streetName"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/streetName#StreetName> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/streetName#streetName> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#townName> a ns1:Attribute ;
     dct:title "townName"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/townName#TownName> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/townName#townName> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AddressType> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/addressLines#AddressLines> a ns1:SimpleType ;
-    dct:title "AddressLines"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/addressLines#addressLines> a ns1:SimpleType ;
+    dct:title "addressLines"@en ;
     xsd:maxLength 70 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/buildingNumber#BuildingNumber> a ns1:SimpleType ;
-    dct:title "BuildingNumber"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/buildingNumber#buildingNumber> a ns1:SimpleType ;
+    dct:title "buildingNumber"@en ;
     xsd:maxLength 16 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/postCode#PostCode> a ns1:SimpleType ;
-    dct:title "PostCode"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/postCode#postCode> a ns1:SimpleType ;
+    dct:title "postCode"@en ;
     xsd:maxLength 16 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/streetName#StreetName> a ns1:SimpleType ;
-    dct:title "StreetName"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/streetName#streetName> a ns1:SimpleType ;
+    dct:title "streetName"@en ;
     xsd:maxLength 70 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/townName#TownName> a ns1:SimpleType ;
-    dct:title "TownName"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress/townName#townName> a ns1:SimpleType ;
+    dct:title "townName"@en ;
     xsd:maxLength 35 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Roles#responseStatus> a ns1:Attribute ;
     dct:title "responseStatus"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Roles#roles> a ns1:Role ;
@@ -813,7 +798,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "additionalInfo"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/additionalInfo#AdditionalInfo> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/additionalInfo#additionalInfo> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#amount> a ns1:Attribute ;
     dct:title "amount"@en ;
@@ -825,7 +810,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "bookingDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date-time> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#counterParties> a ns1:Role ;
     dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
@@ -838,7 +823,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "creditDebitIndicator"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CreditOrDebit> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#currency> a ns1:Attribute ;
@@ -859,7 +844,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "merchant"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/merchant#Merchant> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/merchant#merchant> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#paymentCard> a ns1:Composition ;
     dct:description "Payment Cards: The common term for various types of cards used for cash withdrawals and for the payment of goods and services at different point of sales"@en ;
@@ -879,19 +864,19 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "registered"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date-time> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#reversalIndicator> a ns1:Attribute ;
     dct:title "reversalIndicator"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Boolean> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#boolean> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#status> a ns1:Attribute ;
     dct:title "status"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#TransactionStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#transactionCode> a ns1:Composition ;
@@ -906,43 +891,43 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "transactionIdentifier"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/transactionIdentifier#TransactionIdentifier> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/transactionIdentifier#transactionIdentifier> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction#valueDate> a ns1:Attribute ;
     dct:title "valueDate"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date-time> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/additionalInfo#AdditionalInfo> a ns1:SimpleType ;
-    dct:title "AdditionalInfo"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/additionalInfo#additionalInfo> a ns1:SimpleType ;
+    dct:title "additionalInfo"@en ;
     xsd:maxLength 500 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/merchant#Merchant> a ns1:SimpleType ;
-    dct:title "Merchant"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/merchant#merchant> a ns1:SimpleType ;
+    dct:title "merchant"@en ;
     xsd:maxLength 140 ;
-    xsd:minLength 1 .
+    xsd:minLength 1 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/transactionIdentifier#TransactionIdentifier> a ns1:SimpleType ;
-    dct:title "TransactionIdentifier"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-    xsd:maxLength 35 .
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transaction/transactionIdentifier#transactionIdentifier> a ns1:SimpleType ;
+    dct:title "transactionIdentifier"@en ;
+    xsd:maxLength 35 ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/TransactionReference#type> a ns1:Attribute ;
     dct:title "type"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#TransactionReferenceType> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/TransactionReference#value> a ns1:Attribute ;
     dct:title "value"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> .
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transactions#links> a ns1:Role ;
     dct:description "pagination: support division of response for large result sets. The following values should be used: next - For the next page in the transaction set (must be used unless this is the last page), last - indicates the last page of the transaction set. The absence of the next link is interpreted as this being the last page. prev - can be used to specify the previous page. The URL in the links should be relative. "@en ;
@@ -955,7 +940,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "responseStatus"@en ;
     xsd:maxOccurs "1" ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> ;
+    ns1:hasSimpleType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> ;
     ns1:hasValueFrom <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ResponseStatus> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Transactions#transactions> a ns1:Role ;
@@ -965,6 +950,19 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     xsd:minOccurs "0" ;
     ns1:hasObjectType <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Transaction> .
 
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> a ns1:InformationModel ;
+    dct:conformsTo <https://data.norge.no/specification/kontoopplysninger> ;
+    dct:description "Open API specification of the Account APIs. (Work in progress.)"@en ;
+    dct:hasFormat <http://staging.fellesdatakatalog.digdir.no/reference-data.well-known/skolem/0> ;
+    dct:publisher <https://fdk-model-publisher.fellesdatakatalog.no#937891245> ;
+    dct:title "Information Model - Accounts API Skagerrak Sparebank"@en ;
+    dct:type ns1:physicalModel ;
+    ns1:containsModelElement <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountDetails>,
+        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Accounts>,
+        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Cards>,
+        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Roles>,
+        <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Transactions> .
+
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountStatus> a ns1:CodeList ;
     dct:title "AccountStatus"@en .
 
@@ -972,14 +970,10 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:description "Account type"@en ;
     dct:title "AccountType"@en .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Boolean> a ns1:SimpleType ;
-    dct:title "Boolean"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#booleanschema> .
-
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CountryCode> a ns1:SimpleType ;
     dct:title "CountryCode"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-    xsd:pattern "[A-Z]{2,2}" .
+    xsd:pattern "[A-Z]{2,2}" ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CreditOrDebit> a ns1:CodeList ;
     dct:title "CreditOrDebit"@en .
@@ -992,8 +986,8 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#ISOYearMonth> a ns1:SimpleType ;
     dct:title "ISOYearMonth"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-    xsd:pattern "^[0-9]+-([0][1-9]|1[0-2])$" .
+    xsd:pattern "^[0-9]+-([0][1-9]|1[0-2])$" ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#PaymentCard> a ns1:ObjectType ;
     dct:description "debit card: Common term for various types of cards used for cash withdrawals and for payment of goods and services on various point of sales"@en ;
@@ -1017,6 +1011,10 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#townName>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/PostalAddress#type> .
 
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#boolean> a ns1:SimpleType ;
+    dct:title "boolean"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#booleanschema> .
+
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#AccountRole> a ns1:ObjectType ;
     dct:description "Account role: indicates owner or manager of account"@en ;
     dct:title "AccountRole"@en ;
@@ -1033,20 +1031,20 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     ns1:hasProperty <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link#href>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Link#rel> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date> a ns1:SimpleType ;
-    dct:title "Date"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
-
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Date-time> a ns1:SimpleType ;
-    dct:title "Date-time"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
-
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Identifier> a ns1:ObjectType ;
     dct:description "Specific data that assist in identifying the object"@en ;
     dct:title "Identifier"@en ;
     ns1:hasProperty <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Identifier#countryOfResidence>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Identifier#type>,
         <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json/Identifier#value> .
+
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date> a ns1:SimpleType ;
+    dct:title "date"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#date-time> a ns1:SimpleType ;
+    dct:title "date-time"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#Amount> a ns1:SimpleType ;
     dct:title "Amount"@en ;
@@ -1057,10 +1055,10 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#CurrencyCode> a ns1:SimpleType ;
     dct:title "CurrencyCode"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ;
-    xsd:pattern "[A-Z]{3,3}" .
+    xsd:pattern "[A-Z]{3,3}" ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#String> a ns1:SimpleType ;
-    dct:title "String"@en ;
+<https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json#string> a ns1:SimpleType ;
+    dct:title "string"@en ;
     ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """
