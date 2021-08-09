@@ -22,7 +22,6 @@ from fdk_model_publisher.mapper.utils import (
     extract_simple_type_restrictions,
     extract_type,
     extract_type_property,
-    first_upper,
     is_simple_type,
     nested_get,
     should_map,
@@ -99,20 +98,14 @@ class ModelElementMapper:
         element_type = extract_type(
             properties, self.__endpoint_description, is_property
         )
-        item_title = (
-            first_upper(title)
-            if element_type in ["codeList", "object"]
-            or is_simple_type(properties, is_property)
-            else title
-        )
-        extended_path = deepcopy(path) + [item_title] if item_title else []
+        extended_path = deepcopy(path) + [title] if title else []
         path_string = "/".join(extended_path)
 
         if path_string and path_string in self.__elements:
             return URI(self.__elements[path_string])
         elif should_map(title, properties, is_property):
             element = self.create_element(
-                item_title, properties, extended_path, element_type, is_property
+                title, properties, extended_path, element_type, is_property
             )
             return element
         else:
@@ -228,7 +221,7 @@ class ModelElementMapper:
 
         object_type = ObjectType()
         object_type.identifier = self.create_model_identifier(
-            first_upper(title), extended_path if is_property else path
+            title, extended_path if is_property else path
         )
         object_type.has_property = []
 
@@ -388,23 +381,20 @@ class ModelElementMapper:
             return None
 
         if "format" in properties:
-            format_title = first_upper(properties.get("format"))
-            simple_type.title = {"en": format_title}
+            simple_type.title = {"en": properties.get("format")}
             simple_type.identifier = self.create_model_identifier(
-                format_title, type_path
+                properties.get("format"), type_path
             )
 
         elif title and len(restrictions.keys()) > 0:
-            simple_title = first_upper(title)
-            simple_type.title = {"en": simple_title}
-            simple_type.identifier = self.create_model_identifier(
-                simple_title, type_path
-            )
+            simple_type.title = {"en": title}
+            simple_type.identifier = self.create_model_identifier(title, type_path)
 
         elif type_prop:
-            type_title = first_upper(properties.get("type"))
-            simple_type.title = {"en": type_title}
-            simple_type.identifier = self.create_model_identifier(type_title, type_path)
+            simple_type.title = {"en": properties.get("type")}
+            simple_type.identifier = self.create_model_identifier(
+                properties.get("type"), type_path
+            )
 
         if restrictions:
             if "minLength" in restrictions:
@@ -489,7 +479,7 @@ class ModelElementMapper:
         elif isinstance(array, Role) and item_type == "array":
             sub_array_title = title + "Array" if title else title
             array.has_object_type = self.create_object_type(
-                first_upper(sub_array_title),
+                sub_array_title,
                 {"properties": {"items": items}},
                 path,
             )

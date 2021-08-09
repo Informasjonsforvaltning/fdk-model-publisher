@@ -104,14 +104,6 @@ def extract_type_property(properties: dict) -> Optional[str]:
     return nested_get(properties, *["schema", "type"])
 
 
-def first_upper(title: Optional[str]) -> Optional[str]:
-    """Shorthand function for capitalizing first letter in title if title exists."""
-    if title:
-        return title[0].upper() + title[1:]
-    else:
-        return None
-
-
 def should_map(title: Optional[str], properties: dict, is_property: bool) -> bool:
     """Shorthand function for determining whether an item should be mapped."""
     return (
