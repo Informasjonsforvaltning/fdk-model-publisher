@@ -12,8 +12,8 @@ Transforms models included in dataservice-descriptions to modelldcat-ap-no compl
 ```
 % git clone https://github.com/Informasjonsforvaltning/fdk-model-publisher.git
 % cd fdk-model-publisher
-% pyenv install 3.9.0
-% pyenv local 3.9.0
+% pyenv install 3.8.6
+% pyenv local 3.8.6
 % pip install poetry==1.1.3
 % pip install nox==2020.12.31
 % pip install nox-poetry==0.8.4
