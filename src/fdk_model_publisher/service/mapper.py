@@ -67,7 +67,7 @@ def generate_identifier(endpoint_description: str) -> str:
     return (
         Config.fdk_publishers_base_uri()
         + "/fdk-model-publisher/catalog/"
-        + sha1(bytes(endpoint_description, encoding="utf-8")).hexdigest() # noqa
+        + sha1(bytes(endpoint_description, encoding="utf-8")).hexdigest()  # noqa
     )
 
 
