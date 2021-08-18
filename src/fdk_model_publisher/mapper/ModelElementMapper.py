@@ -403,9 +403,9 @@ class ModelElementMapper:
                 simple_type.max_length = restrictions["maxLength"]
             if "pattern" in restrictions:
                 simple_type.pattern = restrictions["pattern"]
-            if "minimum" in restrictions:
+            if "minimum" in restrictions and not restrictions.get("exclusiveMinimum", False):
                 simple_type.min_inclusive = restrictions["minimum"]
-            if "maximum" in restrictions:
+            if "maximum" in restrictions and not restrictions.get("exclusiveMaximum", False): 
                 simple_type.max_inclusive = restrictions["maximum"]
             if "length" in restrictions:
                 simple_type.length = restrictions["length"]

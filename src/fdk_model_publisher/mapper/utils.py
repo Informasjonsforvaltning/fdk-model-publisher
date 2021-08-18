@@ -75,6 +75,8 @@ def extract_simple_type_restrictions(properties: dict) -> dict:
         "length",
         "totalDigits",
         "fractionDigits",
+        "exclusiveMinimum",
+        "exclusiveMaximum"
     ]
 
     for key in keys:
