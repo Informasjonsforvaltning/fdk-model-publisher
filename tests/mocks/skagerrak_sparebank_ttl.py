@@ -13,7 +13,8 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:identifier "937891245" .
 
 <https://mockurl.com/Skagerrak_Sparebank_937891245_Accounts-API.json> a foaf:Document ;
-    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
+    dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType ;
+    dct:title "Accounts API Skagerrak Sparebank" .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/fc1326201eb8f4e7ea074270e62119d938e1fee8> a ns1:InformationModel ;
     dct:conformsTo <https://data.norge.no/specification/kontoopplysninger> ;

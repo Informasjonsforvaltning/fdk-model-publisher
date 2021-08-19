@@ -88,19 +88,24 @@ def map_model_from_dict(
         foaf_document.format = (
             "http://publications.europa.eu/resource/authority/file-type/JSON"
         )
-        foaf_document.title = partial_model.title
+        foaf_document.title = (
+            {None: partial_model.title} if partial_model.title else None
+        )
 
         model.has_format.append(foaf_document)
 
     model.identifier = model_identifier
     model.title = prepend_model(data_service.title)
-    model.keyword = data_service.keyword
+    model.keyword = data_service.keyword[0] if data_service.keyword else None
     model.theme = data_service.theme
     model.description = data_service.description
     model.publisher = extract_publisher(data_service.publisher)
     model.landing_page = data_service.landingPage
     model.language = data_service.language
-    model.access_rights = data_service.accessRights if data_service.accessRights else ""
+    try:
+        model.access_rights = data_service.accessRights.uri
+    except (NameError, AttributeError):
+        pass
     model.conformsTo = (
         [resource.uri for resource in data_service.conformsTo]
         if data_service.conformsTo

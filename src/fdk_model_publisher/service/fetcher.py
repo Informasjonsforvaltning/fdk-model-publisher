@@ -58,9 +58,13 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                 if model.schema:
                     openapi = model.schema.get("info")
                     if openapi:
-                        model.title = await openapi.get("title")
+                        model.title = openapi.get("title")
 
-    except (aiohttp.ClientConnectionError, aiohttp.ContentTypeError):
+    except (
+        aiohttp.ClientConnectionError,
+        aiohttp.ContentTypeError,
+        aiohttp.ClientResponseError,
+    ):
         logging.error(traceback.format_exc())
     except Exception:
         logging.error(traceback.format_exc())
