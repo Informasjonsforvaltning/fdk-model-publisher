@@ -59,13 +59,15 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                     openapi = model.schema.get("info")
                     if openapi:
                         model.title = openapi.get("title")
+    except aiohttp.ContentTypeError as e:
+        logging.error(f"{traceback.format_exc()}: Wrong content type for {urls[0]}:{e}")
 
     except (
         aiohttp.ClientConnectionError,
-        aiohttp.ContentTypeError,
         aiohttp.ClientResponseError,
-    ):
-        logging.error(traceback.format_exc())
+    ) as e:
+        logging.error(f"{traceback.format_exc()}: Error connecting to {urls[0]}:{e}")
+
     except Exception:
         logging.error(traceback.format_exc())
     return model
