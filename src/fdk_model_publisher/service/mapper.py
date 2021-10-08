@@ -83,16 +83,16 @@ def map_model_from_dict(
         partial_model.schema, model_identifier
     )
 
+    foaf_document = FoafDocument(partial_model.endpoint_description)
+    foaf_document.title = (
+        {None: partial_model.title} if partial_model.title else None
+    )
     if partial_model.format == "JSON":
-        foaf_document = FoafDocument(partial_model.endpoint_description)
         foaf_document.format = (
             "http://publications.europa.eu/resource/authority/file-type/JSON"
         )
-        foaf_document.title = (
-            {None: partial_model.title} if partial_model.title else None
-        )
 
-        model.has_format.append(foaf_document)
+    model.has_format.append(foaf_document)
 
     model.identifier = model_identifier
     model.title = prepend_model(data_service.title)
