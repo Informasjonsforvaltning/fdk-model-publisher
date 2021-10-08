@@ -84,9 +84,7 @@ def map_model_from_dict(
     )
 
     foaf_document = FoafDocument(partial_model.endpoint_description)
-    foaf_document.title = (
-        {None: partial_model.title} if partial_model.title else None
-    )
+    foaf_document.title = {None: partial_model.title} if partial_model.title else None
     if partial_model.format == "JSON":
         foaf_document.format = (
             "http://publications.europa.eu/resource/authority/file-type/JSON"
