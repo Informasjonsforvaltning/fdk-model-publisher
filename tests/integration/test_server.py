@@ -11,7 +11,7 @@ from pytest_mock import MockFixture
 from rdflib import Graph
 from rdflib.compare import isomorphic
 
-from .utils import SkolemUtils
+from .utils import _dump_diff, SkolemUtils
 from ..mocks import (
     data_services_catalog_ttl_mock,
     skagerrak_sparebank_json_mock,
@@ -81,11 +81,8 @@ async def test_set_catalog(
     _isomorphic = isomorphic(expected, actual)
 
     if not _isomorphic:
-        print("\nEXPECTED OUTPUT:")
-        print(expected.serialize(format="turtle").decode("utf-8"))
-        print("\nACTUAL OUTPUT:")
-        print(actual.serialize(format="turtle").decode("utf-8"))
-
+        _dump_diff(expected, actual)
+        pass
     assert _isomorphic
 
 

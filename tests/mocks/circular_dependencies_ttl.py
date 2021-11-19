@@ -52,37 +52,37 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#description> a modelldcatno:Attribute ;
     dct:title "description"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#issued> a modelldcatno:Attribute ;
     dct:title "issued"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#language> a modelldcatno:Attribute ;
     dct:title "language"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#modified> a modelldcatno:Attribute ;
     dct:title "modified"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#publisher> a modelldcatno:Role ;
     dct:title "publisher"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Publisher> .
 
@@ -94,139 +94,139 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#title> a modelldcatno:Attribute ;
     dct:title "title"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Catalog#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ConceptSchema#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ConceptSchema#title> a modelldcatno:Attribute ;
     dct:title "title"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ConceptSchema#versioninfo> a modelldcatno:Attribute ;
     dct:title "versioninfo"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/ConceptSchema#versionnumber> a modelldcatno:Attribute ;
     dct:title "versionnumber"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#email> a modelldcatno:Attribute ;
     dct:title "email"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#fullname> a modelldcatno:Attribute ;
     dct:title "fullname"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#hasTelephone> a modelldcatno:Attribute ;
     dct:title "hasTelephone"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#hasURL> a modelldcatno:Attribute ;
     dct:title "hasURL"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#organizationName> a modelldcatno:Attribute ;
     dct:title "organizationName"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#organizationUnit> a modelldcatno:Attribute ;
     dct:title "organizationUnit"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Contact#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#conceptSchema> a modelldcatno:Role ;
     dct:title "conceptSchema"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#ConceptSchema> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#numberOfHits> a modelldcatno:Attribute ;
     dct:title "numberOfHits"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#int32> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#pickedDate> a modelldcatno:Attribute ;
     dct:title "pickedDate"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#startUse> a modelldcatno:Attribute ;
     dct:title "startUse"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#title> a modelldcatno:Attribute ;
     dct:title "title"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/DataTheme#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#accessRights> a modelldcatno:Role ;
     dct:title "accessRights"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosCode> .
 
@@ -238,7 +238,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#accrualPeriodicity> a modelldcatno:Role ;
     dct:title "accrualPeriodicity"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosCode> .
 
@@ -250,7 +250,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#catalog> a modelldcatno:Role ;
     dct:title "catalog"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Catalog> .
 
@@ -268,13 +268,13 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#description> a modelldcatno:Attribute ;
     dct:title "description"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#descriptionFormatted> a modelldcatno:Attribute ;
     dct:title "descriptionFormatted"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -286,43 +286,43 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#harvest> a modelldcatno:Role ;
     dct:title "harvest"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#HarvestMetadata> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#hasAccuracyAnnotation> a modelldcatno:Role ;
     dct:title "hasAccuracyAnnotation"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#QualityAnnotation> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#hasAvailabilityAnnotation> a modelldcatno:Role ;
     dct:title "hasAvailabilityAnnotation"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#QualityAnnotation> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#hasCompletenessAnnotation> a modelldcatno:Role ;
     dct:title "hasCompletenessAnnotation"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#QualityAnnotation> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#hasCurrentnessAnnotation> a modelldcatno:Role ;
     dct:title "hasCurrentnessAnnotation"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#QualityAnnotation> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#hasRelevanceAnnotation> a modelldcatno:Role ;
     dct:title "hasRelevanceAnnotation"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#QualityAnnotation> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -340,7 +340,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#issued> a modelldcatno:Attribute ;
     dct:title "issued"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
@@ -382,13 +382,13 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#modified> a modelldcatno:Attribute ;
     dct:title "modified"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#objective> a modelldcatno:Attribute ;
     dct:title "objective"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -400,19 +400,19 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#provenance> a modelldcatno:Role ;
     dct:title "provenance"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosCode> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#provenanceSort> a modelldcatno:Attribute ;
     dct:title "provenanceSort"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#publisher> a modelldcatno:Role ;
     dct:title "publisher"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Publisher> .
 
@@ -430,7 +430,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#source> a modelldcatno:Attribute ;
     dct:title "source"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -460,19 +460,19 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#title> a modelldcatno:Attribute ;
     dct:title "title"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Dataset#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -490,7 +490,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#description> a modelldcatno:Attribute ;
     dct:title "description"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -508,19 +508,19 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#license> a modelldcatno:Role ;
     dct:title "license"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosConcept> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#openLicense> a modelldcatno:Attribute ;
     dct:title "openLicense"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#boolean> .
 
@@ -532,19 +532,19 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#title> a modelldcatno:Attribute ;
     dct:title "title"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#type> a modelldcatno:Attribute ;
     dct:title "type"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Distribution#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -556,19 +556,19 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/HarvestMetadata#firstHarvested> a modelldcatno:Attribute ;
     dct:title "firstHarvested"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/HarvestMetadata#lastChanged> a modelldcatno:Attribute ;
     dct:title "lastChanged"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/HarvestMetadata#lastHarvested> a modelldcatno:Attribute ;
     dct:title "lastHarvested"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
@@ -580,49 +580,49 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PeriodOfTime#endDate> a modelldcatno:Attribute ;
     dct:title "endDate"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PeriodOfTime#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PeriodOfTime#name> a modelldcatno:Attribute ;
     dct:title "name"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PeriodOfTime#startDate> a modelldcatno:Attribute ;
     dct:title "startDate"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#date-time> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Publisher#id> a modelldcatno:Attribute ;
     dct:title "id"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Publisher#name> a modelldcatno:Attribute ;
     dct:title "name"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Publisher#orgPath> a modelldcatno:Attribute ;
     dct:title "orgPath"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Publisher#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -634,79 +634,79 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PublisherHit#name> a modelldcatno:Attribute ;
     dct:title "name"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/PublisherHit#orgPath> a modelldcatno:Attribute ;
     dct:title "orgPath"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/QualityAnnotation#hasBody> a modelldcatno:Attribute ;
     dct:title "hasBody"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/QualityAnnotation#inDimension> a modelldcatno:Attribute ;
     dct:title "inDimension"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/QualityAnnotation#motivatedBy> a modelldcatno:Attribute ;
     dct:title "motivatedBy"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Reference#referenceType> a modelldcatno:Role ;
     dct:title "referenceType"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosCode> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Reference#source> a modelldcatno:Role ;
     dct:title "source"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#SkosConcept> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosCode#code> a modelldcatno:Attribute ;
     dct:title "code"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosCode#prefLabel> a modelldcatno:Attribute ;
     dct:title "prefLabel"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosCode#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosConcept#extraType> a modelldcatno:Attribute ;
     dct:title "extraType"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosConcept#prefLabel> a modelldcatno:Attribute ;
     dct:title "prefLabel"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/SkosConcept#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -718,7 +718,7 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#creator> a modelldcatno:Role ;
     dct:title "creator"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasObjectType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#Publisher> .
 
@@ -730,13 +730,13 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#definition> a modelldcatno:Attribute ;
     dct:title "definition"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#identifier> a modelldcatno:Attribute ;
     dct:title "identifier"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
@@ -748,25 +748,25 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#note> a modelldcatno:Attribute ;
     dct:title "note"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#prefLabel> a modelldcatno:Attribute ;
     dct:title "prefLabel"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#source> a modelldcatno:Attribute ;
     dct:title "source"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5/Subject#uri> a modelldcatno:Attribute ;
     dct:title "uri"@en ;
-    xsd:maxOccurs "1" ;
+    xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
     modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/e3a031fe644565af181e1049ab3e99754ddc60d5#string> .
 
