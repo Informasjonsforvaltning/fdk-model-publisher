@@ -8,7 +8,7 @@ from rdflib import Graph
 
 from fdk_model_publisher.api.models import PartialInformationModel
 from fdk_model_publisher.service.mapper import map_model_from_dict
-from tests.integration.utils import prepare_model, SkolemUtils
+from tests.integration.utils import _dump_diff, prepare_model, SkolemUtils
 from tests.mocks.circular_dependencies_json import circular_dependencies_test_json
 from tests.mocks.circular_dependencies_ttl import circular_dependencies_test_ttl
 from tests.mocks.examples_json import (
@@ -55,10 +55,9 @@ def verify_model_from_json(
         if isomorphic:
             return True
         else:
-            print("\nEXPECTED OUTPUT:")
-            print(expected.serialize(format="turtle").decode("utf-8"))
-            print("\nACTUAL OUTPUT:")
-            print(actual.serialize(format="turtle").decode("utf-8"))
+            _dump_diff(expected, actual)
+            pass
+
             return False
     print("\nCOULD NOT MAP MODEL")
     return False
