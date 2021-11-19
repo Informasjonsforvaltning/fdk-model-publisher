@@ -48,10 +48,7 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
             if response.url.raw_path.endswith(".yaml"):
                 model.schema = yaml.safe_load(await response.read())
             else:
-                model.schema = await response.json(
-                    content_type=response.headers.get(hdrs.CONTENT_TYPE),
-                    encoding="utf-8-sig",
-                )
+                model.schema = await response.json()
                 model.format = "JSON"
                 model.link = urls[0]
 

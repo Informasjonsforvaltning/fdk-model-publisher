@@ -1,4 +1,5 @@
 """Integration test cases for the ping route."""
+import json
 import os
 from typing import Any
 
@@ -14,7 +15,6 @@ from rdflib.compare import isomorphic
 from .utils import _dump_diff, SkolemUtils
 from ..mocks import (
     data_services_catalog_ttl_mock,
-    skagerrak_sparebank_json_mock,
     skagerrak_sparebank_ttl_mock,
 )
 
@@ -29,6 +29,9 @@ MOCK_URL = "https://mockurl.com"
 @pytest.fixture
 def mock_aio_response() -> Any:
     """Mock aio response."""
+    with open("./tests/mocks/skagerrak_sparebank.json") as json_file:
+        skagerrak_sparebank_json_mock = json.load(json_file)
+
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
         m.add(
             url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs?catalogrecords=true",
@@ -36,7 +39,7 @@ def mock_aio_response() -> Any:
         )
         m.add(
             url=f"{MOCK_URL}/Skagerrak_Sparebank_937891245_Accounts-API.json",
-            body=skagerrak_sparebank_json_mock,
+            payload=skagerrak_sparebank_json_mock,
         )
         yield m
 
