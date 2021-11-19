@@ -3,7 +3,7 @@ import json
 import os
 from typing import Any
 
-from aiohttp import ClientResponse
+from aiohttp import ClientResponse, hdrs
 from aiohttp.test_utils import TestClient
 from aioresponses import aioresponses
 from fdk_rdf_parser.reference_data.utils import base_url
@@ -40,6 +40,7 @@ def mock_aio_response() -> Any:
         m.add(
             url=f"{MOCK_URL}/Skagerrak_Sparebank_937891245_Accounts-API.json",
             payload=skagerrak_sparebank_json_mock,
+            headers={hdrs.CONTENT_TYPE: "application/json;charset=utf-8"},
         )
         yield m
 
