@@ -48,7 +48,13 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
             if response.url.raw_path.endswith(".yaml"):
                 model.schema = yaml.safe_load(await response.read())
             else:
-                model.schema = await response.json()
+                if "text/plain" in response.headers[hdrs.CONTENT_TYPE]:
+                    model.schema = await response.json(
+                        content_type=response.headers.get(hdrs.CONTENT_TYPE),
+                        encoding="utf-8",
+                    )
+                else:
+                    model.schema = await response.json()
                 model.format = "JSON"
                 model.link = urls[0]
 
@@ -56,6 +62,7 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                     openapi = model.schema.get("info")
                     if openapi:
                         model.title = openapi.get("title")
+
     except aiohttp.ContentTypeError as e:
         logging.error(f"{traceback.format_exc()}: Wrong content type for {urls[0]}:{e}")
 

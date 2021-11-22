@@ -60,6 +60,36 @@ async def test_get_catalog(
 
 
 @pytest.mark.integration
+async def test_get_catalog_text_plain(
+    cli: TestClient,
+    mock_set_cache: Any,
+    mock_cache_does_not_exist: Any,
+    mocker: MockFixture,
+) -> Any:
+    """Get catalog test."""
+    with open("./tests/mocks/skagerrak_sparebank_json.text") as text_file:
+        skagerrak_sparebank_json_mock = text_file.read()
+
+    with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
+        m.add(
+            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs?catalogrecords=true",
+            body=data_services_catalog_ttl_mock,
+        )
+        m.add(
+            url=f"{MOCK_URL}/Skagerrak_Sparebank_937891245_Accounts-API.json",
+            body=skagerrak_sparebank_json_mock,
+            headers={hdrs.CONTENT_TYPE: "text/plain; charset=utf-8"},
+        )
+        resp = await cli.get("/catalog")
+        assert resp.status == 200
+        text = await resp.text()
+
+        expected = Graph().parse(data=skagerrak_sparebank_ttl_mock, format="turtle")
+        actual = Graph().parse(data=text, format="turtle")
+        assert actual.isomorphic(expected)
+
+
+@pytest.mark.integration
 async def test_set_catalog(
     cli: TestClient,
     mock_aio_response: Any,
