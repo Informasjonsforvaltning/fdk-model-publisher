@@ -16,9 +16,17 @@ async def create_app() -> web.Application:
     app.on_cleanup.append(rabbit.close)
     app.on_cleanup.append(fetcher.sync_rdf_catalog_cleanup)
     setup_routes(app)
+
+    # logging configurataion:
+    logging.basicConfig(
+        format="%(asctime)s,%(msecs)d %(levelname)s - %(module)s:%(lineno)d: %(message)s",
+        datefmt="%H:%M:%S",
+        level=logging.INFO,
+    )
+    logging.getLogger("chardet.charsetprober").setLevel(logging.INFO)
+
     return app
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     web.run_app(create_app())
