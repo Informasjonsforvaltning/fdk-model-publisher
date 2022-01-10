@@ -23,6 +23,7 @@ from tests.mocks.examples_json import (
     ex_9_json,
 )
 from tests.mocks.examples_ttl import (
+    ex_10_ttl,
     ex_1_ttl,
     ex_2_ttl,
     ex_3_ttl,
@@ -67,8 +68,11 @@ def verify_model_from_json(
 def test_map_models_from_dict(mocker: MockFixture) -> None:
     """Assert that models are isomorphic to example."""
     base_url = "http://uri.com"
+    ds_uri = "http://ds-uri.com"
     ds = DataService(
-        title={"nb": "datatjeneste eksempler"}, endpointDescription={base_url}
+        title={"nb": "datatjeneste eksempler"},
+        endpointDescription={base_url},
+        uri=ds_uri,
     )
     skolemutils = SkolemUtils(base_url)
 
@@ -119,6 +123,17 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
 
     assert verify_model_from_json(ex_9_json, ex_9_ttl, ds)
     print("Model 9 passed.")
+
+    skolemutils.reset_counter()
+
+    ds_2 = DataService(
+        title=ds.title,
+        endpointDescription=ds.endpointDescription,
+        uri="http://other-ds-uri.com",
+    )
+
+    assert verify_model_from_json(ex_9_json, ex_10_ttl, ds_2)
+    print("\nModel 10 passed.")
 
     skolemutils.reset_counter()
 
