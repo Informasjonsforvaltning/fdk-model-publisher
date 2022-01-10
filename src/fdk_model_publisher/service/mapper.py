@@ -62,12 +62,12 @@ def extract_publisher(publisher: Optional[Publisher]) -> Optional[Agent]:
     return None
 
 
-def generate_identifier(endpoint_description: str) -> str:
+def generate_identifier(sha1_input: str) -> str:
     """Generate ID for model."""
     return (
         Config.fdk_publishers_base_uri()
         + "/fdk-model-publisher/catalog/"
-        + sha1(bytes(endpoint_description, encoding="utf-8")).hexdigest()  # noqa
+        + sha1(bytes(sha1_input, encoding="utf-8")).hexdigest()  # noqa
     )
 
 
@@ -78,7 +78,9 @@ def map_model_from_dict(
     if partial_model.schema is None or partial_model.endpoint_description is None:
         return None
     model = InformationModel()
-    model_identifier = generate_identifier(partial_model.endpoint_description)
+    model_identifier = generate_identifier(
+        f"{data_service.uri} {partial_model.endpoint_description}"
+    )
     model.modelelements = model_element_mapper.extract_model_items(
         partial_model.schema, model_identifier
     )
