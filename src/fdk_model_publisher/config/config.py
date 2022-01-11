@@ -8,7 +8,7 @@ T = TypeVar("T", bound="Config")
 class Config:
     """Configuration class."""
 
-    _FDK_DATA_SERVICE_HARVESTER_URI: str = ""
+    _FDK_REASONING_SERVICE_HOST: str = ""
     _FDK_MODEL_PUBLISHER_URI: str = ""
     _FDK_PUBLISHERS_BASE_URI: str = ""
 
@@ -37,14 +37,14 @@ class Config:
         return cls._RABBITMQ["exchange"]
 
     @classmethod
-    def fdk_dataservice_harvester_url(cls: Type[T]) -> str:
-        """Harvest URL."""
-        if cls._FDK_DATA_SERVICE_HARVESTER_URI == "":
-            cls._FDK_DATA_SERVICE_HARVESTER_URI = os.getenv(
-                "FDK_DATASERVICE_HARVESTER_URI",
-                "https://dataservices.staging.fellesdatakatalog.digdir.no",
+    def fdk_reasoning_service_url(cls: Type[T]) -> str:
+        """Reasoning service URL."""
+        if cls._FDK_REASONING_SERVICE_HOST == "":
+            cls._FDK_REASONING_SERVICE_HOST = os.getenv(
+                "FDK_REASONING_SERVICE_HOST",
+                "https://staging.fellesdatakatalog.digdir.no/reasoning",
             )
-        return cls._FDK_DATA_SERVICE_HARVESTER_URI
+        return cls._FDK_REASONING_SERVICE_HOST
 
     @classmethod
     def fdk_publishers_base_uri(cls: Type[T]) -> str:
