@@ -18,9 +18,9 @@ from ..mocks import (
     skagerrak_sparebank_ttl_mock,
 )
 
-FDK_DATASERVICE_HARVESTER_URL = os.getenv(
-    "FDK_DATASERVICE_HARVESTER",
-    "https://dataservices.staging.fellesdatakatalog.digdir.no",
+FDK_REASONING_SERVICE_HOST = os.getenv(
+    "FDK_REASONING_SERVICE_HOST",
+    "https://staging.fellesdatakatalog.digdir.no/reasoning",
 )
 
 MOCK_URL = "https://mockurl.com"
@@ -34,7 +34,7 @@ def mock_aio_response() -> Any:
 
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
         m.add(
-            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs?catalogrecords=true",
+            url=f"{FDK_REASONING_SERVICE_HOST}/data-services",
             body=data_services_catalog_ttl_mock,
         )
         m.add(
@@ -72,7 +72,7 @@ async def test_get_catalog_text_plain(
 
     with aioresponses(passthrough=["http://127.0.0.1:"]) as m:
         m.add(
-            url=f"{FDK_DATASERVICE_HARVESTER_URL}/catalogs?catalogrecords=true",
+            url=f"{FDK_REASONING_SERVICE_HOST}/data-services",
             body=data_services_catalog_ttl_mock,
         )
         m.add(

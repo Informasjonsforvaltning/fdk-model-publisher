@@ -75,9 +75,7 @@ async def listen(app: web.Application) -> None:
     # Declaring anonymous queue
     queue = await channel.declare_queue(durable=False, exclusive=True, auto_delete=True)
 
-    await queue.bind(
-        topic_harvests_exchange, routing_key="dataservice.*.HarvestTrigger"
-    )
+    await queue.bind(topic_harvests_exchange, routing_key="dataservices.reasoned")
 
     # Start listening
     app["rabbit"] = {
