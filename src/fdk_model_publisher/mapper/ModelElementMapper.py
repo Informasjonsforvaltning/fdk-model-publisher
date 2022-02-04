@@ -31,10 +31,10 @@ from fdk_model_publisher.mapper.utils import (
 class ModelElementMapper:
     """Model Element mapper class."""
 
-    __endpoint_description: Dict
-    __root_model: Dict
-    __elements: Dict
-    __uri: str
+    __endpoint_description: Dict = {}
+    __root_model: Dict = {}
+    __elements: Dict = {}
+    __uri: Optional[str] = None
 
     def __setup(self, endpoint_description: Dict, uri: str) -> None:
         """Set up necessary variables for mapper."""

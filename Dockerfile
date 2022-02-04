@@ -22,4 +22,4 @@ ENV PYTHONUNBUFFERED 1
 
 EXPOSE 8080
 
-CMD gunicorn --chdir src "fdk_model_publisher:create_app" --config=src/fdk_model_publisher/gunicorn_config.py --worker-class aiohttp.GunicornWebWorker
+CMD gunicorn --chdir src "fdk_model_publisher:create_app" --config=src/fdk_model_publisher/gunicorn_config.py --worker-class aiohttp.GunicornWebWorker --timeout 1800
