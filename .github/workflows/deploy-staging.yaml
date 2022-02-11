@@ -10,7 +10,7 @@ jobs:
   build-and-deploy-staging:
     name: Call reusable workflow when pull request is created
     if: github.event.pull_request.draft == false
-    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy-maven.yaml@nox-deploy
+    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy-nox.yaml@nox-deploy
     with:
       app_name: catalog-comments-service
       caller_sha: ${{ github.sha }}
