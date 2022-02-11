@@ -10,9 +10,9 @@ jobs:
   build-and-deploy-staging:
     name: Call reusable workflow when pull request is created
     if: github.event.pull_request.draft == false
-    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy-nox.yaml@chore/hos/nox-deploy
+    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy-nox.yaml@main
     with:
-      app_name: catalog-comments-service
+      app_name: fdk-model-publisher
       caller_sha: ${{ github.sha }}
       repo: ${{ github.repository }}
       actor: ${{ github.actor }}
