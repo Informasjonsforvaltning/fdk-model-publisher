@@ -405,7 +405,7 @@ pipenv = ["pipenv"]
 
 [[package]]
 name = "fdk-rdf-parser"
-version = "2.0.1"
+version = "2.0.5"
 description = ""
 category = "main"
 optional = false
@@ -1189,7 +1189,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "d4bac752c6ed7d5d3a2c7242e75a5f4ba897e29c56cf8f0d052d8c205f6255a4"
+content-hash = "8526521241a8ad20ab94b4ffa60f57324dc174b5c03f08fc4af457972c310f2a"
 
 [metadata.files]
 aio-pika = [
@@ -1307,10 +1307,13 @@ bandit = [
     {file = "bandit-1.7.2.tar.gz", hash = "sha256:6d11adea0214a43813887bfe71a377b5a9955e4c826c8ffd341b494e3ab25260"},
 ]
 bcrypt = [
+    {file = "bcrypt-3.2.0-cp36-abi3-macosx_10_10_universal2.whl", hash = "sha256:b589229207630484aefe5899122fb938a5b017b0f4349f769b8c13e78d99a8fd"},
     {file = "bcrypt-3.2.0-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:c95d4cbebffafcdd28bd28bb4e25b31c50f6da605c81ffd9ad8a3d1b2ab7b1b6"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux1_x86_64.whl", hash = "sha256:63d4e3ff96188e5898779b6057878fecf3f11cfe6ec3b313ea09955d587ec7a7"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux2010_x86_64.whl", hash = "sha256:cd1ea2ff3038509ea95f687256c46b79f5fc382ad0aa3664d200047546d511d1"},
     {file = "bcrypt-3.2.0-cp36-abi3-manylinux2014_aarch64.whl", hash = "sha256:cdcdcb3972027f83fe24a48b1e90ea4b584d35f1cc279d76de6fc4b13376239d"},
+    {file = "bcrypt-3.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:a0584a92329210fcd75eb8a3250c5a941633f8bfaf2a18f81009b097732839b7"},
+    {file = "bcrypt-3.2.0-cp36-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:56e5da069a76470679f312a7d3d23deb3ac4519991a0361abc11da837087b61d"},
     {file = "bcrypt-3.2.0-cp36-abi3-win32.whl", hash = "sha256:a67fb841b35c28a59cebed05fbd3e80eea26e6d75851f0574a9273c80f3e9b55"},
     {file = "bcrypt-3.2.0-cp36-abi3-win_amd64.whl", hash = "sha256:81fec756feff5b6818ea7ab031205e1d323d8943d237303baca2c5f9c7846f34"},
     {file = "bcrypt-3.2.0.tar.gz", hash = "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"},
@@ -1486,8 +1489,8 @@ dparse = [
     {file = "dparse-0.5.1.tar.gz", hash = "sha256:a1b5f169102e1c894f9a7d5ccf6f9402a836a5d24be80a986c7ce9eaed78f367"},
 ]
 fdk-rdf-parser = [
-    {file = "fdk-rdf-parser-2.0.1.tar.gz", hash = "sha256:83d148e61033056aa17afd6208334f3a6173a3f7ab88155705b7b8654dd7cb62"},
-    {file = "fdk_rdf_parser-2.0.1-py3-none-any.whl", hash = "sha256:27b18b49c1ba445f5164d18a4e8db36b9ed3d486922111c4a900556005c2d7f9"},
+    {file = "fdk-rdf-parser-2.0.5.tar.gz", hash = "sha256:1327fcc7df8a0ec89ee26881b7afb0338349d0a32d2590328b8e22c4d0e1e341"},
+    {file = "fdk_rdf_parser-2.0.5-py3-none-any.whl", hash = "sha256:38292cbf9e19c4c275bc3f3fcff937ec3fdfaa9a62d9b437bd206825fe93256f"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
