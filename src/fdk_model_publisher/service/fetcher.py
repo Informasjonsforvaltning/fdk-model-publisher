@@ -24,6 +24,7 @@ from .cache import (
 from .mapper import create_catalog, map_model_from_dict
 
 MAXIMUM_FILE_DESCRIPTORS = 10
+TIMEOUT_SECONDS = 5
 
 
 async def fetch_dataservice_catalog() -> str:
@@ -63,6 +64,9 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
                     if openapi:
                         model.title = openapi.get("title")
 
+    except asyncio.TimeoutError:
+        logging.error(f"{traceback.format_exc()}: Timed out connecting to {urls[0]}")
+
     except aiohttp.ContentTypeError as e:
         logging.error(f"{traceback.format_exc()}: Wrong content type for {urls[0]}:{e}")
 
@@ -93,8 +97,10 @@ async def parallel_fetch_and_map(data_services: List[DataService]) -> Any:
 
     # maximum number of concurrent requests
     semaphore = asyncio.Semaphore(MAXIMUM_FILE_DESCRIPTORS)
-
-    async with ClientSession(headers={hdrs.ACCEPT: "application/json"}) as session:
+    timeout = aiohttp.ClientTimeout(total=TIMEOUT_SECONDS)
+    async with ClientSession(
+        headers={hdrs.ACCEPT: "application/json"}, timeout=timeout
+    ) as session:
         for data_service in data_services:
             task = asyncio.create_task(
                 fetch_with_sem(semaphore, session, data_service),
