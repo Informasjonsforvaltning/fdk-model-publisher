@@ -115,7 +115,7 @@ async def test_set_catalog(
     _isomorphic = isomorphic(expected, actual)
 
     if not _isomorphic:
-        _dump_diff(expected, actual)
+        _dump_diff(expected, actual, None)
         pass
     assert _isomorphic
 

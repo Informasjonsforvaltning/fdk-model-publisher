@@ -93,6 +93,7 @@ class ModelElementMapper:
         properties: Dict,
         path: List[str],
         is_property: bool = False,
+        is_refed: bool = False,
     ) -> Optional[Union[ModelElement, ModelProperty, URI]]:
         """Create model items (Elements and Properties) and references."""
         element_type = extract_type(
@@ -104,10 +105,9 @@ class ModelElementMapper:
         if path_string and path_string in self.__elements:
             return URI(self.__elements[path_string])
         elif should_map(title, properties, is_property):
-            element = self.create_element(
-                title, properties, extended_path, element_type, is_property
+            return self.create_element(
+                title, properties, extended_path, element_type, is_property, is_refed
             )
-            return element
         else:
             return None
 
@@ -118,6 +118,7 @@ class ModelElementMapper:
         path: List[str],
         element_type: str,
         is_property: bool,
+        is_refed: bool,
     ) -> Optional[Union[ModelElement, ModelProperty]]:
         """Model Element creators."""
         if element_type == "allOf":
@@ -127,7 +128,7 @@ class ModelElementMapper:
         elif element_type == "object":
             return self.create_object_type(title, properties, path)
         elif is_simple_type(properties, is_property):
-            return self.create_simple_type(title, properties, path)
+            return self.create_simple_type(title, properties, path, is_refed)
 
         """Model Property creators."""
         if element_type == "array":
@@ -351,6 +352,7 @@ class ModelElementMapper:
         title: Optional[str],
         properties: dict,
         path: List[str],
+        is_refed: bool,
     ) -> Optional[SimpleType]:
         """Create simple type."""
         restrictions = extract_simple_type_restrictions(properties)
@@ -359,37 +361,26 @@ class ModelElementMapper:
 
         simple_type = SimpleType()
 
-        if type_prop == "string":
-            simple_type.type_definition_reference = (
-                "https://www.w3.org/2019/wot/json-schema#stringschema"
-            )
-
-        elif type_prop == "boolean":
-            simple_type.type_definition_reference = (
-                "https://www.w3.org/2019/wot/json-schema#booleanschema"
-            )
-        elif type_prop == "number":
-            simple_type.type_definition_reference = (
-                "https://www.w3.org/2019/wot/json-schema#numberschema"
-            )
-
-        elif type_prop in {"int32", "integer"}:
-            simple_type.type_definition_reference = (
-                "https://www.w3.org/2019/wot/json-schema#integerschema"
-            )
+        type_definitions = {
+            "string": "https://www.w3.org/2019/wot/json-schema#stringschema",
+            "boolean": "https://www.w3.org/2019/wot/json-schema#booleanschema",
+            "number": "https://www.w3.org/2019/wot/json-schema#numberschema",
+            "int32": "https://www.w3.org/2019/wot/json-schema#integerschema",
+            "integer": "https://www.w3.org/2019/wot/json-schema#integerschema",
+        }
+        if type_prop in type_definitions:
+            simple_type.type_definition_reference = type_definitions[type_prop]
         else:
             return None
 
-        if "format" in properties:
+        if (len(restrictions.keys()) > 0 or is_refed) and title:
+            simple_type.title = {"en": title}
+            simple_type.identifier = self.create_model_identifier(title, type_path)
+        elif "format" in properties:
             simple_type.title = {"en": properties.get("format")}
             simple_type.identifier = self.create_model_identifier(
                 properties.get("format"), type_path
             )
-
-        elif title and len(restrictions.keys()) > 0:
-            simple_type.title = {"en": title}
-            simple_type.identifier = self.create_model_identifier(title, type_path)
-
         elif type_prop:
             simple_type.title = {"en": properties.get("type")}
             simple_type.identifier = self.create_model_identifier(
