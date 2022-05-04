@@ -571,7 +571,7 @@ ex_6_ttl = """
     modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjA>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjC>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjD>,
-        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjE> .
 
 <http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
@@ -589,7 +589,7 @@ ex_6_ttl = """
 <http://uri.com.well-known/skolem/2> a modelldcatno:Attribute ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjE> .
 
 <http://uri.com.well-known/skolem/3> a modelldcatno:Attribute ;
     dct:description "test f"@en ;
@@ -620,6 +620,10 @@ ex_6_ttl = """
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjD> a modelldcatno:ObjectType ;
     dct:description "test d"@en ;
     dct:title "ObjD"@en .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#ObjE> a modelldcatno:SimpleType ;
+    dct:title "ObjE"@en ;
+    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
@@ -786,7 +790,8 @@ ex_8_ttl = """
     modelldcatno:hasProperty <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f/TransactionReference#value> .
 """
 
-ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
+ex_9_ttl = """
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -796,7 +801,7 @@ ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
     modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Balance>,
-        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Currency> .
 
 <http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
@@ -820,14 +825,16 @@ ex_9_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
     dct:title "items"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Currency> .
 
-<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> a modelldcatno:SimpleType ;
-    dct:title "string"@en ;
-    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ."""
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Currency> a modelldcatno:SimpleType ;
+    dct:title "Currency"@en ;
+    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+"""
 
 
-ex_10_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
+ex_10_ttl = """
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix modelldcatno: <https://data.norge.no/vocabulary/modelldcatno#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -837,7 +844,7 @@ ex_10_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
     dct:title "Informasjonsmodell - datatjeneste eksempler"@nb ;
     dct:type modelldcatno:physicalModel ;
     modelldcatno:containsModelElement <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#Balance>,
-        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#string> .
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#Currency> .
 
 <http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
@@ -861,8 +868,9 @@ ex_10_ttl = """@prefix dct: <http://purl.org/dc/terms/> .
     dct:title "items"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#Currency> .
 
-<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#string> a modelldcatno:SimpleType ;
-    dct:title "string"@en ;
-    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> ."""
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/5489e4605d1a991ed07a7a271cc75dd3c3222111#Currency> a modelldcatno:SimpleType ;
+    dct:title "Currency"@en ;
+    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+"""

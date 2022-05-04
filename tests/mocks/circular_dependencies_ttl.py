@@ -27,7 +27,7 @@ circular_dependencies_test_ttl = """
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#SkosCode>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#SkosConcept>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Subject>,
-        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+        <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Map_string_string_> .
 
 <http://uri.com> a foaf:Document ;
     dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^dct:MediaType .
@@ -348,7 +348,7 @@ circular_dependencies_test_ttl = """
     dct:title "keyword"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Map_string_string_> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f/Dataset#landingPage> a modelldcatno:Attribute ;
     dct:title "landingPage"@en ;
@@ -714,7 +714,7 @@ circular_dependencies_test_ttl = """
     dct:title "altLabel"@en ;
     xsd:maxOccurs "*" ;
     xsd:minOccurs "0" ;
-    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> .
+    modelldcatno:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Map_string_string_> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f/Subject#creator> a modelldcatno:Role ;
     dct:title "creator"@en ;
@@ -941,5 +941,9 @@ circular_dependencies_test_ttl = """
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#string> a modelldcatno:SimpleType ;
     dct:title "string"@en ;
+    modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/2eb7c51f2a787dedea79ad31f9aff8b474f7097f#Map_string_string_> a modelldcatno:SimpleType ;
+    dct:title "Map_string_string_"@en ;
     modelldcatno:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 """

@@ -200,13 +200,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountNumber> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Account#accountReference> a ns1:Attribute ;
     dct:title "accountReference"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountReference> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Account#currency> a ns1:Attribute ;
     dct:title "currency"@en ;
@@ -264,13 +264,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountNumber> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountDetail#accountReference> a ns1:Attribute ;
     dct:title "accountReference"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountReference> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountDetail#balances> a ns1:Role ;
     dct:title "balances"@en ;
@@ -288,7 +288,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "endDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODate> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountDetail#name> a ns1:Attribute ;
     dct:title "name"@en ;
@@ -313,7 +313,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "startDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODate> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountDetail#status> a ns1:Attribute ;
     dct:title "status"@en ;
@@ -358,7 +358,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "endDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODate> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountRole#identifier> a ns1:Role ;
     dct:title "identifier"@en ;
@@ -389,7 +389,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "startDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODate> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/AccountRole/name#name> a ns1:SimpleType ;
     dct:title "name"@en ;
@@ -446,7 +446,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "creditLineIncluded"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#boolean> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#TrueFalseIndicator> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Balance#currency> a ns1:Attribute ;
     dct:title "currency"@en ;
@@ -458,7 +458,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "registered"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date-time> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODateTime> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Balance#type> a ns1:Attribute ;
     dct:title "type"@en ;
@@ -518,7 +518,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "accountIdentifier"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "0" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountNumber> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/CounterParty#identifier> a ns1:Role ;
     dct:title "identifier"@en ;
@@ -665,7 +665,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "cardIdentifier"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#string> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#CardNumber> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/PaymentCard#cardIssuerIdentifier> a ns1:Role ;
     dct:title "cardIssuerIdentifier"@en ;
@@ -822,7 +822,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "bookingDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date-time> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODateTime> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Transaction#counterParties> a ns1:Role ;
     dct:description "Counterparty: another party, the party to whom a transaction is going or coming from"@en ;
@@ -876,13 +876,13 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "registered"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date-time> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODateTime> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Transaction#reversalIndicator> a ns1:Attribute ;
     dct:title "reversalIndicator"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#boolean> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#TrueFalseIndicator> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Transaction#status> a ns1:Attribute ;
     dct:title "status"@en ;
@@ -909,7 +909,7 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
     dct:title "valueDate"@en ;
     xsd:maxOccurs "1"^^xsd:nonNegativeInteger ;
     xsd:minOccurs "1" ;
-    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date-time> .
+    ns1:hasSimpleType <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODateTime> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Transaction/additionalInfo#additionalInfo> a ns1:SimpleType ;
     dct:title "additionalInfo"@en ;
@@ -1011,10 +1011,6 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/PostalAddress#townName>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/PostalAddress#type> .
 
-<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#boolean> a ns1:SimpleType ;
-    dct:title "boolean"@en ;
-    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#booleanschema> .
-
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountRole> a ns1:ObjectType ;
     dct:description "Account role: indicates owner or manager of account"@en ;
     dct:title "AccountRole"@en ;
@@ -1038,13 +1034,29 @@ skagerrak_sparebank_ttl_mock = """@prefix dcat: <http://www.w3.org/ns/dcat#> .
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Identifier#type>,
         <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc/Identifier#value> .
 
-<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date> a ns1:SimpleType ;
-    dct:title "date"@en ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountNumber> a ns1:SimpleType ;
+    dct:title "AccountNumber"@en ;
     ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
 
-<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#date-time> a ns1:SimpleType ;
-    dct:title "date-time"@en ;
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#AccountReference> a ns1:SimpleType ;
+    dct:title "AccountReference"@en ;
     ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#CardNumber> a ns1:SimpleType ;
+    dct:title "CardNumber"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODate> a ns1:SimpleType ;
+    dct:title "ISODate"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#ISODateTime> a ns1:SimpleType ;
+    dct:title "ISODateTime"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#stringschema> .
+
+<https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#TrueFalseIndicator> a ns1:SimpleType ;
+    dct:title "TrueFalseIndicator"@en ;
+    ns1:typeDefinitionReference <https://www.w3.org/2019/wot/json-schema#booleanschema> .
 
 <https://publishers.staging.fellesdatakatalog.digdir.no/fdk-model-publisher/catalog/3f04e254cc0058a6826ada4a238d90104a80f4dc#Amount> a ns1:SimpleType ;
     dct:title "Amount"@en ;

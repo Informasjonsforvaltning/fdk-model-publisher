@@ -34,9 +34,14 @@ def extract_ref_item(ref_string: str, root_model: dict) -> dict:
     path = ref_string[2:].split("/") if ref_string.startswith("#/") else []
     ref_item = nested_get(root_model, *path)
     if len(path) > 0 and ref_item:
-        return {"title": path[-1], "properties": ref_item, "path": path[2:-1]}
+        return {
+            "title": path[-1],
+            "properties": ref_item,
+            "path": path[2:-1],
+            "is_refed": True,
+        }
 
-    return {"title": None, "properties": {}, "path": []}
+    return {"title": None, "properties": {}, "path": [], "is_refed": True}
 
 
 def extract_type(properties: dict, root_dict: dict, is_property: bool = False) -> str:

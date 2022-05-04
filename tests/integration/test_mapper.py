@@ -1,5 +1,6 @@
 """Integration test cases for the mapper service module."""
 import json
+from typing import Optional
 
 from fdk_rdf_parser.fdk_rdf_parser import DataService
 import pytest
@@ -40,6 +41,7 @@ def verify_model_from_json(
     model_str: str,
     expected_output_ttl: str,
     data_service: DataService,
+    test_name: Optional[str],
     complete_json: bool = False,
 ) -> bool:
     """Model test helper function."""
@@ -56,7 +58,7 @@ def verify_model_from_json(
         if isomorphic:
             return True
         else:
-            _dump_diff(expected, actual)
+            _dump_diff(expected, actual, test_name)
             pass
 
             return False
@@ -81,47 +83,47 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
         side_effect=skolemutils.get_skolemization,
     )
 
-    assert verify_model_from_json(ex_1_json, ex_1_ttl, ds)
+    assert verify_model_from_json(ex_1_json, ex_1_ttl, ds, "ex_1")
     print("\nModel 1 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_2_json, ex_2_ttl, ds)
+    assert verify_model_from_json(ex_2_json, ex_2_ttl, ds, "ex_2")
     print("Model 2 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_3_json, ex_3_ttl, ds)
+    assert verify_model_from_json(ex_3_json, ex_3_ttl, ds, "ex_3")
     print("Model 3 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_4_json, ex_4_ttl, ds)
+    assert verify_model_from_json(ex_4_json, ex_4_ttl, ds, "ex_4")
     print("Model 4 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_5_json, ex_5_ttl, ds)
+    assert verify_model_from_json(ex_5_json, ex_5_ttl, ds, "ex_5")
     print("Model 5 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_6_json, ex_6_ttl, ds)
+    assert verify_model_from_json(ex_6_json, ex_6_ttl, ds, "ex_6")
     print("Model 6 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_7_json, ex_7_ttl, ds)
+    assert verify_model_from_json(ex_7_json, ex_7_ttl, ds, "ex_7")
     print("Model 7 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_8_json, ex_8_ttl, ds)
+    assert verify_model_from_json(ex_8_json, ex_8_ttl, ds, "ex_8")
     print("Model 8 passed.")
 
     skolemutils.reset_counter()
 
-    assert verify_model_from_json(ex_9_json, ex_9_ttl, ds)
+    assert verify_model_from_json(ex_9_json, ex_9_ttl, ds, "ex_9")
     print("Model 9 passed.")
 
     skolemutils.reset_counter()
@@ -132,13 +134,16 @@ def test_map_models_from_dict(mocker: MockFixture) -> None:
         uri="http://other-ds-uri.com",
     )
 
-    assert verify_model_from_json(ex_9_json, ex_10_ttl, ds_2)
+    assert verify_model_from_json(ex_9_json, ex_10_ttl, ds_2, "ex_10")
     print("\nModel 10 passed.")
 
     skolemutils.reset_counter()
 
     assert verify_model_from_json(
-        circular_dependencies_test_json, circular_dependencies_test_ttl, ds
+        circular_dependencies_test_json,
+        circular_dependencies_test_ttl,
+        ds,
+        "circular_dependencies",
     )
     print("Handles circular dependencies.")
 
