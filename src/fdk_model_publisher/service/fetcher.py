@@ -68,7 +68,9 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
         logging.error(f"{traceback.format_exc()}: Timed out connecting to {urls[0]}")
 
     except aiohttp.ContentTypeError as e:
-        logging.error(f"{traceback.format_exc()}: Wrong content type for {urls[0]}:{e}")
+        logging.warning(
+            f"{traceback.format_exc()}: Wrong content type for {urls[0]}:{e}"
+        )
 
     except (
         aiohttp.ClientConnectionError,
