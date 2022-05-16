@@ -79,7 +79,7 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
     ) as e:
         logging.error(f"{traceback.format_exc()}: Error connecting to {urls[0]}:{e}")
 
-    except JSONDecodeError as e:
+    except JSONDecodeError:
         logging.error(f"{traceback.format_exc()}: Error decoding {urls[0]}")
 
     except Exception:
