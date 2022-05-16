@@ -1,6 +1,7 @@
 """Service layer module for modelldcat-ap-no compliant information models from data service descriptions."""
 import asyncio
 import gc
+from json import JSONDecodeError
 import logging
 import traceback
 from typing import Any, Dict, List, Set, Tuple
@@ -77,6 +78,9 @@ async def fetch(session: ClientSession, urls_set: Set[str]) -> PartialInformatio
         aiohttp.ClientResponseError,
     ) as e:
         logging.error(f"{traceback.format_exc()}: Error connecting to {urls[0]}:{e}")
+
+    except JSONDecodeError as e:
+        logging.error(f"{traceback.format_exc()}: Error decoding {urls[0]}:{e}")
 
     except Exception:
         logging.error(traceback.format_exc())
