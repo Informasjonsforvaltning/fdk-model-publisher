@@ -9,7 +9,7 @@ import nox_poetry
 nox.options.envdir = ".cache"
 nox.options.reuse_existing_virtualenvs = True
 locations = "src", "tests", "noxfile.py"
-nox.options.sessions = ("lint", "mypy", "safety", "integration_tests")
+nox.options.sessions = ("lint", "mypy", "integration_tests")
 
 
 @nox_poetry.session
