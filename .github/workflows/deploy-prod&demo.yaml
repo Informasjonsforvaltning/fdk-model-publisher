@@ -12,13 +12,10 @@ jobs:
     uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy-nox.yaml@main
     with:
       app_name: fdk-model-publisher
-      caller_sha: ${{ github.sha }}
-      repo: ${{ github.repository }}
-      actor: ${{ github.actor }}
       python_version: '3.8'
       python_architecture: 'x64'
-      environment: 'prod'
-      cluster: 'digdir-fdk-prod'
+      environment: prod
+      cluster: digdir-fdk-prod
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
@@ -31,11 +28,8 @@ jobs:
     uses: Informasjonsforvaltning/workflows/.github/workflows/deploy.yaml@main
     with:
       app_name: fdk-model-publisher
-      caller_sha: ${{ github.sha }}
-      repo: ${{ github.repository }}
-      actor: ${{ github.actor }}
-      environment: 'demo'
-      cluster: 'digdir-fdk-dev'
+      environment: demo
+      cluster: digdir-fdk-dev
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
