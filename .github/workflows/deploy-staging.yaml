@@ -7,6 +7,20 @@ on:
       - main
 
 jobs:
+  analyze:
+    name: Call reusable workflow codeql when pull request is created
+    if: github.event.pull_request.draft == false
+    uses: Informasjonsforvaltning/workflows/.github/workflows/codeql-python.yaml@feat/jr/codeql
+    with:
+      app_name: fdk-model-publisher
+      python_version: '3.8'
+      python_architecture: 'x64'
+      environment: staging
+      cluster: digdir-fdk-dev
+      run_safety: true
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-and-deploy-staging:
     name: Call reusable workflow when pull request is created
     if: github.event.pull_request.draft == false
