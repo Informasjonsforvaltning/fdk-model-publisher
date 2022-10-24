@@ -7,9 +7,6 @@ license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/Informasjonsforvaltning/fdk-model-publisher"
 repository = "https://github.com/Informasjonsforvaltning/fdk-model-publisher"
-#packages = [
-#    { include = "app.py", from = "src"},
-#]
 classifiers=[
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: Apache Software License",
