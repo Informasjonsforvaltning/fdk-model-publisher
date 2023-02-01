@@ -83,7 +83,13 @@ def safety(session: Session) -> None:
 @nox_poetry.session
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
-    args = session.posargs or ["--install-types", "--non-interactive", "src", "tests"]
+    args = session.posargs or [
+        "--install-types",
+        "--non-interactive",
+        "--no-namespace-packages",
+        "src",
+        "tests",
+    ]
     session.install(".")
     session.install("mypy", "pytest")
     session.run("mypy", *args)
