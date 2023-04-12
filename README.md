@@ -16,11 +16,11 @@ Transforms models included in dataservice-descriptions to modelldcat-ap-no compl
 ```Shell
 % git clone https://github.com/Informasjonsforvaltning/fdk-model-publisher.git
 % cd fdk-model-publisher
-% pyenv install 3.8.6
-% pyenv local 3.8.6
-% pip install poetry==1.1.3
-% pip install nox==2020.12.31
-% pip install nox-poetry==0.8.4
+% pyenv install 3.11.3
+% pyenv local 3.11.3
+% pip install poetry==1.4.2
+% pip install nox==2021.11.21
+% pip install nox-poetry==1.0.2
 % poetry install
 ```
 
@@ -34,7 +34,7 @@ FDK_DATASERVICE_HARVESTER_URI=https://dataservices.staging.fellesdatakatalog.dig
 
 ### Running the API locally
 
- Start the endpoint:
+Start the endpoint:
 
 ```Shell
 % poetry shell

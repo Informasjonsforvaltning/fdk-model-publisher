@@ -6,13 +6,14 @@ import nox
 from nox.sessions import Session
 import nox_poetry
 
+python_version = ["3.11"]
 nox.options.envdir = ".cache"
 nox.options.reuse_existing_virtualenvs = True
 locations = "src", "tests", "noxfile.py"
 nox.options.sessions = ("lint", "mypy", "integration_tests")
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def integration_tests(session: Session) -> None:
     """Run the integration test suite."""
     args = session.posargs or ["--cov"]
@@ -36,7 +37,7 @@ def integration_tests(session: Session) -> None:
     )
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or locations
@@ -44,7 +45,7 @@ def black(session: Session) -> None:
     session.run("black", *args)
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def lint(session: Session) -> None:
     """Lint using flake8."""
     args = session.posargs or locations
@@ -61,7 +62,7 @@ def lint(session: Session) -> None:
     session.run("flake8", *args)
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     with tempfile.NamedTemporaryFile() as requirements:
@@ -80,7 +81,7 @@ def safety(session: Session) -> None:
         )
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or [
@@ -97,7 +98,7 @@ def mypy(session: Session) -> None:
         session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
 
 
-@nox_poetry.session
+@nox_poetry.session(python=python_version[0])
 def coverage(session: Session) -> None:
     """Upload coverage data."""
     session.install("coverage[toml]", "codecov")
