@@ -6,7 +6,7 @@ import nox
 from nox.sessions import Session
 import nox_poetry
 
-python_version = ["3.10"]
+python_version = ["3.11"]
 nox.options.envdir = ".cache"
 nox.options.reuse_existing_virtualenvs = True
 locations = "src", "tests", "noxfile.py"
