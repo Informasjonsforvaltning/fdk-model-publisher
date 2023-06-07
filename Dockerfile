@@ -3,7 +3,7 @@ FROM python:3.11
 WORKDIR /app
 
 RUN pip install --upgrade pip
-RUN pip install "poetry==1.4.2"
+RUN pip install "poetry==1.5.1"
 COPY poetry.lock pyproject.toml /app/
 
 # Project initialization:
